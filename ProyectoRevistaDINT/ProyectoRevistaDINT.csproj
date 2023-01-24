@@ -93,6 +93,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControlCrearArtículo.xaml.cs">
+      <DependentUpon>UserControlCrearArtículo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlCrearAutor.xaml.cs">
+      <DependentUpon>UserControlCrearAutor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlEditarAutores.xaml.cs">
+      <DependentUpon>UserControlEditarAutores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlEliminarAutores.xaml.cs">
+      <DependentUpon>UserControlEliminarAutores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlGenerarRevista.xaml.cs">
+      <DependentUpon>UserControlGenerarRevista.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlGestiónArtículos.xaml.cs">
+      <DependentUpon>UserControlGestiónArtículos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlGestiónPalabrasProhibidas.xaml.cs">
+      <DependentUpon>UserControlGestiónPalabrasProhibidas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlModeraciónArtículos.xaml.cs">
+      <DependentUpon>UserControlModeraciónArtículos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlPublicarArtículos.xaml.cs">
+      <DependentUpon>UserControlPublicarArtículos.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,6 +132,42 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControlCrearArtículo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlCrearAutor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlEditarAutores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlEliminarAutores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlGenerarRevista.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlGestiónArtículos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlGestiónPalabrasProhibidas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlModeraciónArtículos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlPublicarArtículos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
