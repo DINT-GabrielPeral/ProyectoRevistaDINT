@@ -1,12 +1,38 @@
-﻿<Window x:Class="ProyectoRevistaDINT.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoRevistaDINT"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="ProyectoRevistaDINT.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="ProyectoRevistaDINT" Height="450" Width="800" Icon="Recursos/revistaIcono.png">
+    <DockPanel LastChildFill="True">
+
+        <syncfusion:MenuAdv Height="20" DockPanel.Dock="Top">
+            <Image Height="15" Width="15" Source="Recursos/revistaIcono.png" Stretch="Fill"></Image>
+            <syncfusion:MenuItemAdv Header="Gestion Autores">
+                <syncfusion:MenuItemAdv Header="Crear Autor"/>
+                <syncfusion:MenuItemAdv Header="Eliminar Autor"/>
+                <syncfusion:MenuItemAdv Header="Editar Autor"/>
+            </syncfusion:MenuItemAdv>
+            <syncfusion:MenuItemAdv Header="Gestión Artículos">
+                <syncfusion:MenuItemAdv Header="Crear Artículos"/>
+                <syncfusion:MenuItemAdv Header="Gestionar Artículos disponibles" />
+                <syncfusion:MenuItemAdv Header="Moderar Artículos"/>
+            </syncfusion:MenuItemAdv>
+            <syncfusion:MenuItemAdv Header="Publicación">
+                <syncfusion:MenuItemAdv Header="Publicar Artículos"/>
+                <syncfusion:MenuItemAdv Header="Generar Revista" />
+            </syncfusion:MenuItemAdv>
+            <syncfusion:MenuItemAdv Header="Gestión de palabras prohibidas"/>
+            
+            <syncfusion:MenuItemAdv/>
+        </syncfusion:MenuAdv>
+        <Border Margin="10" Padding="5" BorderBrush="Black" BorderThickness="2">
+            <UserControl>
+                
+            </UserControl>
+        </Border>
+    </DockPanel>
 </Window>
