@@ -93,6 +93,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Clases\Autor.cs" />
     <Compile Include="UserControlCrearArtículo.xaml.cs">
       <DependentUpon>UserControlCrearArtículo.xaml</DependentUpon>
     </Compile>
@@ -120,6 +121,9 @@
     <Compile Include="UserControlPublicarArtículos.xaml.cs">
       <DependentUpon>UserControlPublicarArtículos.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VistasModelo\CrearAutorVM.cs" />
+    <Compile Include="VistasModelo\EditarAutorVM.cs" />
+    <Compile Include="VistasModelo\EliminarAutorVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
