@@ -1,0 +1,39 @@
+﻿<Window x:Class="ProyectoRevistaDINT.Vistas.EditarAutor.EditarAutorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoRevistaDINT.Vistas.EditarAutor"
+        mc:Ignorable="d"
+        Title="Editar autor"
+        Height="450" Width="800"
+        Icon="/Recursos/editar-icono.png">
+    <Window.Resources>
+        <Style TargetType="StackPanel" x:Key="ContenedoresCamposStackPanel">
+            <Setter Property="DockPanel.Dock" Value="Top"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel LastChildFill="False">
+        <StackPanel Style="{StaticResource ContenedoresCamposStackPanel}">
+            <TextBlock Margin="10,10,10,5">Nombre</TextBlock>
+            <TextBox Text="{Binding Path=AutorActual.Nombre}" Margin="10,0,10,10"/>
+        </StackPanel>
+
+        <StackPanel Style="{StaticResource ContenedoresCamposStackPanel}">
+            <TextBlock Margin="10,5,10,5">Imagen</TextBlock>
+            <DockPanel>
+                <Button Command="{Binding Path=SeleccionarImagenCommand}" DockPanel.Dock="Right" Width="75" Height="20"
+                        Margin="0,0,10,10">Examinar</Button>
+                <TextBox Text="{Binding Path=AutorActual.Imagen}" IsReadOnly="True" Margin="10,0,5,10"/>
+            </DockPanel>
+        </StackPanel>
+
+        <StackPanel Style="{StaticResource ContenedoresCamposStackPanel}">
+            <TextBlock Margin="10,5,10,5">Red social</TextBlock>
+            <ComboBox ItemsSource="{Binding Path=RedesSociales}" SelectedItem="{Binding Path=AutorActual.RedSocial}"
+                      Width="125" HorizontalAlignment="Left" Margin="10,0,10,10"/>
+        </StackPanel>
+    </DockPanel>
+</Window>
