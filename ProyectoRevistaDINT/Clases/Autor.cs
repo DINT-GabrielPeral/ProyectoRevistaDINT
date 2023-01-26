@@ -9,6 +9,13 @@ namespace ProyectoRevistaDINT.Clases
 {
     class Autor : ObservableObject
     {
+        private int id;
+        public int Id
+        {
+            get { return id; }
+            set { SetProperty(ref id, value); }
+        }
+
         private string nombre;
         public string Nombre
         {
@@ -37,8 +44,9 @@ namespace ProyectoRevistaDINT.Clases
             set { SetProperty(ref nickRedSocial, value); }
         }
 
-        public Autor(string nombre, string imagen, string redSocial, string nickRedSocial) 
+        public Autor(int id, string nombre, string imagen, string redSocial, string nickRedSocial) 
         {
+            Id = id;
             Nombre = nombre;
             Imagen = imagen;
             RedSocial = redSocial;
