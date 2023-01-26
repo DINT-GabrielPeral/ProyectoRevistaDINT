@@ -115,6 +115,9 @@
     <Compile Include="Vistas\CrearAutor\CrearAutorVentana.xaml.cs">
       <DependentUpon>CrearAutorVentana.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\EliminarAutor\EliminarAutor.xaml.cs">
+      <DependentUpon>EliminarAutor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\prueba.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -129,6 +132,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Vistas\CrearAutor\CrearAutorVentana.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\EliminarAutor\EliminarAutor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
