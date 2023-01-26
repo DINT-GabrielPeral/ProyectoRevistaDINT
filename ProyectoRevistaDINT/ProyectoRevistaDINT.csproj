@@ -138,8 +138,6 @@
   <ItemGroup>
     <Resource Include="Recursos\revistaIcono.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Vistas\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
