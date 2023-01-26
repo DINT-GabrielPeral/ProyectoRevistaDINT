@@ -29,5 +29,12 @@ namespace ProyectoRevistaDINT.Clases
             get { return redSocial; }
             set { SetProperty(ref redSocial, value); }
         }
+
+        private string nickRedSocial;
+        public string NickRedSocial
+        {
+            get { return nickRedSocial; }
+            set { SetProperty(ref nickRedSocial, value); }
+        }
     }
 }
