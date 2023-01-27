@@ -68,6 +68,26 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
         public void Examinar()
         {
             
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+
+
+            
+            dlg.DefaultExt = ".png";
+            dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+
+
+            
+            Nullable<bool> result = dlg.ShowDialog();
+
+
+            
+            if (result == true)
+            {
+                // Open document 
+                string filename = dlg.FileName;
+                AutorNuevo.Imagen = filename;
+            }
         }
         
     }

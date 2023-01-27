@@ -33,7 +33,7 @@
         <TextBlock Text="Imagen:" Grid.Row="2" Grid.Column="0"></TextBlock>
         <TextBox x:Name="NombreAutor_TextBox" Margin="5" Grid.Row="0" Grid.Column="1" Text="{Binding Path=AutorNuevo.Nombre}"></TextBox>
         
-        <Button x:Name="Examinar_Button" Margin="5" Content="Examinar..." HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"></Button>
+       
         
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
             <TextBlock Text="{Binding Path=PonerNombre}" Foreground="Red"></TextBlock>
@@ -44,5 +44,9 @@
             <ComboBox x:Name="ComboBoxAutor_TextBox" Margin="5" Width="100" DockPanel.Dock="Left" ItemsSource="{Binding Path=RedesSociales}" SelectedItem="{Binding Path=AutorNuevo.RedSocial}"></ComboBox>
             <TextBox x:Name="RedSocialAutor_TextBox" Margin="5" Text="{Binding Path=AutorNuevo.NickRedSocial}"></TextBox>
         </DockPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+             <Button x:Name="Examinar_Button" Margin="5" Content="Examinar..." HorizontalAlignment="Left" ></Button>
+             <TextBlock Text="{Binding Path=AutorNuevo.Imagen}"></TextBlock>
+        </StackPanel>
     </Grid>
 </Window>
