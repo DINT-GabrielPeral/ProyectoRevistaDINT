@@ -13,7 +13,6 @@
             <Image Height="15" Width="15" Source="Recursos/revistaIcono.png" Stretch="Fill"></Image>
             <syncfusion:MenuItemAdv Header="Gestion Autores">
                 <syncfusion:MenuItemAdv Header="Crear Autor"/>
-                <syncfusion:MenuItemAdv Header="Eliminar Autor"/>
                 <syncfusion:MenuItemAdv Header="Editar Autor"/>
             </syncfusion:MenuItemAdv>
             <syncfusion:MenuItemAdv Header="Gestión Artículos">
