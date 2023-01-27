@@ -24,8 +24,8 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
         public GestionAutoresVM()
         {
             Autores = new ObservableCollection<Autor>();
-            Autores = sbd.recibirAutores();
-            //Autores.Add(new Autor(0, "Prueba", "Imagen", "RedSocial", "Nick"));
+            //Autores = sbd.recibirAutores();
+            Autores.Add(new Autor(0, "Prueba", "Imagen", "RedSocial", "Nick"));
         }
     }
 }

@@ -136,6 +136,7 @@
     <Compile Include="Vistas\GestionAutores\GestionAutores.xaml.cs">
       <DependentUpon>GestionAutores.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\GestionAutores\GestionAutoresVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
