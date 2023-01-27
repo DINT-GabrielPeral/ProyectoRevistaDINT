@@ -28,18 +28,6 @@ namespace ProyectoRevistaDINT.Servicios
                                     nickRedSocial varchar(100))";
             comando.ExecuteNonQuery(); //Este método ejecuta consultas que no son SELECT
 
-            //Inserción de dato de prueba
-            comando.CommandText = "INSERT INTO autor VALUES (@nombre,@imagen,@redSocial,@nickRedSocial)";
-            comando.Parameters.Add("@nombre", SqliteType.Text);
-            comando.Parameters.Add("@imagen", SqliteType.Text);
-            comando.Parameters.Add("@redSocial", SqliteType.Text);
-            comando.Parameters.Add("@nickRedSocial", SqliteType.Text);
-            comando.Parameters["@nombre"].Value = "Juan Lucas";
-            comando.Parameters["@imagen"].Value = "imagen";
-            comando.Parameters["@redSocial"].Value = "Twitter";
-            comando.Parameters["@nickRedSocial"].Value = "xX_JuanLukas_Xx";
-            comando.ExecuteNonQuery();
-
             conexion.Close();
         }
 
