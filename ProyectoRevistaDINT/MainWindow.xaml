@@ -9,8 +9,7 @@
         Title="ProyectoRevistaDINT" Height="450" Width="800" Icon="Recursos/revistaIcono.png">
     <DockPanel LastChildFill="True">
 
-        <syncfusion:MenuAdv Height="20" DockPanel.Dock="Top">
-            <Image Height="15" Width="15" Source="Recursos/revistaIcono.png" Stretch="Fill"></Image>
+        <syncfusion:MenuAdv DockPanel.Dock="Top" Background="White">
             <syncfusion:MenuItemAdv Header="Gestion Autores" Command="{Binding Path=comandoGestionAutores}">
             </syncfusion:MenuItemAdv>
             <syncfusion:MenuItemAdv Header="Gestión Artículos">
