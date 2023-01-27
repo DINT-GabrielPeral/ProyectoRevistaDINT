@@ -60,6 +60,11 @@ namespace ProyectoRevistaDINT.Clases
             RedSocial = redSocial;
             NickRedSocial = nickRedSocial;
         }
+
+        public Autor()
+        {
+        }
+
     }
 }
-}
+
