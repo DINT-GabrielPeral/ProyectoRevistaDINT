@@ -14,14 +14,14 @@ using System.Windows.Shapes;
 
 namespace ProyectoRevistaDINT.Vistas.CrearAutor
 {
-    /// <summary>
-    /// Lógica de interacción para Window1.xaml
-    /// </summary>
-    public partial class Window1 : Window
+   
+    public partial class CrearAutorVentana : Window
     {
-        public Window1()
+        public CrearAutorVentana()
         {
             InitializeComponent();
         }
+
+        
     }
 }

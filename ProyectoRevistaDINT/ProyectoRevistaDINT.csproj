@@ -114,10 +114,10 @@
     <Compile Include="Servicios\DialogosService.cs" />
     <Compile Include="Servicios\RedesSocialesService.cs" />
     <Compile Include="Servicios\ServicioAccesoBD.cs" />
+    <Compile Include="Vistas\CrearAutor\AutorCrearVentanaVM.cs" />
     <Compile Include="Vistas\CrearAutor\CrearAutorVentana.xaml.cs">
       <DependentUpon>CrearAutorVentana.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\CrearAutor\VentanaCrearUsuarioVM.cs" />
     <Compile Include="Vistas\EditarAutor\EditarAutorWindow.xaml.cs">
       <DependentUpon>EditarAutorWindow.xaml</DependentUpon>
     </Compile>
