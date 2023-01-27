@@ -44,7 +44,7 @@ namespace ProyectoRevistaDINT.Clases
             set { SetProperty(ref nickRedSocial, value); }
         }
 
-        public Autor(int id, string nombre, string imagen, string redSocial, string nickRedSocial) 
+        public Autor(int id, string nombre, string imagen, string redSocial, string nickRedSocial)
         {
             Id = id;
             Nombre = nombre;
@@ -54,7 +54,6 @@ namespace ProyectoRevistaDINT.Clases
         }
         public Autor( string nombre, string imagen, string redSocial, string nickRedSocial)
         {
-            
             Nombre = nombre;
             Imagen = imagen;
             RedSocial = redSocial;
@@ -62,4 +61,4 @@ namespace ProyectoRevistaDINT.Clases
         }
     }
 }
-}
+

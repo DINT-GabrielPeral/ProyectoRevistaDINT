@@ -30,13 +30,11 @@ namespace ProyectoRevistaDINT.Servicios
             comando.ExecuteNonQuery(); //Este método ejecuta consultas que no son SELECT
 
             //Inserción de dato de prueba
-            comando.CommandText = "INSERT INTO autor VALUES (@id,@nombre,@imagen,@redSocial,@nickRedSocial)";
-            comando.Parameters.Add("@id", SqliteType.Integer);
+            comando.CommandText = "INSERT INTO autor VALUES (@nombre,@imagen,@redSocial,@nickRedSocial)";
             comando.Parameters.Add("@nombre", SqliteType.Text);
             comando.Parameters.Add("@imagen", SqliteType.Text);
             comando.Parameters.Add("@redSocial", SqliteType.Text);
             comando.Parameters.Add("@nickRedSocial", SqliteType.Text);
-            comando.Parameters["@id"].Value = 0;
             comando.Parameters["@nombre"].Value = "Juan Lucas";
             comando.Parameters["@imagen"].Value = "imagen";
             comando.Parameters["@redSocial"].Value = "Twitter";
@@ -86,13 +84,11 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "INSERT INTO autor VALUES (@id,@nombre,@imagen,@redSocial,@nickRedSocial)";
-            comando.Parameters.Add("@id", SqliteType.Integer);
+            comando.CommandText = "INSERT INTO autor VALUES (@nombre,@imagen,@redSocial,@nickRedSocial)";
             comando.Parameters.Add("@nombre", SqliteType.Text);
             comando.Parameters.Add("@imagen", SqliteType.Text);
             comando.Parameters.Add("@redSocial", SqliteType.Text);
             comando.Parameters.Add("@nickRedSocial", SqliteType.Text);
-            comando.Parameters["@id"].Value = autor.Id;
             comando.Parameters["@nombre"].Value = autor.Nombre;
             comando.Parameters["@imagen"].Value = autor.Imagen;
             comando.Parameters["@redSocial"].Value = autor.RedSocial;
