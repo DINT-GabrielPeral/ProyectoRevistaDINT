@@ -115,6 +115,7 @@
     <Compile Include="Servicios\DialogosService.cs" />
     <Compile Include="Servicios\RedesSocialesService.cs" />
     <Compile Include="Servicios\ServicioAccesoBD.cs" />
+    <Compile Include="Servicios\ServicioNavegacion.cs" />
     <Compile Include="Vistas\CrearAutor\CrearAutorVentana.xaml.cs">
       <DependentUpon>CrearAutorVentana.xaml</DependentUpon>
     </Compile>
@@ -129,6 +130,7 @@
     <Compile Include="Vistas\GestionAutores\GestionAutores.xaml.cs">
       <DependentUpon>GestionAutores.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\GestionAutores\GestionAutoresVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
