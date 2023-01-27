@@ -23,13 +23,11 @@
                 <syncfusion:MenuItemAdv Header="Generar Revista" />
             </syncfusion:MenuItemAdv>
             <syncfusion:MenuItemAdv Header="Gestión de palabras prohibidas"/>
-            
+
             <syncfusion:MenuItemAdv/>
         </syncfusion:MenuAdv>
-        <Border Margin="10" Padding="5" BorderBrush="Black" BorderThickness="2">
-            <UserControl Content="{Binding ContenidoMostrar}">
-                
-            </UserControl>
-        </Border>
+        <UserControl Content="{Binding ContenidoMostrar}" Margin="3">
+
+        </UserControl>
     </DockPanel>
 </Window>

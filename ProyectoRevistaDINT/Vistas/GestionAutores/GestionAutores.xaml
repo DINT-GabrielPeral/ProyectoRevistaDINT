@@ -20,6 +20,6 @@
             <Button>Editar</Button>
             <Button>Eliminar</Button>
         </StackPanel>
-        <syncfusion:SfDataGrid ItemsSource="{Binding Autores}" AllowFiltering="True"/>
+        <syncfusion:SfDataGrid ItemsSource="{Binding Autores}" AllowFiltering="True" ColumnSizer="Star"/>
     </DockPanel>
 </UserControl>
