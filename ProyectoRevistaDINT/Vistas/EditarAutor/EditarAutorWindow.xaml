@@ -13,27 +13,40 @@
             <Setter Property="DockPanel.Dock" Value="Top"/>
             <Setter Property="Margin" Value="5"/>
         </Style>
+
+        <Style TargetType="TextBlock" x:Key="InfoCampos">
+            <Setter Property="Margin" Value="10,5,10,5"/>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="CamposRellenables">
+            <Setter Property="Margin" Value="10,0,5,10"/>
+        </Style>
     </Window.Resources>
 
     <DockPanel LastChildFill="False">
         <StackPanel Style="{StaticResource ContenedoresCamposStackPanel}">
-            <TextBlock Margin="10,10,10,5">Nombre</TextBlock>
-            <TextBox Text="{Binding Path=AutorActual.Nombre}" Margin="10,0,10,10"/>
+            <TextBlock Style="{StaticResource InfoCampos}">Nombre</TextBlock>
+            <TextBox Text="{Binding Path=AutorActual.Nombre}" Style="{StaticResource CamposRellenables}"/>
         </StackPanel>
 
         <StackPanel Style="{StaticResource ContenedoresCamposStackPanel}">
-            <TextBlock Margin="10,5,10,5">Imagen</TextBlock>
+            <TextBlock Style="{StaticResource InfoCampos}">Imagen</TextBlock>
             <DockPanel>
                 <Button Command="{Binding Path=SeleccionarImagenCommand}" DockPanel.Dock="Right" Width="75" Height="20"
                         Margin="0,0,10,10">Examinar</Button>
-                <TextBox Text="{Binding Path=AutorActual.Imagen}" IsReadOnly="True" Margin="10,0,5,10"/>
+                <TextBox Text="{Binding Path=AutorActual.Imagen}" IsReadOnly="True" Style="{StaticResource CamposRellenables}"/>
             </DockPanel>
         </StackPanel>
 
         <StackPanel Style="{StaticResource ContenedoresCamposStackPanel}">
-            <TextBlock Margin="10,5,10,5">Red social</TextBlock>
+            <TextBlock Style="{StaticResource InfoCampos}">Red social</TextBlock>
             <ComboBox ItemsSource="{Binding Path=RedesSociales}" SelectedItem="{Binding Path=AutorActual.RedSocial}"
-                      Width="125" HorizontalAlignment="Left" Margin="10,0,10,10"/>
+                      Width="125" HorizontalAlignment="Left" Margin="10,0,5,10"/>
+        </StackPanel>
+
+        <StackPanel Style="{StaticResource ContenedoresCamposStackPanel}">
+            <TextBlock Style="{StaticResource InfoCampos}">Nickname de la red social</TextBlock>
+            <TextBox Text="{Binding Path=AutorActual.NickRedSocial}" Style="{StaticResource CamposRellenables}"/>
         </StackPanel>
     </DockPanel>
 </Window>
