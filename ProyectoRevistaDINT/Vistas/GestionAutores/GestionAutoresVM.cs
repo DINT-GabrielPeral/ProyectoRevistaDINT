@@ -1,4 +1,5 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 using ProyectoRevistaDINT.Clases;
 using ProyectoRevistaDINT.Servicios;
 using System;
@@ -14,6 +15,7 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
     class GestionAutoresVM : ObservableObject
     {
         private ServicioAccesoBD sbd = new ServicioAccesoBD();
+        private ServicioNavegacion sn = new ServicioNavegacion();
         private ObservableCollection<Autor> autores;
         public ObservableCollection<Autor> Autores
         {
@@ -21,8 +23,12 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
             set { SetProperty(ref autores, value); }
         }
 
+        public RelayCommand ComandoCrearAutor { get; }
+
         public GestionAutoresVM()
         {
+            sn = new ServicioNavegacion();
+            ComandoCrearAutor = new RelayCommand(AbrirCrearAutor);
             Autores = new ObservableCollection<Autor>();
 
             Autores = sbd.recibirAutores();
@@ -40,6 +46,11 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
             if(!hayPrueba) sbd.crearAutor(new Autor(0, "Prueba", "Imagen", "RedSocial", "Nick"));
             
             Autores = sbd.recibirAutores();
+        }
+
+        public void AbrirCrearAutor()
+        {
+            sn.AbrirCrearAutor();
         }
     }
 }

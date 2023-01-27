@@ -16,7 +16,7 @@
     
     <DockPanel>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
-            <Button>Crear</Button>
+            <Button Command="{Binding Path=ComandoCrearAutor}">Crear</Button>
             <Button>Editar</Button>
             <Button>Eliminar</Button>
         </StackPanel>

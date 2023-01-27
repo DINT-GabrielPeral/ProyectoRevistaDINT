@@ -1,4 +1,5 @@
-﻿using ProyectoRevistaDINT.Vistas.EliminarAutor;
+﻿using ProyectoRevistaDINT.Vistas.CrearAutor;
+using ProyectoRevistaDINT.Vistas.EliminarAutor;
 using ProyectoRevistaDINT.Vistas.GestionAutores;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,12 @@ namespace ProyectoRevistaDINT.Servicios
         public bool? AbrirEliminarAutor()
         {
             EliminarAutor dialog = new EliminarAutor();
+            return dialog.ShowDialog();
+        }
+
+        public bool? AbrirCrearAutor()
+        {
+            CrearAutorVentana dialog = new CrearAutorVentana();
             return dialog.ShowDialog();
         }
     }
