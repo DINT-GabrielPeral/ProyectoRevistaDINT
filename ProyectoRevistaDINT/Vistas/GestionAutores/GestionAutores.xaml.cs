@@ -13,18 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProyectoRevistaDINT
+namespace ProyectoRevistaDINT.Vistas.GestionAutores
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Lógica de interacción para GestionAutores.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GestionAutores : UserControl
     {
-        private MainWindowVM vm;
-        public MainWindow()
+        private GestionAutoresVM vm;
+        public GestionAutores()
         {
             InitializeComponent();
-            vm = new MainWindowVM();
+            vm = new GestionAutoresVM();
             this.DataContext = vm;
         }
     }
