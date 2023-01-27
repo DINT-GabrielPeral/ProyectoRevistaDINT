@@ -1,13 +1,47 @@
-﻿<Window x:Class="ProyectoRevistaDINT.Vistas.CrearAutor.Window1"
+﻿<Window x:Class="ProyectoRevistaDINT.Vistas.CrearAutor.CrearAutorVentana"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoRevistaDINT.Vistas.CrearAutor"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800">
-    <Grid>
+        Title="Nuevo Usuario" Height="150" Width="400" MaxHeight="200">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="15,0,0,0"></Setter>
+        </Style>
         
+    </Window.Resources>
+    <Grid Background="">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Nombre Autor:" Grid.Row="0" Grid.Column="0"></TextBlock>
+        <TextBlock Text="Red Social:" Grid.Row="1" Grid.Column="0"></TextBlock>
+        <TextBlock Text="Imagen:" Grid.Row="2" Grid.Column="0"></TextBlock>
+        <TextBox x:Name="NombreAutor_TextBox" Margin="5" Grid.Row="0" Grid.Column="1"></TextBox>
+        
+        <Button x:Name="Examinar_Button" Margin="5" Content="Examinar..." HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"></Button>
+        
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="Aceptar_Button" Content="Aceptar" Margin="5" Command="{Binding Path=AñadirAutorCommand}"></Button>
+            <Button x:Name="Cancelar_Button" Content="Cancelar" Margin="5"></Button>
+        </StackPanel>
+        <DockPanel Grid.Row="1" Grid.Column="1" LastChildFill="True">
+            <ComboBox x:Name="ComboBoxAutor_TextBox" Margin="5" Width="100" DockPanel.Dock="Left"></ComboBox>
+            <TextBox x:Name="RedSocialAutor_TextBox" Margin="5"></TextBox>
+        </DockPanel>
     </Grid>
 </Window>
