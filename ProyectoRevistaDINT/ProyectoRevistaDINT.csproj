@@ -117,6 +117,7 @@
     <Compile Include="Vistas\CrearAutor\CrearAutorVentana.xaml.cs">
       <DependentUpon>CrearAutorVentana.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\CrearAutor\VentanaCrearUsuarioVM.cs" />
     <Compile Include="Vistas\EditarAutor\EditarAutorWindow.xaml.cs">
       <DependentUpon>EditarAutorWindow.xaml</DependentUpon>
     </Compile>

@@ -5,9 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoRevistaDINT.Vistas.CrearAutor"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800">
-    <Grid>
+        Title="Nuevo Usuario" Height="150" Width="400" MaxHeight="200">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="15,0,0,0"></Setter>
+        </Style>
         
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Nombre Autor:" Grid.Row="0" Grid.Column="0"></TextBlock>
+        <TextBlock Text="Red Social:" Grid.Row="1" Grid.Column="0"></TextBlock>
+        <TextBlock Text="Imagen:" Grid.Row="2" Grid.Column="0"></TextBlock>
+        <TextBox Margin="5" Grid.Row="0" Grid.Column="1"></TextBox>
+        <ComboBox Margin="5" Width="100" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"></ComboBox>
+        <Button Margin="5" Content="Examinar..." HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"></Button>
+        
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Aceptar" Margin="5"></Button>
+            <Button Content="Cancelar" Margin="5"></Button>
+        </StackPanel>
     </Grid>
 </Window>
