@@ -12,7 +12,7 @@
         <syncfusion:MenuAdv Height="20" DockPanel.Dock="Top">
             <Image Height="15" Width="15" Source="Recursos/revistaIcono.png" Stretch="Fill"></Image>
             <syncfusion:MenuItemAdv Header="Gestion Autores">
-                <syncfusion:MenuItemAdv Header="Crear Autor"/>
+                <syncfusion:MenuItemAdv Header="Crear Autor" Command="{Binding Path=comandoGestionAutores}"/>
                 <syncfusion:MenuItemAdv Header="Editar Autor"/>
             </syncfusion:MenuItemAdv>
             <syncfusion:MenuItemAdv Header="Gestión Artículos">
@@ -29,7 +29,7 @@
             <syncfusion:MenuItemAdv/>
         </syncfusion:MenuAdv>
         <Border Margin="10" Padding="5" BorderBrush="Black" BorderThickness="2">
-            <UserControl>
+            <UserControl Content="{Binding ContenidoMostrar}">
                 
             </UserControl>
         </Border>
