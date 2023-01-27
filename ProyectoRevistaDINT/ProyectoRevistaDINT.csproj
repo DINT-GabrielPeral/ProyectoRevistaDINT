@@ -126,7 +126,6 @@
       <DependentUpon>EliminarAutor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\EliminarAutor\EliminarAutorVM.cs" />
-    <Compile Include="Vistas\prueba.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
