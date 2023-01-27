@@ -13,5 +13,9 @@ namespace ProyectoRevistaDINT
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ProyectoRevistaDINT.Properties.Settings.Default.ClaveSyncfusion);
+        }
     }
 }
