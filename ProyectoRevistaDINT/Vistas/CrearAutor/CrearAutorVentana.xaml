@@ -15,7 +15,7 @@
         </Style>
         
     </Window.Resources>
-    <Grid Background="">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -31,17 +31,18 @@
         <TextBlock Text="Nombre Autor:" Grid.Row="0" Grid.Column="0"></TextBlock>
         <TextBlock Text="Red Social:" Grid.Row="1" Grid.Column="0"></TextBlock>
         <TextBlock Text="Imagen:" Grid.Row="2" Grid.Column="0"></TextBlock>
-        <TextBox x:Name="NombreAutor_TextBox" Margin="5" Grid.Row="0" Grid.Column="1"></TextBox>
+        <TextBox x:Name="NombreAutor_TextBox" Margin="5" Grid.Row="0" Grid.Column="1" Text="{Binding Path=AutorNuevo.Nombre}"></TextBox>
         
         <Button x:Name="Examinar_Button" Margin="5" Content="Examinar..." HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"></Button>
         
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBlock Text="{Binding Path=PonerNombre}" Foreground="Red"></TextBlock>
             <Button x:Name="Aceptar_Button" Content="Aceptar" Margin="5" Command="{Binding Path=AñadirAutorCommand}"></Button>
             <Button x:Name="Cancelar_Button" Content="Cancelar" Margin="5"></Button>
         </StackPanel>
         <DockPanel Grid.Row="1" Grid.Column="1" LastChildFill="True">
-            <ComboBox x:Name="ComboBoxAutor_TextBox" Margin="5" Width="100" DockPanel.Dock="Left"></ComboBox>
-            <TextBox x:Name="RedSocialAutor_TextBox" Margin="5"></TextBox>
+            <ComboBox x:Name="ComboBoxAutor_TextBox" Margin="5" Width="100" DockPanel.Dock="Left" ItemsSource="{Binding Path=RedesSociales}" SelectedItem="{Binding Path=AutorNuevo.RedSocial}"></ComboBox>
+            <TextBox x:Name="RedSocialAutor_TextBox" Margin="5" Text="{Binding Path=AutorNuevo.NickRedSocial}"></TextBox>
         </DockPanel>
     </Grid>
 </Window>

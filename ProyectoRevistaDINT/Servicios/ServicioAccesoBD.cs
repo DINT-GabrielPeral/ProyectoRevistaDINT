@@ -22,8 +22,7 @@ namespace ProyectoRevistaDINT.Servicios
             //Creamos una tabla utilizando un comando
             SqliteCommand comando = conexion.CreateCommand();
             comando.CommandText = @"CREATE TABLE IF NOT EXISTS autor (
-                                    id integer primary key,
-                                    nombre varchar(100), 
+                                    nombre varchar(100) primary key, 
                                     imagen varchar(500),
                                     redSocial varchar(100),
                                     nickRedSocial varchar(100))";
@@ -62,7 +61,7 @@ namespace ProyectoRevistaDINT.Servicios
                 while (lector.Read())
                 {
                     //Distintas formas de acceder a los campos de la fila actual
-                    id = (int)lector["id"];
+                    id = (int)lector["rowid"];
                     nombre = (string)lector["nombre"];
                     imagen = (string)lector["imagen"];
                     redSocial = (string)lector["redSocial"];
@@ -105,7 +104,7 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "UPDATE autor SET nombre = @nombre, imagen = @imagen, redSocial = @redSocial, nickRedSocial = @nickRedSocial WHERE id = @id";
+            comando.CommandText = "UPDATE autor SET nombre = @nombre, imagen = @imagen, redSocial = @redSocial, nickRedSocial = @nickRedSocial WHERE rowid = @id";
             comando.Parameters.Add("@nombre", SqliteType.Text);
             comando.Parameters.Add("@imagen", SqliteType.Text);
             comando.Parameters.Add("@redSocial", SqliteType.Text);
@@ -128,7 +127,7 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "DELETE FROM autor WHERE id = @id";
+            comando.CommandText = "DELETE FROM autor WHERE rowid = @id";
             comando.Parameters.Add("@id", SqliteType.Integer);
             comando.Parameters["@id"].Value = autor.Id;
             comando.ExecuteNonQuery();

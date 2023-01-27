@@ -15,15 +15,60 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
     {
         private ServicioAccesoBD sn;
         public RelayCommand AñadirAutorCommand { get; }
+        public RelayCommand ExaminarCommand { get; }
+
+        private Autor autorNuevo;
+
+        public Autor AutorNuevo
+        {
+            get { return autorNuevo; }
+            set { SetProperty(ref autorNuevo, value); }
+        }
+
+        private string ponerNombre;
+
+        public string PonerNombre
+        {
+            get { return ponerNombre; }
+            set { SetProperty(ref ponerNombre, null); }
+        }
+
+
+        private ObservableCollection<string> redesSociales;
+
+        public ObservableCollection<string> RedesSociales
+        {
+            get { return redesSociales; }
+            set { SetProperty(ref redesSociales, value); }
+        }
 
         public AutorCrearVentanaVM()
         {
+            AutorNuevo = new Autor();
+            redesSociales = new ObservableCollection<string> { "Instagram", "Twitter", "Facebook" };
             AñadirAutorCommand = new RelayCommand(AñadirAutor);
+            ExaminarCommand = new RelayCommand(Examinar);
+            ponerNombre = "";
         }
 
         public void AñadirAutor()
         {
-           // sn.crearAutor(new Autor());
+            if(AutorNuevo.Nombre != null && AutorNuevo.Nombre !="")
+            {
+                sn.crearAutor(AutorNuevo);
+                ponerNombre = "";
+            }
+            else
+            {
+                ponerNombre = "Necesitas rellenar como minimo el nombre del autor ";
+            }
+            
         }
+
+        public void Examinar()
+        {
+            
+        }
+        
     }
 }

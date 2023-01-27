@@ -17,9 +17,12 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
    
     public partial class CrearAutorVentana : Window
     {
+        AutorCrearVentanaVM vm;
         public CrearAutorVentana()
         {
+            vm = new AutorCrearVentanaVM();
             InitializeComponent();
+            this.DataContext = vm;
         }
 
         
