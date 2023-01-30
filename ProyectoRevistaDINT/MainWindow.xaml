@@ -12,10 +12,7 @@
         <syncfusion:MenuAdv DockPanel.Dock="Top" Background="White">
             <syncfusion:MenuItemAdv Header="Gestion Autores" Command="{Binding Path=comandoGestionAutores}">
             </syncfusion:MenuItemAdv>
-            <syncfusion:MenuItemAdv Header="Gestión Artículos">
-                <syncfusion:MenuItemAdv Header="Crear Artículos"/>
-                <syncfusion:MenuItemAdv Header="Gestionar Artículos disponibles" />
-                <syncfusion:MenuItemAdv Header="Moderar Artículos"/>
+            <syncfusion:MenuItemAdv Header="Gestión Artículos" Command="{Binding Path=comandoGestionArticulos}">
             </syncfusion:MenuItemAdv>
             <syncfusion:MenuItemAdv Header="Publicación">
                 <syncfusion:MenuItemAdv Header="Publicar Artículos"/>

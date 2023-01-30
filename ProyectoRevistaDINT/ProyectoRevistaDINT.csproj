@@ -134,6 +134,10 @@
       <DependentUpon>EliminarAutor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\EliminarAutor\EliminarAutorVM.cs" />
+    <Compile Include="Vistas\GestionArticulos\GestionArticulos.xaml.cs">
+      <DependentUpon>GestionArticulos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\GestionArticulos\GestionArticulosVM.cs" />
     <Compile Include="Vistas\GestionAutores\GestionAutores.xaml.cs">
       <DependentUpon>GestionAutores.xaml</DependentUpon>
     </Compile>
@@ -163,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\EliminarAutor\EliminarAutor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\GestionArticulos\GestionArticulos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -20,17 +20,21 @@ namespace ProyectoRevistaDINT
         }
         private ServicioNavegacion sn;
         public RelayCommand comandoGestionAutores { get; }
+        public RelayCommand comandoGestionArticulos { get; }
         public MainWindowVM()
         {
             sn = new ServicioNavegacion();
             comandoGestionAutores = new RelayCommand(MuestraGestionAutores);
-
+            comandoGestionArticulos = new RelayCommand(MuestraGestionArticulos);
         }
 
         public void MuestraGestionAutores()
         {
             ContenidoMostrar = sn.CargaGestionAutores();
         }
-
+        public void MuestraGestionArticulos()
+        {
+            ContenidoMostrar = sn.CargaGestionArticulos();
+        }
     }
 }
