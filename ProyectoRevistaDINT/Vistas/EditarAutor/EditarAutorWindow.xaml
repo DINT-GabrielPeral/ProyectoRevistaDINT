@@ -46,7 +46,7 @@
         </DockPanel>
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
             <Label x:Name="FaltaNombre_Label" Content="Es obligatorio el campo nombre" Foreground="Red" Visibility="Collapsed"></Label>
-            <Button x:Name="Aceptar_Button" Content="Aceptar" IsDefault="True" Margin="5" Click="Aceptar_Button_Click"></Button>
+            <Button x:Name="Aceptar_Button" Content="Aceptar" IsDefault="True" Margin="5" Command="{Binding Path=EditarAutorCommand}" Click="Aceptar_Button_Click"></Button>
             <Button x:Name="Cancelar_Button" Content="Cancelar" IsCancel="True" Margin="5" Click="Cancelar_Button_Click"></Button>
         </StackPanel>
     </Grid>

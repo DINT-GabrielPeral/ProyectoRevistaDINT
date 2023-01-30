@@ -12,8 +12,10 @@ namespace ProyectoRevistaDINT.Vistas.EditarAutor
     {
         private readonly RedesSocialesService servicioRedesSociales;
         private readonly DialogosService servicioDialogos;
+        private ServicioAccesoBD sb;
 
         public RelayCommand SeleccionarImagenCommand { get; }
+        public RelayCommand EditarAutorCommand { get; }
 
         private Autor autorActual;
         public Autor AutorActual
@@ -35,8 +37,10 @@ namespace ProyectoRevistaDINT.Vistas.EditarAutor
             servicioDialogos = new DialogosService();
 
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagen);
+            EditarAutorCommand = new RelayCommand(EditarAutor);
 
             RedesSociales = servicioRedesSociales.GetRedesSociales();
+            sb = new ServicioAccesoBD();
 
             WeakReferenceMessenger.Default.Register<AutorSeleccionadoEditarMessage>(this, (r, m) =>
             {
@@ -45,5 +49,10 @@ namespace ProyectoRevistaDINT.Vistas.EditarAutor
         }
 
         public void SeleccionarImagen() => AutorActual.Imagen = servicioDialogos.AbrirDialogoCargar("IMAGEN");
+
+        public void EditarAutor()
+        {
+            sb.editarAutor(AutorActual);
+        }
     }
 }
