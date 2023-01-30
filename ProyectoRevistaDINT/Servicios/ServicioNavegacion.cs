@@ -1,4 +1,5 @@
 ﻿using ProyectoRevistaDINT.Vistas.CrearAutor;
+using ProyectoRevistaDINT.Vistas.EditarAutor;
 using ProyectoRevistaDINT.Vistas.EliminarAutor;
 using ProyectoRevistaDINT.Vistas.GestionAutores;
 using System;
@@ -26,6 +27,12 @@ namespace ProyectoRevistaDINT.Servicios
         public bool? AbrirCrearAutor()
         {
             CrearAutorVentana dialog = new CrearAutorVentana();
+            return dialog.ShowDialog();
+        }
+
+        public bool? AbrirEditarAutor()
+        {
+            EditarAutorWindow dialog = new EditarAutorWindow();
             return dialog.ShowDialog();
         }
     }

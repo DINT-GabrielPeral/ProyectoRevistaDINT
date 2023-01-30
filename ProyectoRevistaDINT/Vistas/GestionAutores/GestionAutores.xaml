@@ -17,7 +17,7 @@
     <DockPanel>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
             <Button Command="{Binding Path=ComandoCrearAutor}">Crear</Button>
-            <Button>Editar</Button>
+            <Button Command="{Binding Path=ComandoEditarAutor}">Editar</Button>
             <Button>Eliminar</Button>
         </StackPanel>
         <syncfusion:SfDataGrid ItemsSource="{Binding Autores}" AllowFiltering="True" ColumnSizer="Star"/>

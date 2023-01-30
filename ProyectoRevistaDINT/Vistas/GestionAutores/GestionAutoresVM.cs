@@ -25,10 +25,13 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
 
         public RelayCommand ComandoCrearAutor { get; }
 
+        public RelayCommand ComandoEditarAutor { get; }
+
         public GestionAutoresVM()
         {
             sn = new ServicioNavegacion();
             ComandoCrearAutor = new RelayCommand(AbrirCrearAutor);
+            ComandoEditarAutor = new RelayCommand(AbrirEditarAutor);
             Autores = new ObservableCollection<Autor>();
 
             Autores = sbd.recibirAutores();
@@ -51,6 +54,10 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
         public void AbrirCrearAutor()
         {
             sn.AbrirCrearAutor();
+        }
+        public void AbrirEditarAutor()
+        {
+            sn.AbrirEditarAutor();
         }
     }
 }
