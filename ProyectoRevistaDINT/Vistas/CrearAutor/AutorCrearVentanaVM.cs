@@ -1,6 +1,8 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using ProyectoRevistaDINT.Clases;
+using ProyectoRevistaDINT.Mensajeria;
 using ProyectoRevistaDINT.Servicios;
 using System;
 using System.Collections.Generic;
@@ -13,7 +15,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
 {
     class AutorCrearVentanaVM: ObservableObject
     {
-        private ServicioAccesoBD sn;
+        private ServicioAccesoBD sb;
         public RelayCommand AñadirAutorCommand { get; }
         public RelayCommand ExaminarCommand { get; }
 
@@ -33,23 +35,34 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
             set { SetProperty(ref redesSociales, value); }
         }
 
+        private ObservableCollection<Autor> autores;
+
+        public ObservableCollection<Autor> Autores
+        {
+            get { return autores; }
+            set { SetProperty(ref autores, value); }
+        }
+
         public AutorCrearVentanaVM()
         {
+            sb = new ServicioAccesoBD();
+            Autores = sb.recibirAutores();
             AutorNuevo = new Autor();
             redesSociales = new ObservableCollection<string> { "Instagram", "Twitter", "Facebook" };
             AñadirAutorCommand = new RelayCommand(AñadirAutor);
             ExaminarCommand = new RelayCommand(Examinar);
-            sn = new ServicioAccesoBD();
         }
 
         public void AñadirAutor()
         {
             if(AutorNuevo.Nombre != null && AutorNuevo.Nombre !="")
             {
-                sn.crearAutor(AutorNuevo);
+                sb.crearAutor(AutorNuevo);
             }
-            
-            
+            Autores = sb.recibirAutores();
+
+            WeakReferenceMessenger.Default.Send(new AutoresChangedMessage(Autores));
+
         }
 
         public void Examinar()

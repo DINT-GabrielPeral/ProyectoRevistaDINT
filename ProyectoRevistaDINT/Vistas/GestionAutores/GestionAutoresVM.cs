@@ -1,6 +1,8 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using ProyectoRevistaDINT.Clases;
+using ProyectoRevistaDINT.Mensajeria;
 using ProyectoRevistaDINT.Servicios;
 using System;
 using System.Collections.Generic;
@@ -37,6 +39,11 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
             Autores = new ObservableCollection<Autor>();
 
             Autores = sbd.recibirAutores();
+
+            WeakReferenceMessenger.Default.Register<AutoresChangedMessage>(this, (r, m) =>
+            {
+                Autores = m.Value;
+            });
         }
 
         public void AbrirCrearAutor()

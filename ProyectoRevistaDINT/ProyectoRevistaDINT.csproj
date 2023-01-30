@@ -113,6 +113,7 @@
     <Compile Include="Clases\Articulo.cs" />
     <Compile Include="Clases\Autor.cs" />
     <Compile Include="MainWindowVM.cs" />
+    <Compile Include="Mensajeria\AutoresChangedMessage.cs" />
     <Compile Include="Servicios\DialogosService.cs" />
     <Compile Include="Servicios\RedesSocialesService.cs" />
     <Compile Include="Servicios\SeccionesService.cs" />
@@ -211,6 +212,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Recursos\editar-icono.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Recursos\web.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
