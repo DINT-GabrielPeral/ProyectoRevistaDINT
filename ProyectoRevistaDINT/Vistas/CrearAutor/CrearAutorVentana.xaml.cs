@@ -29,5 +29,31 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
         {
             this.Close();
         }
+
+        private void Aceptar_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(NombreAutor_TextBox.Text!=""&&NombreAutor_TextBox.Text!=null)
+            {
+                this.Close();
+            }
+            else
+            {
+                FaltaNombre_Label.Visibility = Visibility.Visible;
+            }
+            
+        }
+
+        private void NombreAutor_TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(NombreAutor_TextBox.Text!=""&&NombreAutor_TextBox!=null)
+            {
+                FaltaNombre_Label.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                FaltaNombre_Label.Visibility = Visibility.Visible;
+            }
+            
+        }
     }
 }

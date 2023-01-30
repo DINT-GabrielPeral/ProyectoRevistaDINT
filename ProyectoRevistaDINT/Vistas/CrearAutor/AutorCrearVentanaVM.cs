@@ -25,15 +25,6 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
             set { SetProperty(ref autorNuevo, value); }
         }
 
-        private string ponerNombre;
-
-        public string PonerNombre
-        {
-            get { return ponerNombre; }
-            set { SetProperty(ref ponerNombre, null); }
-        }
-
-
         private ObservableCollection<string> redesSociales;
 
         public ObservableCollection<string> RedesSociales
@@ -48,7 +39,6 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
             redesSociales = new ObservableCollection<string> { "Instagram", "Twitter", "Facebook" };
             AñadirAutorCommand = new RelayCommand(AñadirAutor);
             ExaminarCommand = new RelayCommand(Examinar);
-            ponerNombre = "";
             sn = new ServicioAccesoBD();
         }
 
@@ -57,12 +47,8 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
             if(AutorNuevo.Nombre != null && AutorNuevo.Nombre !="")
             {
                 sn.crearAutor(AutorNuevo);
-                ponerNombre = "";
             }
-            else
-            {
-                ponerNombre = "Necesitas rellenar como minimo el nombre del autor ";
-            }
+            
             
         }
 
