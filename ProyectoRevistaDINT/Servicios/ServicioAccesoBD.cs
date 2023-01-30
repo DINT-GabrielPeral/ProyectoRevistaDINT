@@ -39,7 +39,14 @@ namespace ProyectoRevistaDINT.Servicios
                                     autorArticulo integer,
                                     CONSTRAINT fk_autor FOREIGN KEY (autorArticulo) REFERENCES autor(id))";
             comando2.ExecuteNonQuery();
+            
+            ObservableCollection<Autor> listaAutores = recibirAutores();
 
+            if (listaAutores.Count == 0)
+                crearAutor(new Autor(0, "Autor Prueba", "Imagen", "RedSocial", "Nick"));
+
+
+            
             conexion.Close();
         }
 

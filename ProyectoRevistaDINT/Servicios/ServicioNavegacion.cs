@@ -1,6 +1,7 @@
 ﻿using ProyectoRevistaDINT.Vistas.CrearAutor;
 using ProyectoRevistaDINT.Vistas.EditarAutor;
 using ProyectoRevistaDINT.Vistas.EliminarAutor;
+using ProyectoRevistaDINT.Vistas.GestionArticulos;
 using ProyectoRevistaDINT.Vistas.GestionAutores;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,10 @@ namespace ProyectoRevistaDINT.Servicios
         public UserControl CargaGestionAutores()
         {
             return new GestionAutores();
+        }
+        public UserControl CargaGestionArticulos() 
+        {
+            return new GestionArticulos();
         }
 
         public bool? AbrirEliminarAutor()
