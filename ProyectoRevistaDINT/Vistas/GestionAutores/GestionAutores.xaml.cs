@@ -32,5 +32,7 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
         {
             vm.AbrirEditarAutor();
         }
+
+
     }
 }

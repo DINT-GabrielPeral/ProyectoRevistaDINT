@@ -12,12 +12,21 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Padding" Value="15,5,15,5"/>
         </Style>
+        <Style TargetType="Button" x:Key="ButtonEditar_Style" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="IsEnabled" Value="True"></Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=AutorSeleccionado.Nombre}" Value="">
+                    <Setter Property="IsEnabled" Value="False"></Setter>
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
     
     <DockPanel>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
             <Button Command="{Binding Path=ComandoCrearAutor}">Crear</Button>
-            <Button x:Name="EditarAutor_Button" Command="{Binding Path=ComandoEditarAutor}">Editar</Button>
+            <Button Style="{StaticResource ButtonEditar_Style}" Command="{Binding Path=ComandoEditarAutor}">Editar</Button>
             <Button Command="{Binding Path=ComandoEliminarAutor}">Eliminar</Button>
         </StackPanel>
         <syncfusion:SfDataGrid ItemsSource="{Binding Autores, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding AutorSeleccionado}" AllowFiltering="True" ColumnSizer="Star" MouseDoubleClick="Item_DobleClick"/>
