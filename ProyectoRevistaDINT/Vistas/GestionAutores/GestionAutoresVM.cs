@@ -66,6 +66,7 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
             bool? eliminar = sn.AbrirEliminarAutor();
             if (eliminar == true)
                 sbd.eliminarAutor(AutorSeleccionado);
+            Autores = sbd.recibirAutores();
         }
     }
 }
