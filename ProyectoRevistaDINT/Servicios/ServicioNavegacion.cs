@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ProyectoRevistaDINT.Servicios
@@ -20,8 +21,13 @@ namespace ProyectoRevistaDINT.Servicios
 
         public bool? AbrirEliminarAutor()
         {
-            EliminarAutor dialog = new EliminarAutor();
-            return dialog.ShowDialog();
+            //EliminarAutor dialog = new EliminarAutor();
+            //return dialog.ShowDialog();
+            return MessageBox.Show("¿Estás seguro de que desea eliminar este autor?",
+                        "Eliminar autor",
+                        MessageBoxButton.OKCancel,
+                        MessageBoxImage.Exclamation) == MessageBoxResult.OK;
+
         }
 
         public bool? AbrirCrearAutor()
