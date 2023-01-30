@@ -22,11 +22,12 @@ namespace ProyectoRevistaDINT.Servicios
             //Creamos una tabla utilizando un comando
             SqliteCommand comando = conexion.CreateCommand();
             comando.CommandText = @"CREATE TABLE IF NOT EXISTS autor (
-                                    id integer primary key,
+                                    id integer,
                                     nombre varchar(100), 
                                     imagen varchar(500),
                                     redSocial varchar(100),
-                                    nickRedSocial varchar(100))";
+                                    nickRedSocial varchar(100), 
+                                    primary key(id))";
             comando.ExecuteNonQuery(); //Este método ejecuta consultas que no son SELECT
 
             SqliteCommand comando2 = conexion.CreateCommand();
@@ -81,8 +82,8 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "INSERT INTO autor VALUES (@id,@nombre,@imagen,@redSocial,@nickRedSocial)";
-            comando.Parameters.Add("@id", SqliteType.Integer);
+            comando.CommandText = "INSERT INTO autor(nombre,imagen,redSocial,nickRedSocial) VALUES (@nombre,@imagen,@redSocial,@nickRedSocial)";
+            /*comando.Parameters.Add("@id", SqliteType.Integer);*/
             comando.Parameters.Add("@nombre", SqliteType.Text);
             comando.Parameters.Add("@imagen", SqliteType.Text);
             comando.Parameters.Add("@redSocial", SqliteType.Text);
@@ -91,7 +92,7 @@ namespace ProyectoRevistaDINT.Servicios
             comando.Parameters["@imagen"].Value = autor.Imagen;
             comando.Parameters["@redSocial"].Value = autor.RedSocial;
             comando.Parameters["@nickRedSocial"].Value = autor.NickRedSocial;
-            comando.Parameters["@id"].Value = autor.Id;
+            /*comando.Parameters["@id"].Value = autor.Id;*/
             comando.ExecuteNonQuery();
 
             conexion.Close();

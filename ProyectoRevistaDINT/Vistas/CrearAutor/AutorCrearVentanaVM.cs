@@ -49,6 +49,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
             AñadirAutorCommand = new RelayCommand(AñadirAutor);
             ExaminarCommand = new RelayCommand(Examinar);
             ponerNombre = "";
+            sn = new ServicioAccesoBD();
         }
 
         public void AñadirAutor()

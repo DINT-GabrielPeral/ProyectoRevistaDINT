@@ -25,6 +25,9 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
             this.DataContext = vm;
         }
 
-        
+        private void Cancelar_Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

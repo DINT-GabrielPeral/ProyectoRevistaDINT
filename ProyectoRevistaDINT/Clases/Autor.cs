@@ -52,7 +52,7 @@ namespace ProyectoRevistaDINT.Clases
             RedSocial = redSocial;
             NickRedSocial = nickRedSocial;
         }
-        public Autor( string nombre, string imagen, string redSocial, string nickRedSocial)
+        public Autor( string nombre="", string imagen="", string redSocial="", string nickRedSocial="")
         {
             Nombre = nombre;
             Imagen = imagen;
@@ -60,9 +60,7 @@ namespace ProyectoRevistaDINT.Clases
             NickRedSocial = nickRedSocial;
         }
 
-        public Autor()
-        {
-        }
+        
 
     }
 }
