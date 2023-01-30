@@ -214,6 +214,7 @@
     <Resource Include="Recursos\editar-icono.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Recursos\crearAutorIcono.png" />
     <Content Include="Recursos\web.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
