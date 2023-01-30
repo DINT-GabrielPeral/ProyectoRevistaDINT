@@ -58,7 +58,7 @@ namespace ProyectoRevistaDINT.Servicios
             conexion.Open();
 
             SqliteCommand comando = conexion.CreateCommand();
-            comando.CommandText = "SELECT * FROM autor";
+            comando.CommandText = "SELECT * FROM autor WHERE id <> 0";
             SqliteDataReader lector = comando.ExecuteReader();
             int id;
             string nombre, imagen, redSocial, nickRedSocial;
