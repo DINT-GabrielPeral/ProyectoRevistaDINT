@@ -17,9 +17,9 @@
     <DockPanel>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
             <Button Command="{Binding Path=ComandoCrearAutor}">Crear</Button>
-            <Button Command="{Binding Path=ComandoEditarAutor}">Editar</Button>
+            <Button x:Name="EditarAutor_Button" Command="{Binding Path=ComandoEditarAutor}">Editar</Button>
             <Button Command="{Binding Path=ComandoEliminarAutor}">Eliminar</Button>
         </StackPanel>
-        <syncfusion:SfDataGrid ItemsSource="{Binding Autores, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding AutorSeleccionado}" AllowFiltering="True" ColumnSizer="Star"/>
+        <syncfusion:SfDataGrid ItemsSource="{Binding Autores, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding AutorSeleccionado}" AllowFiltering="True" ColumnSizer="Star" MouseDoubleClick="Item_DobleClick"/>
     </DockPanel>
 </UserControl>

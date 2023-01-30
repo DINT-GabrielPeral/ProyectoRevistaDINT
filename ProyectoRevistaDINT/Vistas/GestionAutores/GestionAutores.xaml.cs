@@ -27,5 +27,10 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
             vm = new GestionAutoresVM();
             this.DataContext = vm;
         }
+
+        private void Item_DobleClick(object sender, MouseButtonEventArgs e)
+        {
+            vm.AbrirEditarAutor();
+        }
     }
 }
