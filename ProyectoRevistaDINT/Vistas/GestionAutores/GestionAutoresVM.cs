@@ -59,7 +59,9 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
         }
         public void AbrirEditarAutor()
         {
-            sn.AbrirEditarAutor();
+            
+            sn.AbrirEditarAutor(autorSeleccionado); 
+            
         }
         public void AbrirEliminarAutor()
         {

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using ProyectoRevistaDINT.Clases;
+using ProyectoRevistaDINT.Mensajeria;
 using ProyectoRevistaDINT.Servicios;
 using System.Collections.ObjectModel;
 
@@ -35,6 +37,11 @@ namespace ProyectoRevistaDINT.Vistas.EditarAutor
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagen);
 
             RedesSociales = servicioRedesSociales.GetRedesSociales();
+
+            WeakReferenceMessenger.Default.Register<AutorSeleccionadoEditarMessage>(this, (r, m) =>
+            {
+                AutorActual = m.Value;
+            });
         }
 
         public void SeleccionarImagen() => AutorActual.Imagen = servicioDialogos.AbrirDialogoCargar("IMAGEN");

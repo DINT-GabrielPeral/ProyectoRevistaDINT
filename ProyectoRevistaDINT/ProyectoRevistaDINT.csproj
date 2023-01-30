@@ -113,6 +113,7 @@
     <Compile Include="Clases\Articulo.cs" />
     <Compile Include="Clases\Autor.cs" />
     <Compile Include="MainWindowVM.cs" />
+    <Compile Include="Mensajeria\AutorSeleccionadoEditarMessage.cs" />
     <Compile Include="Mensajeria\AutoresChangedMessage.cs" />
     <Compile Include="Servicios\DialogosService.cs" />
     <Compile Include="Servicios\RedesSocialesService.cs" />

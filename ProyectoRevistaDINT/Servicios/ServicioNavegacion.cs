@@ -1,4 +1,7 @@
-﻿using ProyectoRevistaDINT.Vistas.CrearAutor;
+﻿using Microsoft.Toolkit.Mvvm.Messaging;
+using ProyectoRevistaDINT.Clases;
+using ProyectoRevistaDINT.Mensajeria;
+using ProyectoRevistaDINT.Vistas.CrearAutor;
 using ProyectoRevistaDINT.Vistas.EditarAutor;
 using ProyectoRevistaDINT.Vistas.EliminarAutor;
 using ProyectoRevistaDINT.Vistas.GestionArticulos;
@@ -41,9 +44,10 @@ namespace ProyectoRevistaDINT.Servicios
             return dialog.ShowDialog();
         }
 
-        public bool? AbrirEditarAutor()
+        public bool? AbrirEditarAutor( Autor autorSeleccionado)
         {
             EditarAutorWindow dialog = new EditarAutorWindow();
+            WeakReferenceMessenger.Default.Send(new AutorSeleccionadoEditarMessage(autorSeleccionado));
             return dialog.ShowDialog();
         }
     }
