@@ -20,6 +20,6 @@
             <Button Command="{Binding Path=ComandoEditarAutor}">Editar</Button>
             <Button Command="{Binding Path=ComandoEliminarAutor}">Eliminar</Button>
         </StackPanel>
-        <syncfusion:SfDataGrid ItemsSource="{Binding Autores}" AllowFiltering="True" ColumnSizer="Star"/>
+        <syncfusion:SfDataGrid ItemsSource="{Binding Autores, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding AutorSeleccionado}" AllowFiltering="True" ColumnSizer="Star"/>
     </DockPanel>
 </UserControl>
