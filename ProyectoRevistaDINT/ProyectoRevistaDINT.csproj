@@ -110,10 +110,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Clases\Articulo.cs" />
     <Compile Include="Clases\Autor.cs" />
+    <Compile Include="MainWindowVM.cs" />
     <Compile Include="Servicios\DialogosService.cs" />
     <Compile Include="Servicios\RedesSocialesService.cs" />
+    <Compile Include="Servicios\SeccionesService.cs" />
     <Compile Include="Servicios\ServicioAccesoBD.cs" />
+    <Compile Include="Servicios\ServicioNavegacion.cs" />
+    <Compile Include="Vistas\CrearArticulo\CrearArticuloWindow.xaml.cs">
+      <DependentUpon>CrearArticuloWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\CrearArticulo\CrearArticuloWindowVM.cs" />
+    <Compile Include="Vistas\CrearAutor\AutorCrearVentanaVM.cs" />
     <Compile Include="Vistas\CrearAutor\CrearAutorVentana.xaml.cs">
       <DependentUpon>CrearAutorVentana.xaml</DependentUpon>
     </Compile>
@@ -125,6 +134,10 @@
       <DependentUpon>EliminarAutor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\EliminarAutor\EliminarAutorVM.cs" />
+    <Compile Include="Vistas\GestionAutores\GestionAutores.xaml.cs">
+      <DependentUpon>GestionAutores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\GestionAutores\GestionAutoresVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -137,6 +150,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Vistas\CrearArticulo\CrearArticuloWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Vistas\CrearAutor\CrearAutorVentana.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\EliminarAutor\EliminarAutor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\GestionAutores\GestionAutores.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

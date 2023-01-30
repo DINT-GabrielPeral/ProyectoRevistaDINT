@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoRevistaDINT.Vistas.EliminarAutor"
         mc:Ignorable="d"
-        Title="EliminarAutor" Height="200" Width="400">
+        Title="EliminarAutor" Height="140" Width="380">
     <DockPanel>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button IsDefault="True" Margin="5">Eliminar</Button>

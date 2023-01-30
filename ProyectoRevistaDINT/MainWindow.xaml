@@ -9,11 +9,8 @@
         Title="ProyectoRevistaDINT" Height="450" Width="800" Icon="Recursos/revistaIcono.png">
     <DockPanel LastChildFill="True">
 
-        <syncfusion:MenuAdv Height="20" DockPanel.Dock="Top">
-            <Image Height="15" Width="15" Source="Recursos/revistaIcono.png" Stretch="Fill"></Image>
-            <syncfusion:MenuItemAdv Header="Gestion Autores">
-                <syncfusion:MenuItemAdv Header="Crear Autor"/>
-                <syncfusion:MenuItemAdv Header="Editar Autor"/>
+        <syncfusion:MenuAdv DockPanel.Dock="Top" Background="White">
+            <syncfusion:MenuItemAdv Header="Gestion Autores" Command="{Binding Path=comandoGestionAutores}">
             </syncfusion:MenuItemAdv>
             <syncfusion:MenuItemAdv Header="Gestión Artículos">
                 <syncfusion:MenuItemAdv Header="Crear Artículos"/>
@@ -25,13 +22,11 @@
                 <syncfusion:MenuItemAdv Header="Generar Revista" />
             </syncfusion:MenuItemAdv>
             <syncfusion:MenuItemAdv Header="Gestión de palabras prohibidas"/>
-            
+
             <syncfusion:MenuItemAdv/>
         </syncfusion:MenuAdv>
-        <Border Margin="10" Padding="5" BorderBrush="Black" BorderThickness="2">
-            <UserControl>
-                
-            </UserControl>
-        </Border>
+        <UserControl Content="{Binding ContenidoMostrar}" Margin="3">
+
+        </UserControl>
     </DockPanel>
 </Window>

@@ -10,21 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProyectoRevistaDINT.Vistas.CrearAutor
+namespace ProyectoRevistaDINT.Vistas.GestionAutores
 {
-   
-    public partial class CrearAutorVentana : Window
+    /// <summary>
+    /// Lógica de interacción para GestionAutores.xaml
+    /// </summary>
+    public partial class GestionAutores : UserControl
     {
-        AutorCrearVentanaVM vm;
-        public CrearAutorVentana()
+        private GestionAutoresVM vm;
+        public GestionAutores()
         {
-            vm = new AutorCrearVentanaVM();
             InitializeComponent();
+            vm = new GestionAutoresVM();
             this.DataContext = vm;
         }
-
-        
     }
 }

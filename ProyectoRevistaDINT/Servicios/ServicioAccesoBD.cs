@@ -29,19 +29,6 @@ namespace ProyectoRevistaDINT.Servicios
                                     nickRedSocial varchar(100))";
             comando.ExecuteNonQuery(); //Este método ejecuta consultas que no son SELECT
 
-            //Inserción de dato de prueba
-            comando.CommandText = "INSERT INTO autor VALUES (@id,@nombre,@imagen,@redSocial,@nickRedSocial)";
-            comando.Parameters.Add("@id", SqliteType.Integer);
-            comando.Parameters.Add("@nombre", SqliteType.Text);
-            comando.Parameters.Add("@imagen", SqliteType.Text);
-            comando.Parameters.Add("@redSocial", SqliteType.Text);
-            comando.Parameters.Add("@nickRedSocial", SqliteType.Text);
-            comando.Parameters["@id"].Value = 0;
-            comando.Parameters["@nombre"].Value = "Juan Lucas";
-            comando.Parameters["@imagen"].Value = "imagen";
-            comando.Parameters["@redSocial"].Value = "Twitter";
-            comando.Parameters["@nickRedSocial"].Value = "xX_JuanLukas_Xx";
-            comando.ExecuteNonQuery();
 
             conexion.Close();
         }
@@ -64,13 +51,12 @@ namespace ProyectoRevistaDINT.Servicios
                 while (lector.Read())
                 {
                     //Distintas formas de acceder a los campos de la fila actual
-                    id = (int)lector["id"];
+                    id = int.Parse(lector["id"].ToString());
                     nombre = (string)lector["nombre"];
                     imagen = (string)lector["imagen"];
                     redSocial = (string)lector["redSocial"];
                     nickRedSocial = (string)lector["nickRedSocial"];
                     listaAutores.Add(new Autor(id, nombre, imagen, redSocial, nickRedSocial));
-                    MessageBox.Show($"Id:{id} - Nombre:{nombre} - Imagen:{imagen} - RedSocial:{redSocial} - NickRedSocial:{nickRedSocial}");
                 }
             }
 
@@ -92,11 +78,11 @@ namespace ProyectoRevistaDINT.Servicios
             comando.Parameters.Add("@imagen", SqliteType.Text);
             comando.Parameters.Add("@redSocial", SqliteType.Text);
             comando.Parameters.Add("@nickRedSocial", SqliteType.Text);
-            comando.Parameters["@id"].Value = autor.Id;
             comando.Parameters["@nombre"].Value = autor.Nombre;
             comando.Parameters["@imagen"].Value = autor.Imagen;
             comando.Parameters["@redSocial"].Value = autor.RedSocial;
             comando.Parameters["@nickRedSocial"].Value = autor.NickRedSocial;
+            comando.Parameters["@id"].Value = autor.Id;
             comando.ExecuteNonQuery();
 
             conexion.Close();
@@ -109,7 +95,7 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "UPDATE autor SET nombre = @nombre, imagen = @imagen, redSocial = @redSocial, nickRedSocial = @nickRedSocial WHERE id = @id";
+            comando.CommandText = "UPDATE autor SET nombre = @nombre, imagen = @imagen, redSocial = @redSocial, nickRedSocial = @nickRedSocial WHERE rowid = @id";
             comando.Parameters.Add("@nombre", SqliteType.Text);
             comando.Parameters.Add("@imagen", SqliteType.Text);
             comando.Parameters.Add("@redSocial", SqliteType.Text);
@@ -132,7 +118,7 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "DELETE FROM autor WHERE id = @id";
+            comando.CommandText = "DELETE FROM autor WHERE rowid = @id";
             comando.Parameters.Add("@id", SqliteType.Integer);
             comando.Parameters["@id"].Value = autor.Id;
             comando.ExecuteNonQuery();
