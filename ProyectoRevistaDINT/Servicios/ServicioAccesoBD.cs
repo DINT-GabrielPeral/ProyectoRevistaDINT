@@ -42,8 +42,7 @@ namespace ProyectoRevistaDINT.Servicios
             
             ObservableCollection<Autor> listaAutores = recibirAutores();
 
-            if (listaAutores.Count == 0)
-                crearAutor(new Autor("Autor Prueba", "Imagen", "RedSocial", "Nick"));
+            
 
 
             
@@ -58,7 +57,7 @@ namespace ProyectoRevistaDINT.Servicios
             conexion.Open();
 
             SqliteCommand comando = conexion.CreateCommand();
-            comando.CommandText = "SELECT * FROM autor WHERE id <> 0";
+            comando.CommandText = "SELECT * FROM autor";
             SqliteDataReader lector = comando.ExecuteReader();
             int id;
             string nombre, imagen, redSocial, nickRedSocial;
