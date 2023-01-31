@@ -144,6 +144,10 @@
       <DependentUpon>GestionAutores.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\GestionAutores\GestionAutoresVM.cs" />
+    <Compile Include="Vistas\Inicio\InicioUC.xaml.cs">
+      <DependentUpon>InicioUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Inicio\InicioUCVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -177,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\GestionAutores\GestionAutores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\Inicio\InicioUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
