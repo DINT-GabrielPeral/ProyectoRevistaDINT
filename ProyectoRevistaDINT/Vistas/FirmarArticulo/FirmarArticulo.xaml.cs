@@ -19,9 +19,12 @@ namespace ProyectoRevistaDINT.Vistas.FirmarArticulo
     /// </summary>
     public partial class FirmarArticulo : Window
     {
+        private FirmarArticuloVM vm;
         public FirmarArticulo()
         {
+            vm = new FirmarArticuloVM();
             InitializeComponent();
+            this.DataContext = vm;
         }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProyectoRevistaDINT.Vistas.FirmarArticulo"
         mc:Ignorable="d"
         Title="FirmarArticulo" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <ListBox ItemsSource="{Binding Path=ListaAutores}"></ListBox>
+    </DockPanel>
 </Window>
