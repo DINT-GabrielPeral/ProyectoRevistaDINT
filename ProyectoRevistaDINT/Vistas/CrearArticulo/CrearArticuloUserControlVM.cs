@@ -1,5 +1,8 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
+using ProyectoRevistaDINT.Clases;
+using ProyectoRevistaDINT.Mensajeria;
 using ProyectoRevistaDINT.Servicios;
 using System.Collections.ObjectModel;
 
@@ -15,6 +18,8 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
         public RelayCommand EliminarImagenCommand { get; }
         public RelayCommand FirmarCommand { get; }
         public RelayCommand FinalizarCommand { get; }
+        public RelayCommand LimpiarArticuloCommand { get; }
+        public RelayCommand QuitarAutorCommand { get; }
         private bool hayImagen;
 
         public bool HayImagen
@@ -66,6 +71,13 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             set => SetProperty(ref nuevoTexto, value);
         }
 
+        private Autor firma;
+        public Autor Firma
+        {
+            get => firma;
+            set => SetProperty(ref firma, value);
+        }
+
         public CrearArticuloUserControlVM()
         {
             servicioDialogos = new DialogosService();
@@ -73,6 +85,8 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             sn = new ServicioNavegacion();
             NuevaImagen = "";
             HayImagen = false;
+            QuitarAutorCommand = new RelayCommand(QuitarAutor);
+            LimpiarArticuloCommand = new RelayCommand(LimpiarArticulo);
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagen);
             EliminarImagenCommand = new RelayCommand(EliminarImagen);
             FirmarCommand = new RelayCommand(FirmarArticulo);
@@ -100,6 +114,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             if (firmar == true)
             {
                 HayFirma = true;
+                Firma = WeakReferenceMessenger.Default.Send<AutorFirmaRequestMessage>();
             }
             else HayFirma = false;
         }
@@ -107,6 +122,20 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
         public void FinalizarArticulo()
         {
 
+        }
+        public void QuitarAutor()
+        {
+            Firma = null;
+            HayFirma = false;
+        }
+        public void LimpiarArticulo()
+        {
+            HayFirma = false;
+            HayImagen = false;
+            Firma = null;
+            NuevoTexto = "";
+            NuevaImagen = "";
+            NuevoTitulo = "";
         }
     }
 }

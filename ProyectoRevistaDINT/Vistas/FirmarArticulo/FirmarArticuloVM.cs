@@ -1,5 +1,7 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using ProyectoRevistaDINT.Clases;
+using ProyectoRevistaDINT.Mensajeria;
 using ProyectoRevistaDINT.Servicios;
 using System;
 using System.Collections.Generic;
@@ -32,7 +34,11 @@ namespace ProyectoRevistaDINT.Vistas.FirmarArticulo
 
         internal void FirmarArticulo()
         {
-            
+            WeakReferenceMessenger.Default.Register<FirmarArticuloVM, AutorFirmaRequestMessage>
+                (this, (r, m) =>
+                {
+                    m.Reply(r.AutorSeleccionado);
+                });
         }
 
         public FirmarArticuloVM() {

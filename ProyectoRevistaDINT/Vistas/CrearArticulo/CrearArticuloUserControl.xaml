@@ -19,26 +19,7 @@
         <Style TargetType="TextBox" x:Key="CamposRellenables">
             <Setter Property="Margin" Value="10,0,5,10"/>
         </Style>!-->
-        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib" x:Key="TextBoxTitle">
-            <Style.Resources>
-                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                    <VisualBrush.Visual>
-                        <Label Content="Título" Foreground="LightGray" />
-                    </VisualBrush.Visual>
-                </VisualBrush>
-            </Style.Resources>
-            <Style.Triggers>
-                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                </Trigger>
-                <Trigger Property="Text" Value="{x:Null}">
-                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                </Trigger>
-                <Trigger Property="IsKeyboardFocused" Value="True">
-                    <Setter Property="Background" Value="White" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        
         <Style x:Key="BotonImagen" TargetType="Button">
             <Setter Property="Command" Value="{Binding Path=SeleccionarImagenCommand}"/>
                     <Setter Property="Content" Value="Insertar Imagen"/>
@@ -58,13 +39,33 @@
             <Setter Property="Content" Value="Firmar"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding HayFirma}" Value="True">
-                    <Setter Property="Command" Value="{Binding Path=FinalizarCommand}"/>
-                    <Setter Property="Content" Value="Finalizar"/>
+                    <Setter Property="Command" Value="{Binding Path=QuitarAutorCommand}"/>
+                    <Setter Property="Content" Value="Eliminar Autor"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding HayFirma}" Value="False">
                     <Setter Property="Command" Value="{Binding Path=FirmarCommand}"/>
                     <Setter Property="Content" Value="Firmar"/>
                 </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib" x:Key="TextBoxTitle">
+            <Style.Resources>
+                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                    <VisualBrush.Visual>
+                        <Label Content="Título" Foreground="LightGray" />
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Style.Resources>
+            <Style.Triggers>
+                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                </Trigger>
+                <Trigger Property="Text" Value="{x:Null}">
+                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="True">
+                    <Setter Property="Background" Value="White" />
+                </Trigger>
             </Style.Triggers>
         </Style>
         <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib" x:Key="TextBoxTextArticle">
@@ -102,40 +103,40 @@
     
     <DockPanel LastChildFill="True">
 
-        <Grid DockPanel.Dock="Top" Margin="50,5,50,5" Height="25">
-            <ScrollViewer VerticalScrollBarVisibility="Disabled"  >
+
+        <ScrollViewer VerticalScrollBarVisibility="Disabled" DockPanel.Dock="Top" Margin="50,5,50,5" Height="25" >
                 <TextBox Text="{Binding Path=NuevoTitulo}" Style="{StaticResource TextBoxTitle}" ToolTip="Insertar Título" TextWrapping="Wrap" MaxWidth="1400" Padding="10,0,10,0" FontSize="18" FontWeight="DemiBold" VerticalAlignment="Center"></TextBox>
-            </ScrollViewer>
-            <TextBlock Text=""></TextBlock>
-        </Grid>
-        
+        </ScrollViewer>
 
-        <Grid DockPanel.Dock="Bottom" Margin="0,5,0,0" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
 
-            <Button Style="{StaticResource BotonImagen}" Margin="50,0,5,0" Grid.Column="0" ToolTip="Abrir explorador de archivos..." Width="100" Height="25"></Button>
 
-            <StackPanel Orientation="Horizontal" Grid.Column="3" Margin="40,0,0,0">
+
+        <DockPanel DockPanel.Dock="Bottom" Margin="10" MinWidth="700" MaxWidth="1400" >
+
+            <Button Style="{StaticResource BotonImagen}" Margin="50,0,20,0" ToolTip="Abrir explorador de archivos..." Width="100" Height="25"></Button>
+
+            <Button Style="{StaticResource BotonFirmar}" Margin="0,0,20,0" Width="100" Height="25"></Button>
+            
+            <StackPanel Orientation="Horizontal"  Margin="0,0,20,0">
                 <TextBlock Text="Sección: " VerticalAlignment="Center"></TextBlock>
                 <ComboBox ItemsSource="{Binding Path=Secciones}" SelectedItem="{Binding Path=SeccionSeleccionado}" Width="125" HorizontalAlignment="Left"/>
             </StackPanel>
 
-            <Button Style="{StaticResource BotonFirmar}" Grid.Column="2" Width="80" Height="25"></Button>
+            <Button Content="Limpiar" Margin="0,0,20,0" Width="80" Height="25" Command="{Binding Path=LimpiarArticuloCommand}"></Button>
 
-        </Grid>
+            <Button Content="Finalizar" Margin="0,0,50,0" HorizontalAlignment="Right" Width="80" Height="25" Command="{Binding Path=FinalizarCommand}"></Button>
+        </DockPanel>
 
 
         <DockPanel LastChildFill="True">
                 <Image Source="{Binding Path=NuevaImagen}" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="50,5,50,5"></Image>
-                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="50,5,50,5">
-                    <TextBox Text="{Binding Path=NuevoTexto}" ToolTip="Insertar texto artículo" TextWrapping="Wrap" Style="{StaticResource TextBoxTextArticle}" Padding="20,10,20,10" MaxWidth="1400" DockPanel.Dock="Top" FontSize="14"></TextBox>
-                </ScrollViewer>
-        </DockPanel>
+            <Grid Margin="50,5,50,5"  MaxWidth="1400">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <TextBox Text="{Binding Path=NuevoTexto}" ToolTip="Insertar texto artículo" TextWrapping="Wrap" Style="{StaticResource TextBoxTextArticle}" Padding="20,10,20,10" DockPanel.Dock="Top" FontSize="14"></TextBox>
+                    </ScrollViewer>
+                    <TextBlock Text="{Binding Path=Firma.Nombre}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" FontSize="14" FontWeight="DemiBold"></TextBlock>
+                </Grid>
+    </DockPanel>
         
         
     </DockPanel>
