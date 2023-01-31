@@ -43,7 +43,7 @@ namespace ProyectoRevistaDINT.Servicios
             ObservableCollection<Autor> listaAutores = recibirAutores();
 
             if (listaAutores.Count == 0)
-                crearAutor(new Autor(0, "Autor Prueba", "Imagen", "RedSocial", "Nick"));
+                crearAutor(new Autor("Autor Prueba", "Imagen", "RedSocial", "Nick"));
 
 
             
