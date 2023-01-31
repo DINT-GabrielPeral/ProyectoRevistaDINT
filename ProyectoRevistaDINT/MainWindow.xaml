@@ -1,4 +1,4 @@
-﻿<Window
+﻿ <Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,19 +6,27 @@
         xmlns:local="clr-namespace:ProyectoRevistaDINT"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="ProyectoRevistaDINT.MainWindow"
         mc:Ignorable="d"
-        Title="ProyectoRevistaDINT" Height="450" Width="800" Icon="Recursos/revistaIcono.png">
+        Title="ProyectoRevistaDINT" Height="450" Width="800" Icon="Recursos/revistaIcono.png" MinHeight="350" MinWidth="550">
+    <Window.Resources>
+        <Style TargetType="syncfusion:MenuAdv">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="Background" Value="#dddddd"/>
+        </Style>
+    </Window.Resources>
     <DockPanel LastChildFill="True">
 
-        <syncfusion:MenuAdv DockPanel.Dock="Top" Background="White">
+        <syncfusion:MenuAdv DockPanel.Dock="Top">
             <syncfusion:MenuItemAdv Header="Gestion Autores" Command="{Binding Path=comandoGestionAutores}">
             </syncfusion:MenuItemAdv>
             <syncfusion:MenuItemAdv Header="Gestión Artículos">
-                <syncfusion:MenuItemAdv Header="Crear Artículos"/>
-                <syncfusion:MenuItemAdv Header="Gestionar Artículos disponibles" />
-                <syncfusion:MenuItemAdv Header="Moderar Artículos"/>
+                <syncfusion:MenuItemAdv Header="Crear Articulo" Command="{Binding Path=comandoCrearArticulo}">
+                </syncfusion:MenuItemAdv>
+                <syncfusion:MenuItemAdv Header="Lista Articulos" Command="{Binding Path=comandoGestionArticulos}">
+                </syncfusion:MenuItemAdv>
             </syncfusion:MenuItemAdv>
             <syncfusion:MenuItemAdv Header="Publicación">
-                <syncfusion:MenuItemAdv Header="Publicar Artículos"/>
+                <syncfusion:MenuItemAdv Header="Publicar Artículos" Command="{Binding Path=comandoPublicarArticulo}"/>
                 <syncfusion:MenuItemAdv Header="Generar Revista" />
             </syncfusion:MenuItemAdv>
             <syncfusion:MenuItemAdv Header="Gestión de palabras prohibidas"/>

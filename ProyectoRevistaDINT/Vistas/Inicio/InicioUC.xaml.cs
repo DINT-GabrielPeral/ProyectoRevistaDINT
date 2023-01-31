@@ -13,26 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProyectoRevistaDINT.Vistas.GestionAutores
+namespace ProyectoRevistaDINT.Vistas.Inicio
 {
     /// <summary>
-    /// Lógica de interacción para GestionAutores.xaml
+    /// Lógica de interacción para InicioUC.xaml
     /// </summary>
-    public partial class GestionAutores : UserControl
+    public partial class InicioUC : UserControl
     {
-        private GestionAutoresVM vm;
-        public GestionAutores()
+        public InicioUC()
         {
             InitializeComponent();
-            vm = new GestionAutoresVM();
-            this.DataContext = vm;
         }
-
-        private void Item_DobleClick(object sender, MouseButtonEventArgs e)
-        {
-            vm.AbrirEditarAutor();
-        }
-
-
     }
 }

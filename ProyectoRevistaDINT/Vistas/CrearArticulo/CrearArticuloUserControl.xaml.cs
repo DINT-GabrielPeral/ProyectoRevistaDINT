@@ -1,18 +1,19 @@
-﻿using System.Windows;
+﻿
+using System.Windows.Controls;
 
 namespace ProyectoRevistaDINT.Vistas.CrearArticulo
 {
     /// <summary>
     /// Lógica de interacción para CrearArticuloWindow.xaml
     /// </summary>
-    public partial class CrearArticuloWindow : Window
+    public partial class CrearArticuloUserControl : UserControl
     {
-        private readonly CrearArticuloWindowVM vm;
+        private readonly CrearArticuloUserControlVM vm;
 
-        public CrearArticuloWindow()
+        public CrearArticuloUserControl()
         {
             InitializeComponent();
-            vm = new CrearArticuloWindowVM();
+            vm = new CrearArticuloUserControlVM();
             DataContext = vm;
         }
     }

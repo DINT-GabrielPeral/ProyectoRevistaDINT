@@ -79,6 +79,7 @@
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -92,6 +93,7 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -113,15 +115,18 @@
     <Compile Include="Clases\Articulo.cs" />
     <Compile Include="Clases\Autor.cs" />
     <Compile Include="MainWindowVM.cs" />
+    <Compile Include="Mensajeria\ArticuloChangedMessage.cs" />
+    <Compile Include="Mensajeria\AutorSeleccionadoEditarMessage.cs" />
+    <Compile Include="Mensajeria\AutoresChangedMessage.cs" />
     <Compile Include="Servicios\DialogosService.cs" />
     <Compile Include="Servicios\RedesSocialesService.cs" />
     <Compile Include="Servicios\SeccionesService.cs" />
     <Compile Include="Servicios\ServicioAccesoBD.cs" />
     <Compile Include="Servicios\ServicioNavegacion.cs" />
-    <Compile Include="Vistas\CrearArticulo\CrearArticuloWindow.xaml.cs">
-      <DependentUpon>CrearArticuloWindow.xaml</DependentUpon>
+    <Compile Include="Vistas\CrearArticulo\CrearArticuloUserControl.xaml.cs">
+      <DependentUpon>CrearArticuloUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\CrearArticulo\CrearArticuloWindowVM.cs" />
+    <Compile Include="Vistas\CrearArticulo\CrearArticuloUserControlVM.cs" />
     <Compile Include="Vistas\CrearAutor\AutorCrearVentanaVM.cs" />
     <Compile Include="Vistas\CrearAutor\CrearAutorVentana.xaml.cs">
       <DependentUpon>CrearAutorVentana.xaml</DependentUpon>
@@ -134,10 +139,22 @@
       <DependentUpon>EliminarAutor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\EliminarAutor\EliminarAutorVM.cs" />
+    <Compile Include="Vistas\GestionArticulos\GestionArticulos.xaml.cs">
+      <DependentUpon>GestionArticulos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\GestionArticulos\GestionArticulosVM.cs" />
     <Compile Include="Vistas\GestionAutores\GestionAutores.xaml.cs">
       <DependentUpon>GestionAutores.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\GestionAutores\GestionAutoresVM.cs" />
+    <Compile Include="Vistas\Inicio\InicioUC.xaml.cs">
+      <DependentUpon>InicioUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Inicio\InicioUCVM.cs" />
+    <Compile Include="Vistas\PublicarArticulo\PublicarArticuloUserControl1.xaml.cs">
+      <DependentUpon>PublicarArticuloUserControl1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\PublicarArticulo\PublicarArticuloUserControl1VM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -150,7 +167,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Vistas\CrearArticulo\CrearArticuloWindow.xaml">
+    <Page Include="Vistas\CrearArticulo\CrearArticuloUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,7 +183,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vistas\GestionArticulos\GestionArticulos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Vistas\GestionAutores\GestionAutores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\Inicio\InicioUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\PublicarArticulo\PublicarArticuloUserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,6 +232,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Recursos\editar-icono.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\crearAutorIcono.png" />
+    <Content Include="Recursos\web.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using ProyectoRevistaDINT.Clases;
+using ProyectoRevistaDINT.Mensajeria;
 using ProyectoRevistaDINT.Servicios;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,12 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
             get { return autores; }
             set { SetProperty(ref autores, value); }
         }
+        private Autor autorSeleccionado;
+        public Autor AutorSeleccionado
+        {
+            get { return autorSeleccionado; }
+            set { SetProperty(ref autorSeleccionado, value); }
+        }
 
         public RelayCommand ComandoCrearAutor { get; }
 
@@ -34,23 +42,15 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
             ComandoCrearAutor = new RelayCommand(AbrirCrearAutor);
             ComandoEditarAutor = new RelayCommand(AbrirEditarAutor);
             ComandoEliminarAutor = new RelayCommand(AbrirEliminarAutor);
+            AutorSeleccionado = new Autor();
             Autores = new ObservableCollection<Autor>();
 
             Autores = sbd.recibirAutores();
 
-            bool hayPrueba = false;
-            if(Autores != null)
+            WeakReferenceMessenger.Default.Register<AutoresChangedMessage>(this, (r, m) =>
             {
-                foreach (Autor a in Autores)
-                {
-                    if (a.Id == 0) hayPrueba = true;
-                }
-            }
-            
-
-            if(!hayPrueba) sbd.crearAutor(new Autor(0, "Prueba", "Imagen", "RedSocial", "Nick"));
-            
-            Autores = sbd.recibirAutores();
+                Autores = m.Value;
+            });
         }
 
         public void AbrirCrearAutor()
@@ -59,11 +59,16 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
         }
         public void AbrirEditarAutor()
         {
-            sn.AbrirEditarAutor();
+            
+            sn.AbrirEditarAutor(autorSeleccionado); 
+            
         }
         public void AbrirEliminarAutor()
         {
-            sn.AbrirEliminarAutor();
+            bool? eliminar = sn.AbrirEliminarAutor();
+            if (eliminar == true)
+                sbd.eliminarAutor(AutorSeleccionado);
+            Autores = sbd.recibirAutores();
         }
     }
 }

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoRevistaDINT.Vistas.CrearAutor"
         mc:Ignorable="d"
-        Title="Nuevo Usuario" Height="150" Width="400" MaxHeight="200">
+        Title="Nuevo Autor" Height="160" Width="400" MaxHeight="200"
+        MinHeight="160" MinWidth="350" Icon="/Recursos/crearAutorIcono.png">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="12"></Setter>
@@ -31,21 +32,21 @@
         <TextBlock Text="Nombre Autor:" Grid.Row="0" Grid.Column="0"></TextBlock>
         <TextBlock Text="Red Social:" Grid.Row="1" Grid.Column="0"></TextBlock>
         <TextBlock Text="Imagen:" Grid.Row="2" Grid.Column="0"></TextBlock>
-        <TextBox x:Name="NombreAutor_TextBox" Margin="5" Grid.Row="0" Grid.Column="1" Text="{Binding Path=AutorNuevo.Nombre}"></TextBox>
+        <TextBox x:Name="NombreAutor_TextBox" Margin="5" Grid.Row="0" Grid.Column="1" Text="{Binding Path=AutorNuevo.Nombre}" TextChanged="NombreAutor_TextBox_TextChanged"></TextBox>
         
        
         
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBlock Text="{Binding Path=PonerNombre}" Foreground="Red"></TextBlock>
-            <Button x:Name="Aceptar_Button" Content="Aceptar" Margin="5" Command="{Binding Path=AñadirAutorCommand}"></Button>
-            <Button x:Name="Cancelar_Button" Content="Cancelar" Margin="5"></Button>
+            <Label x:Name="FaltaNombre_Label" Content="Necesario añadir nombre" Foreground="Red" Visibility="Collapsed"></Label>
+            <Button x:Name="Aceptar_Button" Content="Aceptar" IsDefault="True" Margin="5" Command="{Binding Path=AñadirAutorCommand}" Click="Aceptar_Button_Click"></Button>
+            <Button x:Name="Cancelar_Button" Content="Cancelar" IsCancel="True" Margin="5" Click="Cancelar_Button_Click"></Button>
         </StackPanel>
         <DockPanel Grid.Row="1" Grid.Column="1" LastChildFill="True">
             <ComboBox x:Name="ComboBoxAutor_TextBox" Margin="5" Width="100" DockPanel.Dock="Left" ItemsSource="{Binding Path=RedesSociales}" SelectedItem="{Binding Path=AutorNuevo.RedSocial}"></ComboBox>
             <TextBox x:Name="RedSocialAutor_TextBox" Margin="5" Text="{Binding Path=AutorNuevo.NickRedSocial}"></TextBox>
         </DockPanel>
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-             <Button x:Name="Examinar_Button" Margin="5" Content="Examinar..." HorizontalAlignment="Left" ></Button>
+             <Button x:Name="Examinar_Button" Margin="5" Content="Examinar..." HorizontalAlignment="Left" Command="{Binding Path=ExaminarCommand}"></Button>
              <TextBlock Text="{Binding Path=AutorNuevo.Imagen}"></TextBlock>
         </StackPanel>
     </Grid>

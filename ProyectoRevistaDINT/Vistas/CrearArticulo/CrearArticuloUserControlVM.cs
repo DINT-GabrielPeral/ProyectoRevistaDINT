@@ -5,12 +5,20 @@ using System.Collections.ObjectModel;
 
 namespace ProyectoRevistaDINT.Vistas.CrearArticulo
 {
-    public class CrearArticuloWindowVM : ObservableObject
+    public class CrearArticuloUserControlVM : ObservableObject
     {
         private readonly DialogosService servicioDialogos;
         private readonly SeccionesService servicioSecciones;
 
         public RelayCommand SeleccionarImagenCommand { get; }
+        public RelayCommand EliminarImagenCommand { get; }
+        private bool hayImagen;
+
+        public bool HayImagen
+        {
+            get { return hayImagen; }
+            set { SetProperty(ref hayImagen, value); }
+        }
 
         private string nuevoTitulo;
         public string NuevoTitulo
@@ -47,16 +55,29 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             set => SetProperty(ref nuevoTexto, value);
         }
 
-        public CrearArticuloWindowVM()
+        public CrearArticuloUserControlVM()
         {
             servicioDialogos = new DialogosService();
             servicioSecciones = new SeccionesService();
-
+            NuevaImagen = "";
+            HayImagen = false;
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagen);
+            EliminarImagenCommand = new RelayCommand(EliminarImagen);
 
             Secciones = servicioSecciones.GetSecciones();
         }
 
-        public void SeleccionarImagen() => NuevaImagen = servicioDialogos.AbrirDialogoCargar("IMAGEN");
+        public void SeleccionarImagen()
+        {
+            NuevaImagen = servicioDialogos.AbrirDialogoCargar("IMAGEN");
+            if (string.IsNullOrEmpty(NuevaImagen)) HayImagen = false;
+            else HayImagen = true;
+        }
+
+        public void EliminarImagen()
+        {
+            NuevaImagen = "";
+            HayImagen = false;
+        }
     }
 }

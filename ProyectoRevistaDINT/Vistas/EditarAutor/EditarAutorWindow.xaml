@@ -6,47 +6,48 @@
         xmlns:local="clr-namespace:ProyectoRevistaDINT.Vistas.EditarAutor"
         mc:Ignorable="d"
         Title="Editar autor"
-        Height="450" Width="800"
+        Height="160" Width="400" MaxHeight="200"
+        MinHeight="160" MinWidth="350"
         Icon="/Recursos/editar-icono.png">
     <Window.Resources>
-        <Style TargetType="StackPanel" x:Key="ContenedoresCamposStackPanel">
-            <Setter Property="DockPanel.Dock" Value="Top"/>
-            <Setter Property="Margin" Value="5"/>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="10,0,0,0"></Setter>
         </Style>
 
-        <Style TargetType="TextBlock" x:Key="InfoCampos">
-            <Setter Property="Margin" Value="10,5,10,5"/>
-        </Style>
-
-        <Style TargetType="TextBox" x:Key="CamposRellenables">
-            <Setter Property="Margin" Value="10,0,5,10"/>
-        </Style>
+        
     </Window.Resources>
 
-    <DockPanel LastChildFill="False">
-        <StackPanel Style="{StaticResource ContenedoresCamposStackPanel}">
-            <TextBlock Style="{StaticResource InfoCampos}">Nombre</TextBlock>
-            <TextBox Text="{Binding Path=AutorActual.Nombre}" Style="{StaticResource CamposRellenables}"/>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Nombre Autor: " Grid.Column="0" Grid.Row="0"></TextBlock>
+        <TextBox x:Name="NombreAutor_TextBox" Text="{Binding Path=AutorActual.Nombre}" Grid.Column="1" Grid.Row="0" Margin="0,5"/>
+        <TextBlock  Text="Imagen: " Grid.Column="0" Grid.Row="2"></TextBlock>
+        <DockPanel Grid.Column="1" Grid.Row="2">
+            <Button Command="{Binding Path=SeleccionarImagenCommand}" DockPanel.Dock="Left" Width="75" Height="20" Margin="0,5,5,5">Examinar...</Button>
+            <TextBlock Text="{Binding Path=AutorActual.Imagen}" Margin="0,5"/>
+        </DockPanel>
+        <TextBlock Text="Red Social: " Grid.Column="0" Grid.Row="1"></TextBlock>
+        <DockPanel LastChildFill="True" Grid.Column="1" Grid.Row="1">
+            <ComboBox ItemsSource="{Binding Path=RedesSociales}" SelectedItem="{Binding Path=AutorActual.RedSocial}" Width="100" Height="20" DockPanel.Dock="Left"/>
+            <TextBox Text="{Binding Path=AutorActual.NickRedSocial}" Margin="5,5" />
+        </DockPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Label x:Name="FaltaNombre_Label" Content="Es obligatorio el campo nombre" Foreground="Red" Visibility="Collapsed"></Label>
+            <Button x:Name="Aceptar_Button" Content="Aceptar" IsDefault="True" Margin="5" Command="{Binding Path=EditarAutorCommand}" Click="Aceptar_Button_Click"></Button>
+            <Button x:Name="Cancelar_Button" Content="Cancelar" IsCancel="True" Margin="5" Click="Cancelar_Button_Click"></Button>
         </StackPanel>
-
-        <StackPanel Style="{StaticResource ContenedoresCamposStackPanel}">
-            <TextBlock Style="{StaticResource InfoCampos}">Imagen</TextBlock>
-            <DockPanel>
-                <Button Command="{Binding Path=SeleccionarImagenCommand}" DockPanel.Dock="Right" Width="75" Height="20"
-                        Margin="0,0,10,10">Examinar</Button>
-                <TextBox Text="{Binding Path=AutorActual.Imagen}" IsReadOnly="True" Style="{StaticResource CamposRellenables}"/>
-            </DockPanel>
-        </StackPanel>
-
-        <StackPanel Style="{StaticResource ContenedoresCamposStackPanel}">
-            <TextBlock Style="{StaticResource InfoCampos}">Red social</TextBlock>
-            <ComboBox ItemsSource="{Binding Path=RedesSociales}" SelectedItem="{Binding Path=AutorActual.RedSocial}"
-                      Width="125" HorizontalAlignment="Left" Margin="10,0,5,10"/>
-        </StackPanel>
-
-        <StackPanel Style="{StaticResource ContenedoresCamposStackPanel}">
-            <TextBlock Style="{StaticResource InfoCampos}">Nickname de la red social</TextBlock>
-            <TextBox Text="{Binding Path=AutorActual.NickRedSocial}" Style="{StaticResource CamposRellenables}"/>
-        </StackPanel>
-    </DockPanel>
+    </Grid>
 </Window>

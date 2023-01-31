@@ -13,26 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProyectoRevistaDINT.Vistas.GestionAutores
+namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
 {
     /// <summary>
-    /// Lógica de interacción para GestionAutores.xaml
+    /// Lógica de interacción para PublicarArticuloUserControl1.xaml
     /// </summary>
-    public partial class GestionAutores : UserControl
+    public partial class PublicarArticuloUserControl1 : UserControl
     {
-        private GestionAutoresVM vm;
-        public GestionAutores()
+        private PublicarArticuloUserControl1VM vm;
+        public PublicarArticuloUserControl1()
         {
             InitializeComponent();
-            vm = new GestionAutoresVM();
+            vm = new PublicarArticuloUserControl1VM();
             this.DataContext = vm;
         }
-
-        private void Item_DobleClick(object sender, MouseButtonEventArgs e)
-        {
-            vm.AbrirEditarAutor();
-        }
-
-
     }
 }

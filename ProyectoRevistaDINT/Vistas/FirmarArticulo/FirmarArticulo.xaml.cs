@@ -10,29 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProyectoRevistaDINT.Vistas.GestionAutores
+namespace ProyectoRevistaDINT.Vistas.FirmarArticulo
 {
     /// <summary>
-    /// Lógica de interacción para GestionAutores.xaml
+    /// Lógica de interacción para FirmarArticulo.xaml
     /// </summary>
-    public partial class GestionAutores : UserControl
+    public partial class FirmarArticulo : Window
     {
-        private GestionAutoresVM vm;
-        public GestionAutores()
+        private FirmarArticuloVM vm;
+        public FirmarArticulo()
         {
+            vm = new FirmarArticuloVM();
             InitializeComponent();
-            vm = new GestionAutoresVM();
             this.DataContext = vm;
         }
-
-        private void Item_DobleClick(object sender, MouseButtonEventArgs e)
-        {
-            vm.AbrirEditarAutor();
-        }
-
-
     }
 }

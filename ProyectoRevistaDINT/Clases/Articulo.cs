@@ -32,8 +32,8 @@ namespace ProyectoRevistaDINT.Clases
             set => SetProperty(ref seccion, value);
         }
 
-        private Autor autorArticulo;
-        public Autor AutorArticulo
+        private int autorArticulo;
+        public int AutorArticulo
         {
             get => autorArticulo;
             set => SetProperty(ref autorArticulo, value);
@@ -41,7 +41,7 @@ namespace ProyectoRevistaDINT.Clases
 
         public Articulo() { }
 
-        public Articulo(string titulo, string imagen, string texto, string seccion, Autor autorArticulo)
+        public Articulo(string titulo, string imagen, string texto, string seccion, int autorArticulo)
         {
             Titulo = titulo;
             Imagen = imagen;
