@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="ProyectoRevistaDINT.Vistas.PublicarArticulo.PublicarArticuloUserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProyectoRevistaDINT.Vistas.PublicarArticulo" xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="15,5,15,5"/>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonEditarEliminar_Style" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="IsEnabled" Value="True"></Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=ArticuloSeleccionado.Autor}" Value="">
+                    <Setter Property="IsEnabled" Value="False"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=ArticuloSeleccionado.Autor}" Value="{x:Null}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+            <Button Command="{Binding Path=ComandoPublicar}">Publicar Todo</Button>
+            <Button Style="{StaticResource ButtonEditarEliminar_Style}" Command="{Binding Path=ComandoEliminarArticulo}">Eliminar</Button>
+        </StackPanel>
+        <syncfusion:SfDataGrid ItemsSource="{Binding Articulos, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding ArticuloSeleccionado}" AllowFiltering="True" ColumnSizer="Star"/>
+    </DockPanel>
+</UserControl>

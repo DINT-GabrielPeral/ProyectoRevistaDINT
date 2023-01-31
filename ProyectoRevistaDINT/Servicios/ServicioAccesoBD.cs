@@ -142,7 +142,7 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "INSERT INTO autor VALUES (@titulo,@imagen,@texto,@seccion,@autorArticulo)";
+            comando.CommandText = "INSERT INTO articulo VALUES (@titulo,@imagen,@texto,@seccion,@autorArticulo)";
             comando.Parameters.Add("@titulo", SqliteType.Text);
             comando.Parameters.Add("@imagen", SqliteType.Text);
             comando.Parameters.Add("@texto", SqliteType.Text);
@@ -165,7 +165,7 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "UPDATE autor SET nombre = @nombre, imagen = @imagen, redSocial = @redSocial, nickRedSocial = @nickRedSocial WHERE rowid = @id";
+            comando.CommandText = "UPDATE articulo SET nombre = @nombre, imagen = @imagen, redSocial = @redSocial, nickRedSocial = @nickRedSocial WHERE rowid = @id";
             comando.Parameters.Add("@nombre", SqliteType.Text);
             comando.Parameters.Add("@imagen", SqliteType.Text);
             comando.Parameters.Add("@redSocial", SqliteType.Text);
@@ -191,6 +191,21 @@ namespace ProyectoRevistaDINT.Servicios
             comando.CommandText = "DELETE FROM autor WHERE rowid = @id";
             comando.Parameters.Add("@id", SqliteType.Integer);
             comando.Parameters["@id"].Value = autor.Id;
+            comando.ExecuteNonQuery();
+
+            conexion.Close();
+        }
+
+        public void eliminarArticulo(Articulo articulo)
+        {
+            SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
+            conexion.Open();
+
+            SqliteCommand comando = conexion.CreateCommand();
+
+            comando.CommandText = "DELETE FROM  WHERE rowid = @titulo";
+            comando.Parameters.Add("@titulo", SqliteType.Integer);
+            comando.Parameters["@titulo"].Value = articulo.Titulo;
             comando.ExecuteNonQuery();
 
             conexion.Close();

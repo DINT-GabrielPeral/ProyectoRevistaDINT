@@ -8,6 +8,7 @@ using ProyectoRevistaDINT.Vistas.EliminarAutor;
 using ProyectoRevistaDINT.Vistas.GestionArticulos;
 using ProyectoRevistaDINT.Vistas.GestionAutores;
 using ProyectoRevistaDINT.Vistas.Inicio;
+using ProyectoRevistaDINT.Vistas.PublicarArticulo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,5 +64,19 @@ namespace ProyectoRevistaDINT.Servicios
             return new CrearArticuloUserControl();
         }
 
+        public UserControl AbrirPublicarArticulo()
+        {
+            return new PublicarArticuloUserControl1();
+        }
+
+        public bool? AbrirEliminarArticulo()
+        {
+            
+            return MessageBox.Show("¿Estás seguro de que desea eliminar este articulo?",
+                        "Eliminar articulo",
+                        MessageBoxButton.OKCancel,
+                        MessageBoxImage.Exclamation) == MessageBoxResult.OK;
+
+        }
     }
 }

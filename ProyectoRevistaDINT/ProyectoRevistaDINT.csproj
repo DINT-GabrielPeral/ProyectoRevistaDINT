@@ -79,6 +79,7 @@
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -92,6 +93,7 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -113,6 +115,8 @@
     <Compile Include="Clases\Articulo.cs" />
     <Compile Include="Clases\Autor.cs" />
     <Compile Include="MainWindowVM.cs" />
+    <Compile Include="Mensajeria\ArticuloChangedMessage.cs" />
+    <Compile Include="Mensajeria\AutorFirmaRequestMessage.cs" />
     <Compile Include="Mensajeria\AutorSeleccionadoEditarMessage.cs" />
     <Compile Include="Mensajeria\AutoresChangedMessage.cs" />
     <Compile Include="Servicios\DialogosService.cs" />
@@ -136,6 +140,10 @@
       <DependentUpon>EliminarAutor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\EliminarAutor\EliminarAutorVM.cs" />
+    <Compile Include="Vistas\FirmarArticulo\FirmarArticulo.xaml.cs">
+      <DependentUpon>FirmarArticulo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\FirmarArticulo\FirmarArticuloVM.cs" />
     <Compile Include="Vistas\GestionArticulos\GestionArticulos.xaml.cs">
       <DependentUpon>GestionArticulos.xaml</DependentUpon>
     </Compile>
@@ -148,6 +156,10 @@
       <DependentUpon>InicioUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Inicio\InicioUCVM.cs" />
+    <Compile Include="Vistas\PublicarArticulo\PublicarArticuloUserControl1.xaml.cs">
+      <DependentUpon>PublicarArticuloUserControl1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\PublicarArticulo\PublicarArticuloUserControl1VM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -176,6 +188,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Vistas\FirmarArticulo\FirmarArticulo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Vistas\GestionArticulos\GestionArticulos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -185,6 +201,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\Inicio\InicioUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\PublicarArticulo\PublicarArticuloUserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

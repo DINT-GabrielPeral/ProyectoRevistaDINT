@@ -39,7 +39,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <Style TargetType="Button" x:Name="BotonImagen">
+        <Style x:Key="BotonImagen" TargetType="Button">
             <Setter Property="Command" Value="{Binding Path=SeleccionarImagenCommand}"/>
                     <Setter Property="Content" Value="Insertar Imagen"/>
             <Style.Triggers>
@@ -74,21 +74,18 @@
             </Style.Triggers>
         </Style>
         <Style TargetType="Image">
-            <Setter Property="Width" Value="100"></Setter>
-            <Setter Property="Height" Value="70"></Setter>
+            <Setter Property="Height" Value="100"></Setter>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=NuevaImagen}" Value="">
-                    <Setter Property="Width" Value="0"></Setter>
-                    <Setter Property="Height" Value="0"></Setter>
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Path=NuevaImagen}" Value="{x:Null}">
-                    <Setter Property="Width" Value="0"></Setter>
-                    <Setter Property="Height" Value="0"></Setter>
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    
+
     <DockPanel LastChildFill="True">
 
 
@@ -103,30 +100,43 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
+
+
             <Button x:Name="BotonImagen" Margin="5,0,5,0" Grid.Column="0" ToolTip="Abrir explorador de archivos..." Width="100" Height="25"></Button>
 
+
+            <Button Style="{StaticResource BotonImagen}" Margin="50,0,5,0" Grid.Column="0" ToolTip="Abrir explorador de archivos..." Width="100" Height="25"></Button>
+
+
             <StackPanel Orientation="Horizontal" Grid.Column="3" Margin="40,0,0,0">
-              <TextBlock Text="Sección: "></TextBlock>
-              <ComboBox ItemsSource="{Binding Path=Secciones}" SelectedItem="{Binding Path=SeccionSeleccionado}" Width="125" HorizontalAlignment="Left" Margin="10,0,5,10"/>
+                <TextBlock Text="Sección: "></TextBlock>
+                <ComboBox ItemsSource="{Binding Path=Secciones}" SelectedItem="{Binding Path=SeccionSeleccionado}" Width="125" HorizontalAlignment="Left" Margin="10,0,5,10"/>
             </StackPanel>
 
             <Button Content="Firmar" Grid.Column="2" Width="50" Height="25"></Button>
-            
+
         </Grid>
+
         <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
             <TextBlock Text="{Binding Path=NuevaImagen}" DockPanel.Dock="Left"/>
-            
+
         </DockPanel>
-        
-        
-            <DockPanel LastChildFill="True">
+
+
+        <DockPanel LastChildFill="True">
             <Image Source="{Binding Path=NuevaImagen}" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="50,5,50,5"></Image>
+
+
+
+            <DockPanel LastChildFill="True">
+                <Image Source="{Binding Path=NuevaImagen}" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="50,5,50,5"></Image>
+
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="50,5,50,5">
                     <TextBox Text="{Binding Path=NuevoTexto}" ToolTip="Insertar texto artículo" TextWrapping="Wrap" Style="{StaticResource TextBoxTextArticle}" Padding="20,10,20,10" MaxWidth="1400" DockPanel.Dock="Top" FontSize="14"></TextBox>
                 </ScrollViewer>
+            </DockPanel>
+
+
         </DockPanel>
-        
-        
     </DockPanel>
 </UserControl>
