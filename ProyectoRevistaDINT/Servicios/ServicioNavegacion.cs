@@ -64,19 +64,10 @@ namespace ProyectoRevistaDINT.Servicios
             return new CrearArticuloUserControl();
         }
 
-        public UserControl AbrirPublicarArticulo()
+        public bool? AbrirFirmarArticulo()
         {
-            return new PublicarArticuloUserControl1();
-        }
-
-        public bool? AbrirEliminarArticulo()
-        {
-            
-            return MessageBox.Show("¿Estás seguro de que desea eliminar este articulo?",
-                        "Eliminar articulo",
-                        MessageBoxButton.OKCancel,
-                        MessageBoxImage.Exclamation) == MessageBoxResult.OK;
-
+            FirmarArticulo dialog = new FirmarArticulo();
+            return dialog.ShowDialog();
         }
     }
 }
