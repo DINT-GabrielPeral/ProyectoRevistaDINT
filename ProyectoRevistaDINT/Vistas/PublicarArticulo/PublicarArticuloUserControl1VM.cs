@@ -41,8 +41,10 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
             ArticuloSeleccionado = new Articulo();
             Articulos = new ObservableCollection<Articulo>();
 
+            sbd.crearArticulo(new Articulo("prueba", "prueba", "prueba", "prueba", 3));
             Articulos = sbd.recibirArticulos();
 
+            
             WeakReferenceMessenger.Default.Register<ArticulosChangedMessage>(this, (r, m) =>
             {
                 Articulos = m.Value;
