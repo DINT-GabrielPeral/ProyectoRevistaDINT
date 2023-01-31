@@ -91,14 +91,12 @@
     
     <DockPanel LastChildFill="True">
 
-        <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="2" Margin="50,20,50,0" DockPanel.Dock="Top" Height="25">
-            <ScrollViewer VerticalScrollBarVisibility="Disabled">
-                <TextBox Text="{Binding Path=NuevoTitulo}" Style="{StaticResource TextBoxTitle}" ToolTip="Insertar Título" TextWrapping="Wrap"></TextBox>
-            </ScrollViewer>
-            
-        </Border>
-        
-         <Grid DockPanel.Dock="Bottom" Margin="0,5,0,0" >
+
+        <ScrollViewer VerticalScrollBarVisibility="Disabled" DockPanel.Dock="Top" Margin="50,5,50,5" Height="25" >
+            <TextBox Text="{Binding Path=NuevoTitulo}" Style="{StaticResource TextBoxTitle}" ToolTip="Insertar Título" TextWrapping="Wrap" MaxWidth="1400" Padding="10,0,10,0" FontSize="18" FontWeight="DemiBold" VerticalAlignment="Center"></TextBox>
+        </ScrollViewer>
+
+        <Grid DockPanel.Dock="Bottom" Margin="0,5,0,0" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -124,12 +122,10 @@
         
             <DockPanel LastChildFill="True">
             <Image Source="{Binding Path=NuevaImagen}" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="50,5,50,5"></Image>
-                <Border BorderBrush="Gray" BorderThickness="2" CornerRadius="2" Margin="50,5,50,5" DockPanel.Dock="Top" Background="White">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <TextBox Text="{Binding Path=NuevoTexto}" ToolTip="Insertar texto artículo" TextWrapping="Wrap" Style="{StaticResource TextBoxTextArticle}" DockPanel.Dock="Top"></TextBox>
-                    </ScrollViewer>
-                </Border>
-            </DockPanel>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="50,5,50,5">
+                    <TextBox Text="{Binding Path=NuevoTexto}" ToolTip="Insertar texto artículo" TextWrapping="Wrap" Style="{StaticResource TextBoxTextArticle}" Padding="20,10,20,10" MaxWidth="1400" DockPanel.Dock="Top" FontSize="14"></TextBox>
+                </ScrollViewer>
+        </DockPanel>
         
         
     </DockPanel>
