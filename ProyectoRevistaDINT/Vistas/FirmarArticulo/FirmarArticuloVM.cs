@@ -12,14 +12,8 @@ namespace ProyectoRevistaDINT.Vistas.FirmarArticulo
 {
     class FirmarArticuloVM : ObservableObject
     {
+        
         private ServicioAccesoBD sbd;
-        private ObservableCollection<String> listaAutores;
-
-        public ObservableCollection<String> ListaAutores
-        {
-            get { return listaAutores; }
-            set { SetProperty(ref listaAutores, value); }
-        }
 
         private ObservableCollection<Autor> autoresActual;
 
@@ -29,13 +23,21 @@ namespace ProyectoRevistaDINT.Vistas.FirmarArticulo
             set { SetProperty(ref autoresActual, value); }
         }
 
+        private Autor autorSeleccionado;
+        public Autor AutorSeleccionado
+        {
+            get { return autorSeleccionado; }
+            set { SetProperty(ref autorSeleccionado, value); }
+        }
+
+        internal void FirmarArticulo()
+        {
+            
+        }
+
         public FirmarArticuloVM() {
             sbd = new ServicioAccesoBD();
             AutoresActual = sbd.recibirAutores();
-            foreach(Autor autor in AutoresActual)
-            {
-                ListaAutores.Add(autor.Nombre);
-            }
         }
     }
 }

@@ -9,15 +9,26 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
     {
         private readonly DialogosService servicioDialogos;
         private readonly SeccionesService servicioSecciones;
+        private readonly ServicioNavegacion sn;
 
         public RelayCommand SeleccionarImagenCommand { get; }
         public RelayCommand EliminarImagenCommand { get; }
+        public RelayCommand FirmarCommand { get; }
+        public RelayCommand FinalizarCommand { get; }
         private bool hayImagen;
 
         public bool HayImagen
         {
             get { return hayImagen; }
             set { SetProperty(ref hayImagen, value); }
+        }
+
+        private bool hayFirma;
+
+        public bool HayFirma
+        {
+            get { return hayFirma; }
+            set { SetProperty(ref hayFirma, value); }
         }
 
         private string nuevoTitulo;
@@ -59,10 +70,13 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
         {
             servicioDialogos = new DialogosService();
             servicioSecciones = new SeccionesService();
+            sn = new ServicioNavegacion();
             NuevaImagen = "";
             HayImagen = false;
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagen);
             EliminarImagenCommand = new RelayCommand(EliminarImagen);
+            FirmarCommand = new RelayCommand(FirmarArticulo);
+            FinalizarCommand = new RelayCommand(FinalizarArticulo);
 
             Secciones = servicioSecciones.GetSecciones();
         }
@@ -78,6 +92,21 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
         {
             NuevaImagen = "";
             HayImagen = false;
+        }
+
+        public void FirmarArticulo()
+        {
+            bool? firmar = sn.AbrirFirmarArticulo();
+            if (firmar == true)
+            {
+                HayFirma = true;
+            }
+            else HayFirma = false;
+        }
+
+        public void FinalizarArticulo()
+        {
+
         }
     }
 }

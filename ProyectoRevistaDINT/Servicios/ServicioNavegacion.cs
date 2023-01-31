@@ -5,6 +5,7 @@ using ProyectoRevistaDINT.Vistas.CrearArticulo;
 using ProyectoRevistaDINT.Vistas.CrearAutor;
 using ProyectoRevistaDINT.Vistas.EditarAutor;
 using ProyectoRevistaDINT.Vistas.EliminarAutor;
+using ProyectoRevistaDINT.Vistas.FirmarArticulo;
 using ProyectoRevistaDINT.Vistas.GestionArticulos;
 using ProyectoRevistaDINT.Vistas.GestionAutores;
 using ProyectoRevistaDINT.Vistas.Inicio;
@@ -63,5 +64,10 @@ namespace ProyectoRevistaDINT.Servicios
             return new CrearArticuloUserControl();
         }
 
+        public bool? AbrirFirmarArticulo()
+        {
+            FirmarArticulo dialog = new FirmarArticulo();
+            return dialog.ShowDialog();
+        }
     }
 }
