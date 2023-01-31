@@ -22,14 +22,20 @@ namespace ProyectoRevistaDINT
         public RelayCommand comandoGestionAutores { get; }
         public RelayCommand comandoGestionArticulos { get; }
         public RelayCommand comandoCrearArticulo { get; }
+        public RelayCommand comandoInicio { get; }
         public MainWindowVM()
         {
             sn = new ServicioNavegacion();
             comandoGestionAutores = new RelayCommand(MuestraGestionAutores);
             comandoGestionArticulos = new RelayCommand(MuestraGestionArticulos);
             comandoCrearArticulo = new RelayCommand(MuestraCrearArticulo);
+            comandoInicio = new RelayCommand(MuestraInicio);
+            MuestraInicio();
         }
-
+        public void MuestraInicio()
+        {
+            ContenidoMostrar = sn.CargaInicio();
+        }
         public void MuestraGestionAutores()
         {
             ContenidoMostrar = sn.CargaGestionAutores();

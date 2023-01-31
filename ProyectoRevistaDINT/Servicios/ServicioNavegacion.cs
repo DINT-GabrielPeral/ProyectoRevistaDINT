@@ -7,6 +7,7 @@ using ProyectoRevistaDINT.Vistas.EditarAutor;
 using ProyectoRevistaDINT.Vistas.EliminarAutor;
 using ProyectoRevistaDINT.Vistas.GestionArticulos;
 using ProyectoRevistaDINT.Vistas.GestionAutores;
+using ProyectoRevistaDINT.Vistas.Inicio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,11 @@ namespace ProyectoRevistaDINT.Servicios
                         MessageBoxButton.OKCancel,
                         MessageBoxImage.Exclamation) == MessageBoxResult.OK;
 
+        }
+
+        internal UserControl CargaInicio()
+        {
+            return new InicioUC();
         }
 
         public bool? AbrirCrearAutor()
