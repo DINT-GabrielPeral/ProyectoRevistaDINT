@@ -6,7 +6,29 @@
         xmlns:local="clr-namespace:ProyectoRevistaDINT.Vistas.FirmarArticulo"
         mc:Ignorable="d"
         Title="FirmarArticulo" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="BotonAceptar">
+            <Setter Property="IsEnabled" Value="True"></Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=AutorSeleccionado}" Value="{x:Null}">
+                    <Setter Property="IsEnabled" Value="False"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <DockPanel>
-        <ListBox ItemsSource="{Binding Path=ListaAutores}"></ListBox>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+            <Button Style="{StaticResource BotonAceptar}" Content="Seleccionar" Margin="10" IsDefault="True" Click="Aceptar_Click"></Button>
+            <Button Content="Cancelar" Margin="10" IsCancel="True"></Button>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="40,10,40,10">
+            <ListBox ItemsSource="{Binding Path=AutoresActual}" SelectedItem="{Binding AutorSeleccionado}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=Nombre}"></TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
     </DockPanel>
 </Window>
