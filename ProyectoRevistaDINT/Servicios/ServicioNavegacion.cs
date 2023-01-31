@@ -1,6 +1,7 @@
 ﻿using Microsoft.Toolkit.Mvvm.Messaging;
 using ProyectoRevistaDINT.Clases;
 using ProyectoRevistaDINT.Mensajeria;
+using ProyectoRevistaDINT.Vistas.CrearArticulo;
 using ProyectoRevistaDINT.Vistas.CrearAutor;
 using ProyectoRevistaDINT.Vistas.EditarAutor;
 using ProyectoRevistaDINT.Vistas.EliminarAutor;
@@ -50,5 +51,11 @@ namespace ProyectoRevistaDINT.Servicios
             WeakReferenceMessenger.Default.Send(new AutorSeleccionadoEditarMessage(autorSeleccionado));
             return dialog.ShowDialog();
         }
+
+        public UserControl AbrirCrearArticulo()
+        {
+            return new CrearArticuloUserControl();
+        }
+
     }
 }

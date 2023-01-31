@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 
 namespace ProyectoRevistaDINT.Vistas.CrearArticulo
 {
-    public class CrearArticuloWindowVM : ObservableObject
+    public class CrearArticuloUserControlVM : ObservableObject
     {
         private readonly DialogosService servicioDialogos;
         private readonly SeccionesService servicioSecciones;
@@ -47,7 +47,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             set => SetProperty(ref nuevoTexto, value);
         }
 
-        public CrearArticuloWindowVM()
+        public CrearArticuloUserControlVM()
         {
             servicioDialogos = new DialogosService();
             servicioSecciones = new SeccionesService();

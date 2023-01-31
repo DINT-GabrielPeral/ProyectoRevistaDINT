@@ -22,24 +22,21 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
             set { SetProperty(ref articulos, value); }
         }
 
-        public RelayCommand ComandoCrearArticulo { get; }
+       
         public RelayCommand ComandoModerarArticulo { get; }
         public RelayCommand ComandoEliminarArticulo { get; }
 
         public GestionArticulosVM()
         {
             sn = new ServicioNavegacion();
-            ComandoCrearArticulo = new RelayCommand(AbrirCrearArticulo);
+            
             ComandoModerarArticulo = new RelayCommand(AbrirModerarArticulo);
             ComandoEliminarArticulo = new RelayCommand(AbrirEliminarArticulo);
             Articulos = new ObservableCollection<Articulo>();
 
             Articulos = sbd.recibirArticulos();
         }
-        public void AbrirCrearArticulo()
-        {
-        
-        }
+
         public void AbrirModerarArticulo()
         {
 

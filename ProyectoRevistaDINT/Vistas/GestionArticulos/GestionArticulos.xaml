@@ -14,7 +14,6 @@
     </UserControl.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
-            <Button Command="{Binding Path=ComandoCrearArticulo}">Crear</Button>
             <Button Command="{Binding Path=ComandoModerarArticulo}">Moderar</Button>
             <Button Command="{Binding Path=ComandoEliminarArticulo}">Eliminar</Button>
         </StackPanel>
