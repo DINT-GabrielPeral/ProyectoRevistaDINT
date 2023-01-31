@@ -116,6 +116,7 @@
     <Compile Include="Clases\Autor.cs" />
     <Compile Include="MainWindowVM.cs" />
     <Compile Include="Mensajeria\ArticuloChangedMessage.cs" />
+    <Compile Include="Mensajeria\AutorFirmaRequestMessage.cs" />
     <Compile Include="Mensajeria\AutorSeleccionadoEditarMessage.cs" />
     <Compile Include="Mensajeria\AutoresChangedMessage.cs" />
     <Compile Include="Servicios\DialogosService.cs" />
@@ -139,6 +140,10 @@
       <DependentUpon>EliminarAutor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\EliminarAutor\EliminarAutorVM.cs" />
+    <Compile Include="Vistas\FirmarArticulo\FirmarArticulo.xaml.cs">
+      <DependentUpon>FirmarArticulo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\FirmarArticulo\FirmarArticuloVM.cs" />
     <Compile Include="Vistas\GestionArticulos\GestionArticulos.xaml.cs">
       <DependentUpon>GestionArticulos.xaml</DependentUpon>
     </Compile>
@@ -180,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\EliminarAutor\EliminarAutor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\FirmarArticulo\FirmarArticulo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
