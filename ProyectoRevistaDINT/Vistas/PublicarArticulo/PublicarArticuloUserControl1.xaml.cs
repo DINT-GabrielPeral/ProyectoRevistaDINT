@@ -20,9 +20,12 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
     /// </summary>
     public partial class PublicarArticuloUserControl1 : UserControl
     {
+        private PublicarArticuloUserControl1VM vm;
         public PublicarArticuloUserControl1()
         {
             InitializeComponent();
+            vm = new PublicarArticuloUserControl1VM();
+            this.DataContext = vm;
         }
     }
 }

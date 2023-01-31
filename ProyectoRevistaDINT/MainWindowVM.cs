@@ -22,6 +22,7 @@ namespace ProyectoRevistaDINT
         public RelayCommand comandoGestionAutores { get; }
         public RelayCommand comandoGestionArticulos { get; }
         public RelayCommand comandoCrearArticulo { get; }
+        public RelayCommand comandoPublicarArticulo { get; }
         public RelayCommand comandoInicio { get; }
         public MainWindowVM()
         {
@@ -30,6 +31,7 @@ namespace ProyectoRevistaDINT
             comandoGestionArticulos = new RelayCommand(MuestraGestionArticulos);
             comandoCrearArticulo = new RelayCommand(MuestraCrearArticulo);
             comandoInicio = new RelayCommand(MuestraInicio);
+            comandoPublicarArticulo = new RelayCommand(MuestraPublicarArticulo);
             MuestraInicio();
         }
         public void MuestraInicio()
@@ -48,6 +50,10 @@ namespace ProyectoRevistaDINT
         public void MuestraCrearArticulo()
         {
             ContenidoMostrar = sn.AbrirCrearArticulo();
+        }
+        public void MuestraPublicarArticulo()
+        {
+            ContenidoMostrar = sn.AbrirPublicarArticulo();
         }
     }
 }

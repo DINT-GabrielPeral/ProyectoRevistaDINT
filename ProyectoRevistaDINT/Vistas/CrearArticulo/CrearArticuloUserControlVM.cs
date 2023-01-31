@@ -1,8 +1,5 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
-using Microsoft.Toolkit.Mvvm.Messaging;
-using ProyectoRevistaDINT.Clases;
-using ProyectoRevistaDINT.Mensajeria;
 using ProyectoRevistaDINT.Servicios;
 using System.Collections.ObjectModel;
 
@@ -12,28 +9,15 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
     {
         private readonly DialogosService servicioDialogos;
         private readonly SeccionesService servicioSecciones;
-        private readonly ServicioNavegacion sn;
 
         public RelayCommand SeleccionarImagenCommand { get; }
         public RelayCommand EliminarImagenCommand { get; }
-        public RelayCommand FirmarCommand { get; }
-        public RelayCommand FinalizarCommand { get; }
-        public RelayCommand LimpiarArticuloCommand { get; }
-        public RelayCommand QuitarAutorCommand { get; }
         private bool hayImagen;
 
         public bool HayImagen
         {
             get { return hayImagen; }
             set { SetProperty(ref hayImagen, value); }
-        }
-
-        private bool hayFirma;
-
-        public bool HayFirma
-        {
-            get { return hayFirma; }
-            set { SetProperty(ref hayFirma, value); }
         }
 
         private string nuevoTitulo;
@@ -71,26 +55,14 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             set => SetProperty(ref nuevoTexto, value);
         }
 
-        private Autor firma;
-        public Autor Firma
-        {
-            get => firma;
-            set => SetProperty(ref firma, value);
-        }
-
         public CrearArticuloUserControlVM()
         {
             servicioDialogos = new DialogosService();
             servicioSecciones = new SeccionesService();
-            sn = new ServicioNavegacion();
             NuevaImagen = "";
             HayImagen = false;
-            QuitarAutorCommand = new RelayCommand(QuitarAutor);
-            LimpiarArticuloCommand = new RelayCommand(LimpiarArticulo);
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagen);
             EliminarImagenCommand = new RelayCommand(EliminarImagen);
-            FirmarCommand = new RelayCommand(FirmarArticulo);
-            FinalizarCommand = new RelayCommand(FinalizarArticulo);
 
             Secciones = servicioSecciones.GetSecciones();
         }
@@ -106,36 +78,6 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
         {
             NuevaImagen = "";
             HayImagen = false;
-        }
-
-        public void FirmarArticulo()
-        {
-            bool? firmar = sn.AbrirFirmarArticulo();
-            if (firmar == true)
-            {
-                HayFirma = true;
-                Firma = WeakReferenceMessenger.Default.Send<AutorFirmaRequestMessage>();
-            }
-            else HayFirma = false;
-        }
-
-        public void FinalizarArticulo()
-        {
-
-        }
-        public void QuitarAutor()
-        {
-            Firma = null;
-            HayFirma = false;
-        }
-        public void LimpiarArticulo()
-        {
-            HayFirma = false;
-            HayImagen = false;
-            Firma = null;
-            NuevoTexto = "";
-            NuevaImagen = "";
-            NuevoTitulo = "";
         }
     }
 }
