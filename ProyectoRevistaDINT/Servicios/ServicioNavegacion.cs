@@ -5,6 +5,7 @@ using ProyectoRevistaDINT.Vistas.CrearArticulo;
 using ProyectoRevistaDINT.Vistas.CrearAutor;
 using ProyectoRevistaDINT.Vistas.EditarAutor;
 using ProyectoRevistaDINT.Vistas.EliminarAutor;
+using ProyectoRevistaDINT.Vistas.FirmarArticulo;
 using ProyectoRevistaDINT.Vistas.GestionArticulos;
 using ProyectoRevistaDINT.Vistas.GestionAutores;
 using ProyectoRevistaDINT.Vistas.Inicio;
@@ -59,9 +60,19 @@ namespace ProyectoRevistaDINT.Servicios
             return dialog.ShowDialog();
         }
 
+        internal UserControl AbrirPublicarArticulo()
+        {
+            throw new NotImplementedException();
+        }
+
         public UserControl AbrirCrearArticulo()
         {
             return new CrearArticuloUserControl();
+        }
+
+        internal bool? AbrirEliminarArticulo()
+        {
+            throw new NotImplementedException();
         }
 
         public bool? AbrirFirmarArticulo()
