@@ -4,7 +4,6 @@ using ProyectoRevistaDINT.Mensajeria;
 using ProyectoRevistaDINT.Vistas.CrearArticulo;
 using ProyectoRevistaDINT.Vistas.CrearAutor;
 using ProyectoRevistaDINT.Vistas.EditarAutor;
-using ProyectoRevistaDINT.Vistas.EliminarAutor;
 using ProyectoRevistaDINT.Vistas.FirmarArticulo;
 using ProyectoRevistaDINT.Vistas.GestionArticulos;
 using ProyectoRevistaDINT.Vistas.GestionAutores;
