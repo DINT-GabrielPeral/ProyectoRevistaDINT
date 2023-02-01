@@ -16,6 +16,7 @@ namespace ProyectoRevistaDINT.Vistas.FirmarArticulo
     {
 
         private ServicioAccesoBD sbd;
+        private ServicioNavegacion sn;
 
         private ObservableCollection<Autor> autoresActual;
 
@@ -41,8 +42,15 @@ namespace ProyectoRevistaDINT.Vistas.FirmarArticulo
                 });
         }
 
+        internal void AbreNuevoAutor()
+        {
+            sn.AbrirCrearAutor();
+            AutoresActual = sbd.recibirAutores();
+        }
+
         public FirmarArticuloVM()
         {
+            sn = new ServicioNavegacion();
             sbd = new ServicioAccesoBD();
             AutoresActual = sbd.recibirAutores();
         }

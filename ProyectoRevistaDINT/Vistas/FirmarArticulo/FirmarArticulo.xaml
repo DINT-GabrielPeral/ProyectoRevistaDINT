@@ -18,8 +18,9 @@
     </Window.Resources>
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
-            <Button Style="{StaticResource BotonAceptar}" Content="Seleccionar" Margin="10" IsDefault="True" Click="Aceptar_Click"></Button>
-            <Button Content="Cancelar" Margin="10" IsCancel="True"></Button>
+            <Button Style="{StaticResource BotonAceptar}" Content="Seleccionar" Margin="10" Padding="5" IsDefault="True" Click="Aceptar_Click"></Button>
+            <Button Content="Nuevo" Margin="10" Click="Nuevo_Click" Padding="5"></Button>
+            <Button Content="Cancelar" Margin="10" Padding="5" IsCancel="True"></Button>
         </StackPanel>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="40,10,40,10">
             <ListBox ItemsSource="{Binding Path=AutoresActual}" SelectedItem="{Binding AutorSeleccionado}">
