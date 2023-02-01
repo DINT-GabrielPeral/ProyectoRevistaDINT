@@ -7,6 +7,7 @@ namespace ProyectoRevistaDINT.Servicios
         public string AbrirDialogoCargar(string funcionalidad)
         {
             OpenFileDialog dialogoCargar = new OpenFileDialog();
+            AzureService sa = new AzureService();
             switch (funcionalidad.ToUpper())
             {
                 case "IMAGEN":
@@ -14,7 +15,7 @@ namespace ProyectoRevistaDINT.Servicios
                     break;
             }
 
-            return dialogoCargar.ShowDialog() == true ? dialogoCargar.FileName : null;
+            return dialogoCargar.ShowDialog() == true ? sa.SubirImagen(dialogoCargar.FileName) : null;
         }
     }
 }
