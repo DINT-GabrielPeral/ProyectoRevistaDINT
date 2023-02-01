@@ -204,10 +204,6 @@
       <DependentUpon>EditarAutorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\EditarAutor\EditarAutorWindowVM.cs" />
-    <Compile Include="Vistas\EliminarAutor\EliminarAutor.xaml.cs">
-      <DependentUpon>EliminarAutor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\EliminarAutor\EliminarAutorVM.cs" />
     <Compile Include="Vistas\FirmarArticulo\FirmarArticulo.xaml.cs">
       <DependentUpon>FirmarArticulo.xaml</DependentUpon>
     </Compile>
@@ -249,10 +245,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\EditarAutor\EditarAutorWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Vistas\EliminarAutor\EliminarAutor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
