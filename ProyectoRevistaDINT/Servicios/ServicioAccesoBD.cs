@@ -165,7 +165,7 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "UPDATE articulo SET nombre = @nombre, imagen = @imagen, redSocial = @redSocial, nickRedSocial = @nickRedSocial WHERE rowid = @id";
+            comando.CommandText = "UPDATE autor SET nombre = @nombre, imagen = @imagen, redSocial = @redSocial, nickRedSocial = @nickRedSocial WHERE rowid = @id";
             comando.Parameters.Add("@nombre", SqliteType.Text);
             comando.Parameters.Add("@imagen", SqliteType.Text);
             comando.Parameters.Add("@redSocial", SqliteType.Text);
