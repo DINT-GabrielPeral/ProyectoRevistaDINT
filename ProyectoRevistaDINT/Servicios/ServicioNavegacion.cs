@@ -61,7 +61,7 @@ namespace ProyectoRevistaDINT.Servicios
 
         internal UserControl AbrirPublicarArticulo()
         {
-            throw new NotImplementedException();
+            return new PublicarArticuloUserControl1();
         }
 
         public UserControl AbrirCrearArticulo()
@@ -71,7 +71,10 @@ namespace ProyectoRevistaDINT.Servicios
 
         internal bool? AbrirEliminarArticulo()
         {
-            throw new NotImplementedException();
+            return MessageBox.Show("¿Estás seguro de que desea eliminar este artículo?",
+                        "Eliminar articulo",
+                        MessageBoxButton.OKCancel,
+                        MessageBoxImage.Exclamation) == MessageBoxResult.OK;
         }
 
         public bool? AbrirFirmarArticulo()

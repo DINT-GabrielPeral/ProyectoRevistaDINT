@@ -41,7 +41,7 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
             ArticuloSeleccionado = new Articulo();
             Articulos = new ObservableCollection<Articulo>();
 
-            sbd.crearArticulo(new Articulo("prueba", "prueba", "prueba", "prueba", 3));
+            /*sbd.crearArticulo(new Articulo("prueba", "prueba", "prueba", "prueba", 1));*/
             Articulos = sbd.recibirArticulos();
 
             

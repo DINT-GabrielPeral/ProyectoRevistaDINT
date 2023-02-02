@@ -14,10 +14,10 @@
         <Style TargetType="Button" x:Key="ButtonEditarEliminar_Style" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="IsEnabled" Value="True"></Setter>
             <Style.Triggers>
-                <DataTrigger Binding="{Binding Path=ArticuloSeleccionado.Autor}" Value="">
+                <DataTrigger Binding="{Binding Path=ArticuloSeleccionado.Titulo}" Value="">
                     <Setter Property="IsEnabled" Value="False"></Setter>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding Path=ArticuloSeleccionado.Autor}" Value="{x:Null}">
+                <DataTrigger Binding="{Binding Path=ArticuloSeleccionado.Titulo}" Value="{x:Null}">
                     <Setter Property="IsEnabled" Value="False"/>
                 </DataTrigger>
 

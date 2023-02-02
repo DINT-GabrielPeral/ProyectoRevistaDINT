@@ -203,8 +203,8 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "DELETE FROM  WHERE rowid = @titulo";
-            comando.Parameters.Add("@titulo", SqliteType.Integer);
+            comando.CommandText = "DELETE FROM articulo WHERE rowid = @titulo";
+            comando.Parameters.Add("@titulo", SqliteType.Text);
             comando.Parameters["@titulo"].Value = articulo.Titulo;
             comando.ExecuteNonQuery();
 
