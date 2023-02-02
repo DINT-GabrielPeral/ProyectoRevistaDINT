@@ -99,13 +99,34 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+
+        <Style TargetType="Button" x:Key="BotonFinalizar">
+            <Setter Property="Margin" Value="0,0,50,0"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Command" Value="{Binding Path=FinalizarCommand}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=TituloTextBox, Path=Text}" Value="{x:Null}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding ElementName=TextoArticuloTextBox, Path=Text}" Value="{x:Null}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding Path=HayFirma}" Value="False">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
 
     <DockPanel LastChildFill="True">
 
 
         <ScrollViewer VerticalScrollBarVisibility="Disabled" DockPanel.Dock="Top" Margin="50,5,50,5" Height="25" >
-            <TextBox Text="{Binding Path=NuevoTitulo}" Style="{StaticResource TextBoxTitle}" ToolTip="Insertar Título" TextWrapping="Wrap" MaxWidth="1400" Padding="10,0,10,0" FontSize="18" FontWeight="DemiBold" VerticalAlignment="Center"></TextBox>
+            <TextBox x:Name="TituloTextBox" Text="{Binding Path=ArticuloNuevo.Titulo}" Style="{StaticResource TextBoxTitle}" ToolTip="Insertar Título" TextWrapping="Wrap" MaxWidth="1400" Padding="10,0,10,0" FontSize="18" FontWeight="DemiBold" VerticalAlignment="Center"></TextBox>
         </ScrollViewer>
 
 
@@ -119,20 +140,20 @@
 
             <StackPanel Orientation="Horizontal"  Margin="0,0,20,0">
                 <TextBlock Text="Sección: " VerticalAlignment="Center"></TextBlock>
-                <ComboBox ItemsSource="{Binding Path=Secciones}" SelectedItem="{Binding Path=SeccionSeleccionado}" Width="125" HorizontalAlignment="Left"/>
+                <ComboBox ItemsSource="{Binding Path=Secciones}" SelectedItem="{Binding Path=ArticuloNuevo.Seccion}" Width="125" HorizontalAlignment="Left"/>
             </StackPanel>
 
             <Button Content="Limpiar" Margin="0,0,20,0" Width="80" Height="25" Command="{Binding Path=LimpiarArticuloCommand}"></Button>
 
-            <Button Content="Finalizar" Margin="0,0,50,0" HorizontalAlignment="Right" Width="80" Height="25" Command="{Binding Path=FinalizarCommand}"></Button>
+            <Button Style="{StaticResource BotonFinalizar}">Finalizar</Button>
         </DockPanel>
 
 
         <DockPanel LastChildFill="True">
-            <Image Source="{Binding Path=NuevaImagen}" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="50,5,50,5"></Image>
+            <Image Source="{Binding Path=ArticuloNuevo.Imagen}" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="50,5,50,5"></Image>
             <Grid Margin="50,5,50,5"  MaxWidth="1400">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <TextBox Text="{Binding Path=NuevoTexto}" ToolTip="Insertar texto artículo" TextWrapping="Wrap" Style="{StaticResource TextBoxTextArticle}" Padding="20,10,20,10" DockPanel.Dock="Top" FontSize="14"></TextBox>
+                    <TextBox x:Name="TextoArticuloTextBox" Text="{Binding Path=ArticuloNuevo.Texto}" ToolTip="Insertar texto artículo" TextWrapping="Wrap" Style="{StaticResource TextBoxTextArticle}" Padding="20,10,20,10" DockPanel.Dock="Top" FontSize="14"></TextBox>
                 </ScrollViewer>
                 <TextBlock Text="{Binding Path=Firma.Nombre}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" FontSize="14" FontWeight="DemiBold"></TextBlock>
             </Grid>

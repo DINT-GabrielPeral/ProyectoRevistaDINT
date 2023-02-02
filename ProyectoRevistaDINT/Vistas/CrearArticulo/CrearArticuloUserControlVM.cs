@@ -13,6 +13,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
         private readonly DialogosService servicioDialogos;
         private readonly SeccionesService servicioSecciones;
         private readonly ServicioNavegacion sn;
+        private ServicioAccesoBD sb;
 
         public RelayCommand SeleccionarImagenCommand { get; }
         public RelayCommand EliminarImagenCommand { get; }
@@ -20,8 +21,8 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
         public RelayCommand FinalizarCommand { get; }
         public RelayCommand FirmarCommand { get; }
         public RelayCommand QuitarAutorCommand { get; }
-        private bool hayImagen;
 
+        private bool hayImagen;
         public bool HayImagen
         {
             get { return hayImagen; }
@@ -29,29 +30,13 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
         }
 
         private bool hayFirma;
-
         public bool HayFirma
         {
             get { return hayFirma; }
             set { SetProperty(ref hayFirma, value); }
         }
 
-        private string nuevoTitulo;
-        public string NuevoTitulo
-        {
-            get => nuevoTitulo;
-            set => SetProperty(ref nuevoTitulo, value);
-        }
-
-        private string nuevaImagen;
-        public string NuevaImagen
-        {
-            get => nuevaImagen;
-            set => SetProperty(ref nuevaImagen, value);
-        }
-
         private Autor firma;
-
         public Autor Firma
         {
             get { return firma; }
@@ -72,40 +57,45 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             set => SetProperty(ref seccionSeleccionado, value);
         }
 
-        private string nuevoTexto;
-        public string NuevoTexto
+        private Articulo articuloNuevo;
+        public Articulo ArticuloNuevo
         {
-            get => nuevoTexto;
-            set => SetProperty(ref nuevoTexto, value);
+            get => articuloNuevo;
+            set => SetProperty(ref articuloNuevo, value);
         }
+
 
         public CrearArticuloUserControlVM()
         {
             sn = new ServicioNavegacion();
+            sb = new ServicioAccesoBD();
             servicioDialogos = new DialogosService();
             servicioSecciones = new SeccionesService();
-            NuevaImagen = "";
+
             HayFirma = false;
             HayImagen = false;
+            ArticuloNuevo = new Articulo();
+
             QuitarAutorCommand = new RelayCommand(QuitarAutor);
             LimpiarArticuloCommand = new RelayCommand(LimpiarArticulo);
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagen);
             EliminarImagenCommand = new RelayCommand(EliminarImagen);
             FirmarCommand = new RelayCommand(FirmarArticulo);
+            FinalizarCommand = new RelayCommand(AñadirArticulo);
 
             Secciones = servicioSecciones.GetSecciones();
         }
 
         public void SeleccionarImagen()
         {
-            NuevaImagen = servicioDialogos.AbrirDialogoCargar("IMAGEN");
-            if (string.IsNullOrEmpty(NuevaImagen)) HayImagen = false;
+            ArticuloNuevo.Imagen = servicioDialogos.AbrirDialogoCargar("IMAGEN");
+            if (string.IsNullOrEmpty(ArticuloNuevo.Imagen)) HayImagen = false;
             else HayImagen = true;
         }
 
         public void EliminarImagen()
         {
-            NuevaImagen = "";
+            ArticuloNuevo.Imagen = "";
             HayImagen = false;
         }
 
@@ -116,6 +106,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             {
                 HayFirma = true;
                 Firma = WeakReferenceMessenger.Default.Send<AutorFirmaRequestMessage>();
+                ArticuloNuevo.AutorArticulo = Firma.Id;
             }
             else HayFirma = false;
         }
@@ -130,9 +121,15 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             HayFirma = false;
             HayImagen = false;
             Firma = null;
-            NuevoTexto = "";
-            NuevaImagen = "";
-            NuevoTitulo = "";
+            ArticuloNuevo.Texto = "";
+            ArticuloNuevo.Imagen = "";
+            ArticuloNuevo.Titulo = "";
+        }
+
+        public void AñadirArticulo()
+        {
+            sb.crearArticulo(ArticuloNuevo);
+            WeakReferenceMessenger.Default.Send(new NuevoArticuloValueChangedMessage(ArticuloNuevo));
         }
     }
 }

@@ -186,6 +186,7 @@
     <Compile Include="Mensajeria\AutorFirmaRequestMessage.cs" />
     <Compile Include="Mensajeria\AutorSeleccionadoEditarMessage.cs" />
     <Compile Include="Mensajeria\AutoresChangedMessage.cs" />
+    <Compile Include="Mensajeria\NuevoArticuloValueChangedMessage.cs" />
     <Compile Include="Servicios\AzureService.cs" />
     <Compile Include="Servicios\DialogosService.cs" />
     <Compile Include="Servicios\RedesSocialesService.cs" />

@@ -39,10 +39,7 @@ namespace ProyectoRevistaDINT.Vistas.FirmarArticulo
                 (this, (r, m) =>
                 {
                     if (!m.HasReceivedResponse)
-                        m.Reply(r.AutorSeleccionado);
-                    
-
-                    
+                        m.Reply(r.AutorSeleccionado);    
                 });
         }
 
