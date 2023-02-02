@@ -17,6 +17,6 @@
             <Button Command="{Binding Path=ComandoModerarArticulo}">Moderar</Button>
             <Button Command="{Binding Path=ComandoEliminarArticulo}">Eliminar</Button>
         </StackPanel>
-        <syncfusion:SfDataGrid ItemsSource="{Binding Articulos}" AllowFiltering="True" ColumnSizer="Star"/>
+        <syncfusion:SfDataGrid ItemsSource="{Binding Path=Articulos}" SelectedItem="{Binding Path=ArticuloSeleccionado}" AllowFiltering="True" ColumnSizer="Star"/>
     </DockPanel>
 </UserControl>

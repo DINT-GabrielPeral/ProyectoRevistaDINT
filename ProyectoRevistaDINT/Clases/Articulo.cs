@@ -39,9 +39,9 @@ namespace ProyectoRevistaDINT.Clases
             set => SetProperty(ref autorArticulo, value);
         }
 
-        public Articulo() { }
+        
 
-        public Articulo(string titulo, string imagen, string texto, string seccion, int autorArticulo)
+        public Articulo(string titulo = "", string imagen = "", string texto = "", string seccion="", int autorArticulo=0)
         {
             Titulo = titulo;
             Imagen = imagen;
