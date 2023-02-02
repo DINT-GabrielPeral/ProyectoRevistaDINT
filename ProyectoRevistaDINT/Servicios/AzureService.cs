@@ -23,7 +23,10 @@ namespace ProyectoRevistaDINT.Servicios
             //Leemos la imagen y la subimos al contenedor
             Stream streamImagen = File.OpenRead(rutaImagen);
             string nombreImagen = Path.GetFileName(rutaImagen);
-            clienteContenedor.UploadBlob(nombreImagen, streamImagen);
+            if (!clienteContenedor.GetBlobClient(nombreImagen).Exists())
+            {
+                clienteContenedor.UploadBlob(nombreImagen, streamImagen);
+            }
 
             //Una vez subida, obtenemos la URL para referenciarla
             var clienteBlobImagen = clienteContenedor.GetBlobClient(nombreImagen);

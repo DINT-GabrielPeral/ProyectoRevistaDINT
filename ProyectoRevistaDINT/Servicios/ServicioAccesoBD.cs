@@ -14,7 +14,7 @@ namespace ProyectoRevistaDINT.Servicios
     {
         public ServicioAccesoBD()
         {
-            SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
+            SqliteConnection conexion = new SqliteConnection("Data Source=./DatosRevista.db");
 
             //Abre la conexión con la base de datos
             conexion.Open();
