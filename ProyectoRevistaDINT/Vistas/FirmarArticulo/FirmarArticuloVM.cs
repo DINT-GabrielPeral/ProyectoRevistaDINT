@@ -38,7 +38,11 @@ namespace ProyectoRevistaDINT.Vistas.FirmarArticulo
             WeakReferenceMessenger.Default.Register<FirmarArticuloVM, AutorFirmaRequestMessage>
                 (this, (r, m) =>
                 {
-                    m.Reply(r.AutorSeleccionado);
+                    if (!m.HasReceivedResponse)
+                        m.Reply(r.AutorSeleccionado);
+                    
+
+                    
                 });
         }
 
