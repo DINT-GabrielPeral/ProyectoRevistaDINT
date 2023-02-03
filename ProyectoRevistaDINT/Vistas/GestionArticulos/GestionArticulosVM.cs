@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ProyectoRevistaDINT.Vistas.GestionArticulos
 {
@@ -17,6 +18,7 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
     {
         private ServicioAccesoBD sbd;
         private ServicioNavegacion sn;
+        private DialogosService servicioDialogos;
 
         private ObservableCollection<Articulo> articulos;
         public ObservableCollection<Articulo> Articulos
@@ -39,9 +41,10 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
         {
             sn = new ServicioNavegacion();
             sbd = new ServicioAccesoBD();
+            servicioDialogos = new DialogosService();
 
-            ComandoModerarArticulo = new RelayCommand(AbrirModerarArticulo);
-            ComandoEliminarArticulo = new RelayCommand(AbrirEliminarArticulo);
+            ComandoModerarArticulo = new RelayCommand(ModerarArticulo);
+            ComandoEliminarArticulo = new RelayCommand(EliminarArticulo);
             Articulos = new ObservableCollection<Articulo>();
 
             Articulos = sbd.recibirArticulos();
@@ -52,13 +55,23 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
             });
         }
 
-        public void AbrirModerarArticulo()
+        public void ModerarArticulo()
         {
 
         }
-        public void AbrirEliminarArticulo()
-        {
 
+        public void EliminarArticulo()
+        {
+            MessageBoxResult resultado = servicioDialogos.MostrarDialogoPregunta(
+                "¿Estás seguro de que quieres eliminar este artículo?",
+                "AVISO",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning
+            );
+            if (resultado == MessageBoxResult.Yes)
+            {
+                sbd.eliminarArticulo(ArticuloSeleccionado);
+            }
         }
     }
 }

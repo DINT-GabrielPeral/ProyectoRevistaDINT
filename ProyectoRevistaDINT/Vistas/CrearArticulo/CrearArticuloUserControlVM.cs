@@ -5,6 +5,7 @@ using ProyectoRevistaDINT.Clases;
 using ProyectoRevistaDINT.Mensajeria;
 using ProyectoRevistaDINT.Servicios;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace ProyectoRevistaDINT.Vistas.CrearArticulo
 {
@@ -128,6 +129,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
 
         public void AñadirArticulo()
         {
+            servicioDialogos.MostrarDialogo("Artículo creado correctamente", "GESTIÓN ARTÍCULOS", MessageBoxButton.OK, MessageBoxImage.Information);
             sb.crearArticulo(ArticuloNuevo);
             WeakReferenceMessenger.Default.Send(new NuevoArticuloValueChangedMessage(ArticuloNuevo));
         }
