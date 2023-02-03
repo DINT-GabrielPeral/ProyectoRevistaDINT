@@ -39,7 +39,13 @@ namespace ProyectoRevistaDINT.Clases
             set => SetProperty(ref autorArticulo, value);
         }
 
-        
+        private string pdf;
+        public string Pdf
+        {
+            get => pdf;
+            set => SetProperty(ref pdf, value);
+        }
+
 
         public Articulo(string titulo = "", string imagen = "", string texto = "", string seccion="", int autorArticulo=0)
         {
@@ -48,6 +54,16 @@ namespace ProyectoRevistaDINT.Clases
             Texto = texto;
             Seccion = seccion;
             AutorArticulo = autorArticulo;
+            Pdf = "";
+        }
+        public Articulo(string pdf, string titulo = "", string imagen = "", string texto = "", string seccion = "", int autorArticulo = 0)
+        {
+            Titulo = titulo;
+            Imagen = imagen;
+            Texto = texto;
+            Seccion = seccion;
+            AutorArticulo = autorArticulo;
+            Pdf = pdf;
         }
     }
 }
