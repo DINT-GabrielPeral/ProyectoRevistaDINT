@@ -72,6 +72,7 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
             {
                 sbd.eliminarArticulo(ArticuloSeleccionado);
             }
+            Articulos = sbd.recibirArticulos();
         }
     }
 }
