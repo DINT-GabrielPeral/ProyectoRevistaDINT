@@ -61,5 +61,7 @@ namespace ProyectoRevistaDINT.Vistas.EditarAutor
         {
             sb.editarAutor(AutorActual);
         }
+
+
     }
 }

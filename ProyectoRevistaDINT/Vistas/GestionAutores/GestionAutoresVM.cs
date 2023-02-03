@@ -61,7 +61,8 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
         public void AbrirEditarAutor()
         {
             
-            sn.AbrirEditarAutor(autorSeleccionado); 
+            sn.AbrirEditarAutor(autorSeleccionado);
+            Autores = sbd.recibirAutores();
             
         }
         public void AbrirEliminarAutor()
