@@ -63,6 +63,8 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
             }
             Autores = sb.recibirAutores();
 
+
+
             WeakReferenceMessenger.Default.Send(new AutoresChangedMessage(Autores));
 
         }

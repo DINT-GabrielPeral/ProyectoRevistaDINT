@@ -37,6 +37,7 @@ namespace ProyectoRevistaDINT.Servicios
                                     texto varchar(1000),
                                     seccion varchar(100),
                                     autorArticulo integer,
+                                    pdf varchar(500),
                                     CONSTRAINT fk_autor FOREIGN KEY (autorArticulo) REFERENCES autor(id))";
             comando2.ExecuteNonQuery();
             
@@ -114,7 +115,7 @@ namespace ProyectoRevistaDINT.Servicios
             comando.CommandText = "SELECT * FROM articulo";
             SqliteDataReader lector = comando.ExecuteReader();
             int autorArticulo;
-            string titulo, imagen, texto, seccion;
+            string titulo, imagen, texto, seccion, pdf;
 
             if (lector.HasRows)
             {
@@ -126,7 +127,8 @@ namespace ProyectoRevistaDINT.Servicios
                     texto = (string)lector["texto"];
                     seccion = (string)lector["seccion"];
                     autorArticulo = int.Parse(lector["autorArticulo"].ToString());
-                    listaArticulos.Add(new Articulo(titulo, imagen, texto, seccion, autorArticulo));
+                    pdf = (string)lector["pdf"];
+                    listaArticulos.Add(new Articulo(pdf, titulo, imagen, texto, seccion, autorArticulo));
                 }
             }
 
@@ -142,17 +144,19 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "INSERT INTO articulo VALUES (@titulo,@imagen,@texto,@seccion,@autorArticulo)";
+            comando.CommandText = "INSERT INTO articulo VALUES (@titulo,@imagen,@texto,@seccion,@autorArticulo,@pdf)";
             comando.Parameters.Add("@titulo", SqliteType.Text);
             comando.Parameters.Add("@imagen", SqliteType.Text);
             comando.Parameters.Add("@texto", SqliteType.Text);
             comando.Parameters.Add("@seccion", SqliteType.Text);
             comando.Parameters.Add("@autorArticulo", SqliteType.Integer);
+            comando.Parameters.Add("@pdf", SqliteType.Text);
             comando.Parameters["@titulo"].Value = articulo.Titulo;
             comando.Parameters["@imagen"].Value = articulo.Imagen;
             comando.Parameters["@texto"].Value = articulo.Texto;
             comando.Parameters["@seccion"].Value = articulo.Seccion;
             comando.Parameters["@autorArticulo"].Value = articulo.AutorArticulo;
+            comando.Parameters["@pdf"].Value = articulo.Pdf;
             comando.ExecuteNonQuery();
 
             conexion.Close();
@@ -203,7 +207,7 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "DELETE FROM articulo WHERE rowid = @titulo";
+            comando.CommandText = "DELETE FROM articulo WHERE titulo = @titulo";
             comando.Parameters.Add("@titulo", SqliteType.Text);
             comando.Parameters["@titulo"].Value = articulo.Titulo;
             comando.ExecuteNonQuery();
