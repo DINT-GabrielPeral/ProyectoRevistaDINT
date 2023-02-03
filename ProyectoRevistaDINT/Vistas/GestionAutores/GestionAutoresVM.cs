@@ -72,7 +72,7 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
             {
                 if (!sbd.tieneArticulos(AutorSeleccionado))
                     sbd.eliminarAutor(AutorSeleccionado);
-                else MessageBox.Show("No se puede eliminar un autor que tenga articulos escritos.");
+                else MessageBox.Show("No se puede eliminar un autor que tenga articulos escritos.","AVISO",MessageBoxButton.OK,MessageBoxImage.Warning);
             }
                 
             Autores = sbd.recibirAutores();
