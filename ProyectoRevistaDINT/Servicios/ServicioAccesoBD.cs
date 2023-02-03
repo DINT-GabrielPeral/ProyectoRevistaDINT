@@ -214,5 +214,35 @@ namespace ProyectoRevistaDINT.Servicios
 
             conexion.Close();
         }
+
+        public bool tieneArticulos(Autor autor)
+        {
+            bool tiene = false;
+            SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
+            conexion.Open();
+
+            SqliteCommand comando = conexion.CreateCommand();
+
+            comando.CommandText = "SELECT COUNT(*) AS 'total' FROM articulo JOIN autor ON articulo.autorArticulo = autor.id WHERE autor.id = @id GROUP BY autor.id";
+            comando.Parameters.Add("@id", SqliteType.Integer);
+            comando.Parameters["@id"].Value = autor.Id;
+            comando.ExecuteNonQuery();
+
+            SqliteDataReader lector = comando.ExecuteReader();
+            int total;
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    //Distintas formas de acceder a los campos de la fila actual
+                    total = int.Parse(lector["total"].ToString());
+                    if (total != 0) tiene = true;
+
+                }
+            }
+
+            conexion.Close();
+            return tiene;
+        }
     }
 }
