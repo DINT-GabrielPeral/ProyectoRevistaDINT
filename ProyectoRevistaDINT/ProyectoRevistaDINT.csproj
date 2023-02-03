@@ -193,6 +193,7 @@
     <Compile Include="Servicios\SeccionesService.cs" />
     <Compile Include="Servicios\ServicioAccesoBD.cs" />
     <Compile Include="Servicios\ServicioNavegacion.cs" />
+    <Compile Include="Servicios\ServicioPDF.cs" />
     <Compile Include="Vistas\CrearArticulo\CrearArticuloUserControl.xaml.cs">
       <DependentUpon>CrearArticuloUserControl.xaml</DependentUpon>
     </Compile>
