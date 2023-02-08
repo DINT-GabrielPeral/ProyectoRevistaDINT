@@ -1,6 +1,4 @@
-﻿using PdfSharp.Drawing;
-using PdfSharp.Pdf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +10,7 @@ namespace ProyectoRevistaDINT.Servicios
     {
         public void generarPDF()
         {
-            PdfDocument document = new PdfDocument();
+           /* PdfDocument document = new PdfDocument();
 
             PdfPage page = document.AddPage();
 
@@ -27,7 +25,7 @@ namespace ProyectoRevistaDINT.Servicios
 
             document.Save(filename);
 
-            //Process.Start(filename);
+            //Process.Start(filename);*/
         }
     }
 }
