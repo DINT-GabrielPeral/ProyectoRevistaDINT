@@ -8,9 +8,21 @@ namespace ProyectoRevistaDINT.Servicios
         {
             return new ObservableCollection<string>
             {
-                "Sección 1",
-                "Sección 2",
-                "Sección 3"
+                "Fútbol",
+                "Tenis",
+                "Baloncesto",
+                "Rugby",
+                "Automovilismo",
+                "Bádminton",
+                "Béisbol",
+                "Boxeo",
+                "Ciclismo",
+                "Hockey",
+                "Golf",
+                "Motociclismo",
+                "Natación",
+                "Padel",
+                "Voleibol"
             };
         }
     }

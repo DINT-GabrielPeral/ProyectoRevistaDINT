@@ -4,17 +4,18 @@ using Microsoft.Toolkit.Mvvm.Messaging;
 using ProyectoRevistaDINT.Clases;
 using ProyectoRevistaDINT.Mensajeria;
 using ProyectoRevistaDINT.Servicios;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace ProyectoRevistaDINT.Vistas.CrearArticulo
 {
-    public class CrearArticuloUserControlVM : ObservableObject
+    public class CrearArticuloUserControlVM : ObservableRecipient
     {
         private readonly DialogosService servicioDialogos;
         private readonly SeccionesService servicioSecciones;
         private readonly ServicioNavegacion sn;
-        private ServicioAccesoBD sb;
+        private readonly ServicioAccesoBD sb;
 
         public RelayCommand SeleccionarImagenCommand { get; }
         public RelayCommand EliminarImagenCommand { get; }
@@ -26,22 +27,22 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
         private bool hayImagen;
         public bool HayImagen
         {
-            get { return hayImagen; }
-            set { SetProperty(ref hayImagen, value); }
+            get => hayImagen;
+            set => SetProperty(ref hayImagen, value);
         }
 
         private bool hayFirma;
         public bool HayFirma
         {
-            get { return hayFirma; }
-            set { SetProperty(ref hayFirma, value); }
+            get => hayFirma;
+            set => SetProperty(ref hayFirma, value);
         }
 
         private Autor firma;
         public Autor Firma
         {
-            get { return firma; }
-            set { SetProperty(ref firma, value); }
+            get => firma;
+            set => SetProperty(ref firma, value);
         }
 
         private ObservableCollection<string> secciones;
@@ -65,7 +66,6 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             set => SetProperty(ref articuloNuevo, value);
         }
 
-
         public CrearArticuloUserControlVM()
         {
             sn = new ServicioNavegacion();
@@ -76,6 +76,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             HayFirma = false;
             HayImagen = false;
             ArticuloNuevo = new Articulo();
+            Secciones = servicioSecciones.GetSecciones();
 
             QuitarAutorCommand = new RelayCommand(QuitarAutor);
             LimpiarArticuloCommand = new RelayCommand(LimpiarArticulo);
@@ -83,15 +84,19 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             EliminarImagenCommand = new RelayCommand(EliminarImagen);
             FirmarCommand = new RelayCommand(FirmarArticulo);
             FinalizarCommand = new RelayCommand(AñadirArticulo);
-
-            Secciones = servicioSecciones.GetSecciones();
         }
 
         public void SeleccionarImagen()
         {
             ArticuloNuevo.Imagen = servicioDialogos.AbrirDialogoCargar("IMAGEN");
-            if (string.IsNullOrEmpty(ArticuloNuevo.Imagen)) HayImagen = false;
-            else HayImagen = true;
+            if (string.IsNullOrEmpty(ArticuloNuevo.Imagen))
+            {
+                HayImagen = false;
+            }
+            else
+            {
+                HayImagen = true;
+            }
         }
 
         public void EliminarImagen()
@@ -109,7 +114,10 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
                 Firma = WeakReferenceMessenger.Default.Send<AutorFirmaRequestMessage>();
                 ArticuloNuevo.AutorArticulo = Firma.Id;
             }
-            else HayFirma = false;
+            else
+            {
+                HayFirma = false;
+            }
         }
 
         public void QuitarAutor()
@@ -129,9 +137,51 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
 
         public void AñadirArticulo()
         {
-            servicioDialogos.MostrarDialogo("Artículo creado correctamente", "GESTIÓN ARTÍCULOS", MessageBoxButton.OK, MessageBoxImage.Information);
-            sb.crearArticulo(ArticuloNuevo);
-            WeakReferenceMessenger.Default.Send(new NuevoArticuloValueChangedMessage(ArticuloNuevo));
+            try
+            {
+                ObservableCollection<Articulo> articulos = WeakReferenceMessenger.Default.Send<ArticulosCreadosRequestMessage>();
+                Articulo auxiliar = new Articulo();
+                foreach (Articulo articulo in articulos)
+                {
+                    if (ArticuloNuevo.Titulo == articulo.Titulo)
+                    {
+                        auxiliar = articulo;
+                        break;
+                    }
+                }
+
+                if (ArticuloNuevo.Titulo != auxiliar.Titulo)
+                {
+                    sb.crearArticulo(ArticuloNuevo);
+                    servicioDialogos.MostrarDialogo(
+                        "Artículo creado correctamente",
+                        "GESTIÓN ARTÍCULOS",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information
+                    );
+                    WeakReferenceMessenger.Default.Send(new NuevoArticuloValueChangedMessage(ArticuloNuevo));
+                }
+                else
+                {
+                    servicioDialogos.MostrarDialogo(
+                        "No se ha podido crear el artículo porque ya existe un artículo con ese título",
+                        "ERROR AL CREAR EL ARTÍCULO",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error
+                    );
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                sb.crearArticulo(ArticuloNuevo);
+                servicioDialogos.MostrarDialogo(
+                    "Artículo creado correctamente",
+                    "GESTIÓN ARTÍCULOS",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information
+                );
+                WeakReferenceMessenger.Default.Send(new NuevoArticuloValueChangedMessage(ArticuloNuevo));
+            }
         }
     }
 }

@@ -4,27 +4,21 @@ using Microsoft.Toolkit.Mvvm.Messaging;
 using ProyectoRevistaDINT.Clases;
 using ProyectoRevistaDINT.Mensajeria;
 using ProyectoRevistaDINT.Servicios;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ProyectoRevistaDINT.Vistas.GestionArticulos
 {
     class GestionArticulosVM : ObservableObject
     {
-        private ServicioAccesoBD sbd;
-        private ServicioNavegacion sn;
-        private DialogosService servicioDialogos;
+        private readonly ServicioAccesoBD sbd;
+        private readonly DialogosService servicioDialogos;
 
         private ObservableCollection<Articulo> articulos;
         public ObservableCollection<Articulo> Articulos
         {
-            get { return articulos; }
-            set { SetProperty(ref articulos, value); }
+            get => articulos;
+            set => SetProperty(ref articulos, value);
         }
 
         private Articulo articuloSeleccionado;
@@ -39,7 +33,6 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
 
         public GestionArticulosVM()
         {
-            sn = new ServicioNavegacion();
             sbd = new ServicioAccesoBD();
             servicioDialogos = new DialogosService();
 
@@ -49,6 +42,15 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
 
             Articulos = sbd.recibirArticulos();
 
+            WeakReferenceMessenger.Default.Register<GestionArticulosVM, ArticulosCreadosRequestMessage>(
+                this, (r, m) =>
+                {
+                    if (!m.HasReceivedResponse)
+                    {
+                        m.Reply(Articulos);
+                    }
+                }
+            );
             WeakReferenceMessenger.Default.Register<NuevoArticuloValueChangedMessage>(this, (r, m) =>
             {
                 ArticuloSeleccionado = m.Value;
@@ -62,17 +64,30 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
 
         public void EliminarArticulo()
         {
-            MessageBoxResult resultado = servicioDialogos.MostrarDialogoPregunta(
-                "¿Estás seguro de que quieres eliminar este artículo?",
-                "AVISO",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Warning
-            );
-            if (resultado == MessageBoxResult.Yes)
+            if (ArticuloSeleccionado.Pdf == "")
             {
-                sbd.eliminarArticulo(ArticuloSeleccionado);
+                MessageBoxResult resultado = servicioDialogos.MostrarDialogoPregunta(
+                    "¿Estás seguro de que quieres eliminar este artículo?",
+                    "AVISO",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning
+                );
+                if (resultado == MessageBoxResult.Yes)
+                {
+                    sbd.eliminarArticulo(ArticuloSeleccionado);
+                }
+
+                Articulos = sbd.recibirArticulos();
             }
-            Articulos = sbd.recibirArticulos();
+            else
+            {
+                servicioDialogos.MostrarDialogo(
+                    "No se ha podido eliminar el artículo porque ya está publicado",
+                    "ERROR AL ELIMINAR EL ARTÍCULO",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
+            }
         }
     }
 }
