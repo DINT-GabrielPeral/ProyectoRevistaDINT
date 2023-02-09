@@ -36,7 +36,7 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
         public PublicarArticuloUserControl1VM()
         {
             sn = new ServicioNavegacion();
-            ComandoPublicarArticulo = new RelayCommand(AbrirPublicarArticulos);
+            ComandoPublicarArticulo = new RelayCommand(PublicarArticulos);
             ComandoEliminarArticulo = new RelayCommand(AbrirEliminarArticulo);
             ArticuloSeleccionado = new Articulo();
             Articulos = new ObservableCollection<Articulo>();
@@ -51,7 +51,7 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
             });
         }
 
-        public void AbrirPublicarArticulos()
+        public void PublicarArticulos()
         {
             
         }
