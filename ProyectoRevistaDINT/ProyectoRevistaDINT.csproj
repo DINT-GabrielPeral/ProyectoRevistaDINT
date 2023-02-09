@@ -195,6 +195,7 @@
     <Compile Include="Clases\Autor.cs" />
     <Compile Include="MainWindowVM.cs" />
     <Compile Include="Mensajeria\ArticuloChangedMessage.cs" />
+    <Compile Include="Mensajeria\ArticulosCreadosRequestMessage.cs" />
     <Compile Include="Mensajeria\AutorFirmaRequestMessage.cs" />
     <Compile Include="Mensajeria\AutorSeleccionadoEditarMessage.cs" />
     <Compile Include="Mensajeria\AutoresChangedMessage.cs" />
