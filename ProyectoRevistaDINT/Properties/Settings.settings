@@ -5,5 +5,11 @@
     <Setting Name="ClaveSyncfusion" Type="System.String" Scope="Application">
       <Value Profile="(Default)">OTE4NTAxQDMyMzAyZTM0MmUzMEZPU0Q5VEtWQzB3WXlDZGFvNVM2dEw0cFNPVlVpUTgyWVFMdkFQNzAwckk9</Value>
     </Setting>
+    <Setting Name="endpoint" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://moderacionrevistra.cognitiveservices.azure.com/</Value>
+    </Setting>
+    <Setting Name="ClaveAzureModeracion" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">9865df8b31c84478af735963503fdc97</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

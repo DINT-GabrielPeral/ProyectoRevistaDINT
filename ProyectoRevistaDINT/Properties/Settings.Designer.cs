@@ -32,5 +32,23 @@ namespace ProyectoRevistaDINT.Properties {
                 return ((string)(this["ClaveSyncfusion"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://moderacionrevistra.cognitiveservices.azure.com/")]
+        public string endpoint {
+            get {
+                return ((string)(this["endpoint"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9865df8b31c84478af735963503fdc97")]
+        public string ClaveAzureModeracion {
+            get {
+                return ((string)(this["ClaveAzureModeracion"]));
+            }
+        }
     }
 }
