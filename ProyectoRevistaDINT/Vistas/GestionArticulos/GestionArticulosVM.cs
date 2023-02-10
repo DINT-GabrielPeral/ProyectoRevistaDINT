@@ -9,9 +9,9 @@ using System.Windows;
 
 namespace ProyectoRevistaDINT.Vistas.GestionArticulos
 {
-    class GestionArticulosVM : ObservableObject
+    public class GestionArticulosVM : ObservableObject
     {
-        private readonly ServicioAccesoBD sbd;
+        private readonly ServicioAccesoBD servicioBD;
         private readonly DialogosService servicioDialogos;
 
         private ObservableCollection<Articulo> articulos;
@@ -28,19 +28,19 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
             set => SetProperty(ref articuloSeleccionado, value);
         }
 
-        public RelayCommand ComandoModerarArticulo { get; }
-        public RelayCommand ComandoEliminarArticulo { get; }
+        public RelayCommand ModerarArticuloCommand { get; }
+        public RelayCommand EliminarArticuloCommand { get; }
 
         public GestionArticulosVM()
         {
-            sbd = new ServicioAccesoBD();
+            servicioBD = new ServicioAccesoBD();
             servicioDialogos = new DialogosService();
 
-            ComandoModerarArticulo = new RelayCommand(ModerarArticulo);
-            ComandoEliminarArticulo = new RelayCommand(EliminarArticulo);
+            ModerarArticuloCommand = new RelayCommand(ModerarArticulo);
+            EliminarArticuloCommand = new RelayCommand(EliminarArticulo);
             Articulos = new ObservableCollection<Articulo>();
 
-            Articulos = sbd.recibirArticulos();
+            Articulos = servicioBD.recibirArticulos();
 
             WeakReferenceMessenger.Default.Register<GestionArticulosVM, ArticulosCreadosRequestMessage>(
                 this, (r, m) =>
@@ -74,10 +74,10 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
                 );
                 if (resultado == MessageBoxResult.Yes)
                 {
-                    sbd.eliminarArticulo(ArticuloSeleccionado);
+                    servicioBD.eliminarArticulo(ArticuloSeleccionado);
                 }
 
-                Articulos = sbd.recibirArticulos();
+                Articulos = servicioBD.recibirArticulos();
             }
             else
             {

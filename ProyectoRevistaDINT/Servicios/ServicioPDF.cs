@@ -66,18 +66,14 @@ namespace ProyectoRevistaDINT.Servicios
                                     {
                                         x.Spacing(20);
 
-                                        if(a.Imagen != "")
+                                        using(WebClient client = new WebClient())
                                         {
-                                            using (WebClient client = new WebClient())
-                                            {
-                                                client.DownloadFile(new Uri(a.Imagen), path);
-                                            }
-
-                                            x.Item()
-                                               .Image(path);
+                                            client.DownloadFile(new Uri(a.Imagen), "");
                                         }
 
-                                        
+
+                                        //x.Item().Image();
+                                    })
 
                                         x.Item().Text(a.Texto);
                                     });

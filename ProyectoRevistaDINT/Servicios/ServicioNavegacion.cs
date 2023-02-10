@@ -9,17 +9,12 @@ using ProyectoRevistaDINT.Vistas.GestionArticulos;
 using ProyectoRevistaDINT.Vistas.GestionAutores;
 using ProyectoRevistaDINT.Vistas.Inicio;
 using ProyectoRevistaDINT.Vistas.PublicarArticulo;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace ProyectoRevistaDINT.Servicios
 {
-    class ServicioNavegacion
+    public class ServicioNavegacion
     {
         public UserControl CargaGestionAutores()
         {
@@ -32,12 +27,11 @@ namespace ProyectoRevistaDINT.Servicios
 
         public bool? AbrirEliminarAutor()
         {
-            //EliminarAutor dialog = new EliminarAutor();
-            //return dialog.ShowDialog();
-            return MessageBox.Show("¿Estás seguro de que desea eliminar este autor?",
-                        "Eliminar autor",
-                        MessageBoxButton.OKCancel,
-                        MessageBoxImage.Exclamation) == MessageBoxResult.OK;
+            return MessageBox.Show(
+                "¿Estás seguro de que desea eliminar este autor?",
+                "ELIMINAR AUTOR",
+                MessageBoxButton.OKCancel,
+                MessageBoxImage.Exclamation) == MessageBoxResult.OK;
 
         }
 
@@ -52,7 +46,7 @@ namespace ProyectoRevistaDINT.Servicios
             return dialog.ShowDialog();
         }
 
-        public bool? AbrirEditarAutor( Autor autorSeleccionado)
+        public bool? AbrirEditarAutor(Autor autorSeleccionado)
         {
             EditarAutorWindow dialog = new EditarAutorWindow();
             WeakReferenceMessenger.Default.Send(new AutorSeleccionadoEditarMessage(autorSeleccionado));
@@ -71,10 +65,11 @@ namespace ProyectoRevistaDINT.Servicios
 
         internal bool? AbrirEliminarArticulo()
         {
-            return MessageBox.Show("¿Estás seguro de que desea eliminar este artículo?",
-                        "Eliminar articulo",
-                        MessageBoxButton.OKCancel,
-                        MessageBoxImage.Exclamation) == MessageBoxResult.OK;
+            return MessageBox.Show(
+                "¿Estás seguro de que desea eliminar este artículo?",
+                "ELIMINAR ARTÍCULO",
+                MessageBoxButton.OKCancel,
+                MessageBoxImage.Exclamation) == MessageBoxResult.OK;
         }
 
         public bool? AbrirFirmarArticulo()

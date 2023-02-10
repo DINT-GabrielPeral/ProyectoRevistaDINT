@@ -14,8 +14,8 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
     {
         private readonly DialogosService servicioDialogos;
         private readonly SeccionesService servicioSecciones;
-        private readonly ServicioNavegacion sn;
-        private readonly ServicioAccesoBD sb;
+        private readonly ServicioNavegacion servicioNavegacion;
+        private readonly ServicioAccesoBD servicioBD;
 
         public RelayCommand SeleccionarImagenCommand { get; }
         public RelayCommand EliminarImagenCommand { get; }
@@ -68,8 +68,8 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
 
         public CrearArticuloUserControlVM()
         {
-            sn = new ServicioNavegacion();
-            sb = new ServicioAccesoBD();
+            servicioNavegacion = new ServicioNavegacion();
+            servicioBD = new ServicioAccesoBD();
             servicioDialogos = new DialogosService();
             servicioSecciones = new SeccionesService();
 
@@ -107,7 +107,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
 
         public void FirmarArticulo()
         {
-            bool? firmar = sn.AbrirFirmarArticulo();
+            bool? firmar = servicioNavegacion.AbrirFirmarArticulo();
             if (firmar == true)
             {
                 HayFirma = true;
@@ -152,7 +152,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
 
                 if (ArticuloNuevo.Titulo != auxiliar.Titulo)
                 {
-                    sb.crearArticulo(ArticuloNuevo);
+                    servicioBD.crearArticulo(ArticuloNuevo);
                     servicioDialogos.MostrarDialogo(
                         "Artículo creado correctamente",
                         "GESTIÓN ARTÍCULOS",
@@ -173,7 +173,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             }
             catch (InvalidOperationException)
             {
-                sb.crearArticulo(ArticuloNuevo);
+                servicioBD.crearArticulo(ArticuloNuevo);
                 servicioDialogos.MostrarDialogo(
                     "Artículo creado correctamente",
                     "GESTIÓN ARTÍCULOS",

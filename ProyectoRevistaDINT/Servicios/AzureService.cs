@@ -1,16 +1,11 @@
 ﻿using Azure.Storage.Blobs;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProyectoRevistaDINT.Servicios
 {
-    class AzureService
+    public class AzureService
     {
-        public String SubirImagen(String rutaImagenLocal)
+        public string SubirImagen(string rutaImagenLocal)
         {
             string cadenaConexion = "DefaultEndpointsProtocol=https;AccountName=trivialpablos;AccountKey=E3/ytDcBrNy5/XqhlF8stLFgAMnJT+QBz19F6WymeCcNxJJ31YlmgrMpCK+S/LYnt8R2no8GdrSF+AStSAOp5Q==;EndpointSuffix=core.windows.net"; //La obtenemos en el portal de Azure, asociada a la cuenta de almacenamiento
             string nombreContenedorBlobs = "revista"; //El nombre que le hayamos dado a nuestro contenedor de blobs en el portal de Azure

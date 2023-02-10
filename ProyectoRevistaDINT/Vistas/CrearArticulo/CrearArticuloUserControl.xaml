@@ -114,7 +114,8 @@
 
 
         <ScrollViewer VerticalScrollBarVisibility="Disabled" DockPanel.Dock="Top" Margin="50,5,50,5" Height="25" >
-            <TextBox x:Name="TituloTextBox" Text="{Binding Path=ArticuloNuevo.Titulo}" Style="{StaticResource TextBoxTitle}" ToolTip="Insertar Título" TextWrapping="Wrap" MaxWidth="1400" Padding="10,0,10,0" FontSize="18" FontWeight="DemiBold" VerticalAlignment="Center"></TextBox>
+            <TextBox x:Name="TituloTextBox" Text="{Binding Path=ArticuloNuevo.Titulo}" Style="{StaticResource TextBoxTitle}" ToolTip="Insertar Título"
+                     TextWrapping="Wrap" MaxWidth="1400" Padding="10,0,10,0" FontSize="18" FontWeight="DemiBold" VerticalAlignment="Center"></TextBox>
         </ScrollViewer>
 
 
@@ -128,7 +129,8 @@
 
             <StackPanel Orientation="Horizontal"  Margin="0,0,20,0">
                 <TextBlock Text="Sección: " VerticalAlignment="Center"></TextBlock>
-                <ComboBox ItemsSource="{Binding Path=Secciones}" SelectedItem="{Binding Path=ArticuloNuevo.Seccion}" Width="125" HorizontalAlignment="Left"/>
+                <ComboBox ItemsSource="{Binding Path=Secciones}" SelectedItem="{Binding Path=ArticuloNuevo.Seccion}" Width="125"
+                          HorizontalAlignment="Left"/>
             </StackPanel>
 
             <Button Content="Limpiar" Margin="0,0,20,0" Width="80" Height="25" Command="{Binding Path=LimpiarArticuloCommand}"></Button>
@@ -141,9 +143,12 @@
             <Image Source="{Binding Path=ArticuloNuevo.Imagen}" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="50,5,50,5"></Image>
             <Grid Margin="50,5,50,5"  MaxWidth="1400">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <TextBox x:Name="TextoArticuloTextBox" Text="{Binding Path=ArticuloNuevo.Texto}" ToolTip="Insertar texto artículo" TextWrapping="Wrap" Style="{StaticResource TextBoxTextArticle}" Padding="20,10,20,10" DockPanel.Dock="Top" FontSize="14"></TextBox>
+                    <TextBox x:Name="TextoArticuloTextBox" Text="{Binding Path=ArticuloNuevo.Texto}" ToolTip="Insertar texto artículo"
+                             TextWrapping="Wrap" Style="{StaticResource TextBoxTextArticle}" Padding="20,10,20,10" DockPanel.Dock="Top"
+                             FontSize="14"></TextBox>
                 </ScrollViewer>
-                <TextBlock Text="{Binding Path=Firma.Nombre}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" FontSize="14" FontWeight="DemiBold"></TextBlock>
+                <TextBlock Text="{Binding Path=Firma.Nombre}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" FontSize="14"
+                           FontWeight="DemiBold"></TextBlock>
             </Grid>
         </DockPanel>
 
