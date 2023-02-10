@@ -32,14 +32,16 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
             set { SetProperty(ref articuloSeleccionado, value); }
         }
 
-        public RelayCommand ComandoPublicarArticulo { get; }
+        public RelayCommand ComandoPublicarTodos { get; }
+        public RelayCommand ComandoPublicarUno{ get; }
         public RelayCommand ComandoEliminarArticulo { get; }
 
         public PublicarArticuloUserControl1VM()
         {
             sn = new ServicioNavegacion();
-            ComandoPublicarArticulo = new RelayCommand(PublicarArticulos);
+            ComandoPublicarTodos = new RelayCommand(PublicarTodos);
             ComandoEliminarArticulo = new RelayCommand(AbrirEliminarArticulo);
+            ComandoPublicarUno = new RelayCommand(PublicarUno);
             ArticuloSeleccionado = new Articulo();
             Articulos = new ObservableCollection<Articulo>();
 
@@ -53,13 +55,20 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
             });
         }
 
-        public void PublicarArticulos()
+        public void PublicarTodos()
         {
-            spdf.generarPDF(Articulos);
+            spdf.generarTodosPDF(Articulos);
             sd.MostrarDialogo("Se han generado los pdf", "Generacion correcta", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
             
         }
-        
+
+        public void PublicarUno()
+        {
+            spdf.generarPDF(ArticuloSeleccionado);
+            sd.MostrarDialogo("Se ha generado el pdf", "Generacion correcta", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+
+        }
+
         public void AbrirEliminarArticulo()
         {
             bool? eliminar = sn.AbrirEliminarArticulo();

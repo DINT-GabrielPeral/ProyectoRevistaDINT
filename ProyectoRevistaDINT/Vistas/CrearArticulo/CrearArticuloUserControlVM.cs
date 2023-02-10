@@ -160,6 +160,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
                         MessageBoxImage.Information
                     );
                     WeakReferenceMessenger.Default.Send(new NuevoArticuloValueChangedMessage(ArticuloNuevo));
+                    LimpiarArticulo();
                 }
                 else
                 {
@@ -181,6 +182,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
                     MessageBoxImage.Information
                 );
                 WeakReferenceMessenger.Default.Send(new NuevoArticuloValueChangedMessage(ArticuloNuevo));
+                LimpiarArticulo();
             }
         }
     }

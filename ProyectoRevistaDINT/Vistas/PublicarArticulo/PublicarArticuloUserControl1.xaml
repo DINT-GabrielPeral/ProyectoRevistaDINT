@@ -25,10 +25,11 @@
         </Style>
     </UserControl.Resources>
     <DockPanel>
-        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
-            <Button Command="{Binding Path=ComandoPublicarArticulo}">Publicar Todo</Button>
-            <Button Style="{StaticResource ButtonEditarEliminar_Style}" Command="{Binding Path=ComandoEliminarArticulo}">Eliminar</Button>
-        </StackPanel>
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Margin="10">
+            <Button DockPanel.Dock="Left" Style="{StaticResource ButtonEditarEliminar_Style}" Command="{Binding Path=ComandoPublicarUno}">Publicar Seleccionado</Button>
+            <Button DockPanel.Dock="Left" Style="{StaticResource ButtonEditarEliminar_Style}" Command="{Binding Path=ComandoEliminarArticulo}">Eliminar</Button>
+            <Button DockPanel.Dock="Right" Command="{Binding Path=ComandoPublicarTodos}">Publicar Todo</Button>
+        </DockPanel>
         <syncfusion:SfDataGrid ItemsSource="{Binding Articulos, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding ArticuloSeleccionado}" AllowFiltering="True" ColumnSizer="Star"/>
     </DockPanel>
 </UserControl>
