@@ -17,13 +17,14 @@ namespace ProyectoRevistaDINT.Servicios
     {
         public void generarPDF(ObservableCollection<Articulo> listaArticulos)
         {
-            String path = "./Borrar";
-            if (!File.Exists(path)) Directory.CreateDirectory(path);
-            path += "/foto.jpg";
+            
             foreach (Articulo a in listaArticulos)
             {
                 if (a.Pdf == "")
                 {
+                    String path = "./Borrar";
+                    if (!File.Exists(path)) Directory.CreateDirectory(path);
+                    path += "/"+a.Titulo+".jpg";
                     Document
                         .Create(documento =>
                         {
