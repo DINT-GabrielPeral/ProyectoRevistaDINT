@@ -35,7 +35,7 @@ namespace ProyectoRevistaDINT.Servicios
                                 page.DefaultTextStyle(x => x.FontSize(15));
                                 switch (a.Seccion)
                                 {
-                                    case "Futbol":
+                                    case "Fútbol":
                                         page.Header()
                                             .AlignCenter()
                                             .Text(a.Titulo)
