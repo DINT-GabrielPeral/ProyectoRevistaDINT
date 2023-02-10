@@ -16,6 +16,7 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
     class PublicarArticuloUserControl1VM : ObservableObject
     {
         private ServicioPDF spdf = new ServicioPDF();
+        private DialogosService sd = new DialogosService();
         private ServicioAccesoBD sbd = new ServicioAccesoBD();
         private ServicioNavegacion sn = new ServicioNavegacion();
         private ObservableCollection<Articulo> articulos;
@@ -55,6 +56,8 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
         public void PublicarArticulos()
         {
             spdf.generarPDF(Articulos);
+            sd.MostrarDialogo("Se han generado los pdf", "Generacion correcta", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+            
         }
         
         public void AbrirEliminarArticulo()
