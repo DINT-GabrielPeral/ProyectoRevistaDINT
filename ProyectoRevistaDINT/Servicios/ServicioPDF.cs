@@ -70,7 +70,7 @@ namespace ProyectoRevistaDINT.Servicios
                                     });
 
                             });
-                        }).GeneratePdf("./Borrar");
+                        }).GeneratePdf("./Borrar/"+a.Titulo+".pdf");
                 }
            }
 
