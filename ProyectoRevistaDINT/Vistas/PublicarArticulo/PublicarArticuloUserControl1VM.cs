@@ -15,6 +15,7 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
 {
     class PublicarArticuloUserControl1VM : ObservableObject
     {
+        private ServicioPDF spdf = new ServicioPDF();
         private ServicioAccesoBD sbd = new ServicioAccesoBD();
         private ServicioNavegacion sn = new ServicioNavegacion();
         private ObservableCollection<Articulo> articulos;
@@ -53,7 +54,7 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
 
         public void PublicarArticulos()
         {
-            
+            spdf.generarPDF(Articulos);
         }
         
         public void AbrirEliminarArticulo()

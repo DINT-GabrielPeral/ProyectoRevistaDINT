@@ -36,18 +36,27 @@ namespace ProyectoRevistaDINT.Servicios
                                 {
                                     case "Futbol":
                                         page.Header()
+                                            .AlignCenter()
                                             .Text(a.Titulo)
                                             .SemiBold().FontSize(30).FontColor(Colors.Green.Medium);
                                         break;
                                     case "Tenis":
                                         page.Header()
+                                            .AlignCenter()
                                             .Text(a.Titulo)
                                             .SemiBold().FontSize(30).FontColor(Colors.Yellow.Medium);
                                         break;
                                     case "Baloncesto":
                                         page.Header()
+                                            .AlignCenter()
                                             .Text(a.Titulo)
                                             .SemiBold().FontSize(30).FontColor(Colors.Orange.Medium);
+                                        break;
+                                    default:
+                                        page.Header()
+                                            .AlignCenter()
+                                            .Text(a.Titulo)
+                                            .SemiBold().FontSize(30).FontColor(Colors.Black);
                                         break;
 
                                 }
@@ -57,14 +66,18 @@ namespace ProyectoRevistaDINT.Servicios
                                     {
                                         x.Spacing(20);
 
-
-                                        using (WebClient client = new WebClient())
+                                        if(a.Imagen != "")
                                         {
-                                            client.DownloadFile(new Uri(a.Imagen), path);
+                                            using (WebClient client = new WebClient())
+                                            {
+                                                client.DownloadFile(new Uri(a.Imagen), path);
+                                            }
+
+                                            x.Item()
+                                               .Image(path);
                                         }
 
-                                        x.Item()
-                                           .Image(path);
+                                        
 
                                         x.Item().Text(a.Texto);
                                     });
