@@ -20,9 +20,9 @@ namespace ProyectoRevistaDINT.Servicios
             String path = "./Borrar";
             if (!File.Exists(path)) Directory.CreateDirectory(path);
             path += "/foto.jpg";
-           foreach(Articulo a in listaArticulos)
-           {
-                if(a.Pdf == "" )
+            foreach (Articulo a in listaArticulos)
+            {
+                if (a.Pdf == "")
                 {
                     Document
                         .Create(documento =>
@@ -66,22 +66,26 @@ namespace ProyectoRevistaDINT.Servicios
                                     {
                                         x.Spacing(20);
 
-                                        using(WebClient client = new WebClient())
+                                        if (a.Imagen != "")
                                         {
-                                            client.DownloadFile(new Uri(a.Imagen), "");
+                                            using (WebClient client = new WebClient())
+                                            {
+                                                client.DownloadFile(new Uri(a.Imagen), path);
+                                            }
+
+                                            x.Item()
+                                               .Image(path);
                                         }
 
 
-                                        //x.Item().Image();
-                                    })
 
                                         x.Item().Text(a.Texto);
                                     });
 
                             });
-                        }).GeneratePdf("./Borrar/"+a.Titulo+".pdf");
+                        }).GeneratePdf("./Borrar/" + a.Titulo + ".pdf");
                 }
-           }
+            }
 
         }
     }
