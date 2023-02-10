@@ -5,6 +5,7 @@ using QuestPDF.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -16,6 +17,9 @@ namespace ProyectoRevistaDINT.Servicios
     {
         public void generarPDF(ObservableCollection<Articulo> listaArticulos)
         {
+            String path = "./Borrar";
+            if (!File.Exists(path)) Directory.CreateDirectory(path);
+            path += "/foto.jpg";
            foreach(Articulo a in listaArticulos)
            {
                 if(a.Pdf == "" )
@@ -52,16 +56,18 @@ namespace ProyectoRevistaDINT.Servicios
                                     .Column(x =>
                                     {
                                         x.Spacing(20);
-                                        x.Item().Text(a.Texto);
 
-                                        using(WebClient client = new WebClient())
+
+                                        using (WebClient client = new WebClient())
                                         {
-                                            client.DownloadFile(new Uri(a.Imagen), "");
+                                            client.DownloadFile(new Uri(a.Imagen), path);
                                         }
 
+                                        x.Item()
+                                           .Image(path);
 
-                                        //x.Item().Image();
-                                    })
+                                        x.Item().Text(a.Texto);
+                                    });
 
                             });
                         });
