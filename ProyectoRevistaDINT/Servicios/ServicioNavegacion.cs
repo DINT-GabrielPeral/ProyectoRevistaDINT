@@ -8,6 +8,7 @@ using ProyectoRevistaDINT.Vistas.FirmarArticulo;
 using ProyectoRevistaDINT.Vistas.GestionArticulos;
 using ProyectoRevistaDINT.Vistas.GestionAutores;
 using ProyectoRevistaDINT.Vistas.Inicio;
+using ProyectoRevistaDINT.Vistas.ModerarArticulo;
 using ProyectoRevistaDINT.Vistas.PublicarArticulo;
 using System.Windows;
 using System.Windows.Controls;
@@ -75,6 +76,13 @@ namespace ProyectoRevistaDINT.Servicios
         public bool? AbrirFirmarArticulo()
         {
             FirmarArticulo dialog = new FirmarArticulo();
+            return dialog.ShowDialog();
+        }
+
+        public bool? AbrirModerarArticulo(Articulo articuloSeleccionado)
+        {
+            ModerarArticulo dialog = new ModerarArticulo();
+            WeakReferenceMessenger.Default.Send(new ArticuloModerarChangedMessage(articuloSeleccionado));
             return dialog.ShowDialog();
         }
     }

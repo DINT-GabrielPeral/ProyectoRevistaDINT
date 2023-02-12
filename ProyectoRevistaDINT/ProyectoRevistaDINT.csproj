@@ -201,6 +201,8 @@
     <Compile Include="Clases\Autor.cs" />
     <Compile Include="MainWindowVM.cs" />
     <Compile Include="Mensajeria\ArticuloChangedMessage.cs" />
+    <Compile Include="Mensajeria\ArticuloModerarChangedMessage.cs" />
+    <Compile Include="Mensajeria\ArticuloModerarRequestMessage.cs" />
     <Compile Include="Mensajeria\ArticulosCreadosRequestMessage.cs" />
     <Compile Include="Mensajeria\AutorFirmaRequestMessage.cs" />
     <Compile Include="Mensajeria\AutorSeleccionadoEditarMessage.cs" />
@@ -242,6 +244,10 @@
       <DependentUpon>InicioUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Inicio\InicioUCVM.cs" />
+    <Compile Include="Vistas\ModerarArticulo\ModerarArticulo.xaml.cs">
+      <DependentUpon>ModerarArticulo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ModerarArticulo\ModerarArticuloVM.cs" />
     <Compile Include="Vistas\PublicarArticulo\PublicarArticuloUserControl1.xaml.cs">
       <DependentUpon>PublicarArticuloUserControl1.xaml</DependentUpon>
     </Compile>
@@ -283,6 +289,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\Inicio\InicioUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\ModerarArticulo\ModerarArticulo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

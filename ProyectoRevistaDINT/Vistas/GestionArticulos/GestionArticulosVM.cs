@@ -13,6 +13,7 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
     {
         private readonly ServicioAccesoBD servicioBD;
         private readonly DialogosService servicioDialogos;
+        private readonly ServicioNavegacion servicioNavegacion;
 
         private ObservableCollection<Articulo> articulos;
         public ObservableCollection<Articulo> Articulos
@@ -35,6 +36,7 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
         {
             servicioBD = new ServicioAccesoBD();
             servicioDialogos = new DialogosService();
+            servicioNavegacion = new ServicioNavegacion();
 
             ModerarArticuloCommand = new RelayCommand(ModerarArticulo);
             EliminarArticuloCommand = new RelayCommand(EliminarArticulo);
@@ -59,7 +61,8 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
 
         public void ModerarArticulo()
         {
-
+            servicioNavegacion.AbrirModerarArticulo(ArticuloSeleccionado);
+            Articulos = servicioBD.recibirArticulos();
         }
 
         public void EliminarArticulo()

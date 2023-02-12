@@ -26,22 +26,27 @@ namespace ProyectoRevistaDINT.Servicios
 
             //StringBuilder palabrasFeas = new StringBuilder();
             List<String> palabritas = new List<string>();
-
-            foreach (var item in objeto.Terms)
-            {
-                if (palabritas.Count == 0)
-                    palabritas.Add(item.Term);
-                else if (!palabritas.Contains(item.Term))
-                {
-                    palabritas.Add(item.Term);
-                }
-            }
             StringBuilder palabritasFiltradas = new StringBuilder();
 
-            foreach (var item in palabritas)
+            if (objeto.Terms != null)
             {
-                palabritasFiltradas.Append(item + " ");
+                foreach (var item in objeto.Terms)
+                {
+                    if (palabritas.Count == 0)
+                        palabritas.Add(item.Term);
+                    else if (!palabritas.Contains(item.Term))
+                    {
+                        palabritas.Add(item.Term);
+                    }
+                }
+
+                foreach (var item in palabritas)
+                {
+                    palabritasFiltradas.Append(item + " ");
+                }
             }
+            else
+                palabritasFiltradas.Append("0");
 
             return palabritasFiltradas.ToString();
         }

@@ -162,6 +162,24 @@ namespace ProyectoRevistaDINT.Servicios
             conexion.Close();
         }
 
+        public void modificarArticulo(Articulo articulo)
+        {
+            SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
+            conexion.Open();
+
+            SqliteCommand comando = conexion.CreateCommand();
+
+            comando.CommandText = "UPDATE articulo SET titulo = @titulo, texto = @texto WHERE titulo = @titulo";
+            comando.Parameters.Add("@titulo", SqliteType.Text);
+            comando.Parameters.Add("@texto", SqliteType.Text);
+            comando.Parameters["@titulo"].Value = articulo.Titulo;
+            comando.Parameters["@texto"].Value = articulo.Texto;
+
+            comando.ExecuteNonQuery();
+
+            conexion.Close();
+        }
+
         public void editarAutor(Autor autor)
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
