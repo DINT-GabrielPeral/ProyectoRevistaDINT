@@ -71,9 +71,7 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
             {
                 MessageBoxResult resultado = servicioDialogos.MostrarDialogoPregunta(
                     "¿Estás seguro de que quieres eliminar este artículo?",
-                    "AVISO",
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Warning
+                    "AVISO"
                 );
                 if (resultado == MessageBoxResult.Yes)
                 {

@@ -8,8 +8,17 @@ using System.Threading.Tasks;
 
 namespace ProyectoRevistaDINT.Servicios
 {
+    /// <summary>
+    /// Esta clase sirve para ofrecer la moderación de las palabras prohibidas en los artículos.
+    /// </summary>
     class ServicioModeracion
     {
+        /// <summary>
+        /// Este método sirve para filtrar las palabras prohibidas que tenga un artículo en específico.
+        /// </summary>
+        /// <param name="textoArticulo">En este parámetro se recibe el texto del artículo a moderar para filtrar las palabras prohibidas que tenga.</param>
+        /// <param name="listaSeleccionada"></param>
+        /// <returns>Este método devuelve las palabras encontradas separadas por un espacio en blanco.</returns>
         public String devolverPalabrasFeas(String textoArticulo, String listaSeleccionada) 
         {
             // Load the input text.

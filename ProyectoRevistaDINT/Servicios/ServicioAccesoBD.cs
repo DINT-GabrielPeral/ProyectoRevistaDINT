@@ -10,8 +10,14 @@ using System.Windows;
 
 namespace ProyectoRevistaDINT.Servicios
 {
+    /// <summary>
+    /// Esta clase sirve para ofrecer las acciones que se pueden realizar en la base de datos de la revista en SQLite.
+    /// </summary>
     class ServicioAccesoBD
     {
+        /// <summary>
+        /// En este constructor se inicializa la base de datos creando sus tablas para almacenar los datos.
+        /// </summary>
         public ServicioAccesoBD()
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=./DatosRevista.db");
@@ -50,6 +56,10 @@ namespace ProyectoRevistaDINT.Servicios
             conexion.Close();
         }
 
+        /// <summary>
+        /// Este método sirve para hacer una consulta a la base de datos obteniendo todos los autores almacenados en la tabla autor.
+        /// </summary>
+        /// <returns>Este método devuelve una lista de autores proveniente de la base de datos después de la consulta realizada.</returns>
         public ObservableCollection<Autor> recibirAutores() 
         {
             ObservableCollection<Autor> listaAutores = new ObservableCollection<Autor>();
@@ -82,6 +92,10 @@ namespace ProyectoRevistaDINT.Servicios
             return listaAutores;
         }
 
+        /// <summary>
+        /// Este método sirve para crear un autor nuevo y meterlo en la base de datos.
+        /// </summary>
+        /// <param name="autor">En este parámetro se recibe el autor nuevo ya creado para luego introducirlo en la base de datos.</param>
         public void crearAutor(Autor autor) 
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
@@ -104,6 +118,11 @@ namespace ProyectoRevistaDINT.Servicios
 
             conexion.Close();
         }
+
+        /// <summary>
+        /// Este método sirve para hacer una consulta a la base de datos obteniendo todos los artículos almacenados en la tabla articulo.
+        /// </summary>
+        /// <returns>Este método devuelve una lista de artículos proveniente de la base de datos después de la consulta realizada.</returns>
         public ObservableCollection<Articulo> recibirArticulos()
         {
             ObservableCollection<Articulo> listaArticulos = new ObservableCollection<Articulo>();
@@ -137,6 +156,10 @@ namespace ProyectoRevistaDINT.Servicios
             return listaArticulos;
         }
 
+        /// <summary>
+        /// Este método sirve para crear un artículo nuevo y meterlo en la base de datos.
+        /// </summary>
+        /// <param name="articulo">En este parámetro se recibe el artículo nuevo ya creado para luego introducirlo en la base de datos.</param>
         public void crearArticulo(Articulo articulo)
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
@@ -162,6 +185,10 @@ namespace ProyectoRevistaDINT.Servicios
             conexion.Close();
         }
 
+        /// <summary>
+        /// Este método sirve para modificar los datos de un artículo existente en la base de datos.
+        /// </summary>
+        /// <param name="articulo">En este parámetro se recibe el artículo existente ya modificado para luego actualizarlo en la base de datos.</param>
         public void modificarArticulo(Articulo articulo)
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
@@ -180,6 +207,10 @@ namespace ProyectoRevistaDINT.Servicios
             conexion.Close();
         }
 
+        /// <summary>
+        /// Este método sirve para modificar los datos de un autor existente en la base de datos.
+        /// </summary>
+        /// <param name="autor">En este parámetro se recibe el autor existente ya modificado para luego actualizarlo en la base de datos.</param>
         public void editarAutor(Autor autor)
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
@@ -203,6 +234,10 @@ namespace ProyectoRevistaDINT.Servicios
             conexion.Close();
         }
 
+        /// <summary>
+        /// Este método sirve para eliminar un autor existente de la base de datos.
+        /// </summary>
+        /// <param name="autor">En este parámetro se recibe el autor a eliminar de la base de datos.</param>
         public void eliminarAutor(Autor autor)
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
@@ -218,6 +253,10 @@ namespace ProyectoRevistaDINT.Servicios
             conexion.Close();
         }
 
+        /// <summary>
+        /// Este método sirve para eliminar un artículo existente de la base de datos.
+        /// </summary>
+        /// <param name="articulo">En este parámetro se recibe el artículo a eliminar de la base de datos.</param>
         public void eliminarArticulo(Articulo articulo)
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
@@ -233,6 +272,11 @@ namespace ProyectoRevistaDINT.Servicios
             conexion.Close();
         }
 
+        /// <summary>
+        /// Este método sirve para saber si un autor tiene artículos creados en la base de datos.
+        /// </summary>
+        /// <param name="autor">En este parámetro se recibe el autor a comprobar sobre sus artículos.</param>
+        /// <returns>Este método devuelve un booleano indicando si el autor tiene artículos (true) o no tiene (false).</returns>
         public bool tieneArticulos(Autor autor)
         {
             bool tiene = false;
