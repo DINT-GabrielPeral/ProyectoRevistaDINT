@@ -180,6 +180,41 @@ namespace ProyectoRevistaDINT.Servicios
             conexion.Close();
         }
 
+        internal Autor GetAutor(int id)
+        {
+            Autor autor = new Autor();
+
+            SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
+            conexion.Open();
+
+            SqliteCommand comando = conexion.CreateCommand();
+            comando.CommandText = "SELECT * FROM Autor WHERE rowid = @id";
+            comando.Parameters.Add("@id", SqliteType.Integer);
+            comando.Parameters["@id"].Value = id;
+            SqliteDataReader lector = comando.ExecuteReader();
+            int idAutor;
+            string nombre, imagen, redSocial, nick;
+
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    //Distintas formas de acceder a los campos de la fila actual
+                    idAutor = int.Parse(lector["id"].ToString());
+                    nombre = (string)lector["nombre"];
+                    imagen = (string)lector["imagen"];
+                    redSocial = (string)lector["redSocial"];
+                    nick = (string)lector["nickRedSocial"];
+
+                    autor = new Autor(nombre, imagen, redSocial, nick);
+                }
+            }
+
+            conexion.Close();
+
+            return autor;
+        }
+
         public void editarAutor(Autor autor)
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
