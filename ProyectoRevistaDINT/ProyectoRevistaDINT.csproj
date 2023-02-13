@@ -213,6 +213,7 @@
     <Compile Include="Servicios\RedesSocialesService.cs" />
     <Compile Include="Servicios\SeccionesService.cs" />
     <Compile Include="Servicios\ServicioAccesoBD.cs" />
+    <Compile Include="Servicios\ServicioHTML.cs" />
     <Compile Include="Servicios\ServicioModeracion.cs" />
     <Compile Include="Servicios\ServicioNavegacion.cs" />
     <Compile Include="Servicios\ServicioPDF.cs" />
