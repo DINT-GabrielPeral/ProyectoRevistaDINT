@@ -15,12 +15,24 @@ using System.Windows.Controls;
 
 namespace ProyectoRevistaDINT.Servicios
 {
+    /// <summary>
+    /// Esta clase sirve para ofrecer las navegaciones por las diferentes vistas de la aplicación.
+    /// </summary>
     public class ServicioNavegacion
     {
+        /// <summary>
+        /// Este método sirve para cargar la vista de gestión de autores.
+        /// </summary>
+        /// <returns>Este método devuelve la vista de gestión de autores como un UserControl.</returns>
         public UserControl CargaGestionAutores()
         {
             return new GestionAutores();
         }
+
+        /// <summary>
+        /// Este método sirve para cargar la vista de gestión de artículos.
+        /// </summary>
+        /// <returns>Este método devuelve la vista de gestión de artículos como un UserControl.</returns>
         public UserControl CargaGestionArticulos() 
         {
             return new GestionArticulos();
