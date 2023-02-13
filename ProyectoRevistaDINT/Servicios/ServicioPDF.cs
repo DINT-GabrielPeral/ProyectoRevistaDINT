@@ -15,6 +15,7 @@ namespace ProyectoRevistaDINT.Servicios
 {
     class ServicioPDF
     {
+        private ServicioAccesoBD sbd = new ServicioAccesoBD();
         public void generarTodosPDF(ObservableCollection<Articulo> listaArticulos)
         {
             
@@ -76,10 +77,8 @@ namespace ProyectoRevistaDINT.Servicios
 
                                             x.Item()
                                                .Image(path);
+                                            
                                         }
-
-
-
                                         x.Item().Text(a.Texto);
                                     });
 
@@ -149,10 +148,15 @@ namespace ProyectoRevistaDINT.Servicios
                                             x.Item()
                                                .Image(path);
                                         }
-
-
-
                                         x.Item().Text(a.Texto);
+                                    });
+                                page.Footer()
+                                    .AlignCenter()
+                                    .Text(x =>
+                                    {
+                                        Autor autor = sbd.GetAutor(a.AutorArticulo);
+                                        if(autor.RedSocial != "" && autor.NickRedSocial != "")
+                                            x.Span(autor.RedSocial + ": "+ autor.NickRedSocial);
                                     });
 
                             });
