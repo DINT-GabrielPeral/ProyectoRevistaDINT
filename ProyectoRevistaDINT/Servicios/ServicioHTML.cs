@@ -60,7 +60,7 @@ namespace ProyectoRevistaDINT.Servicios
                     string rutaLocal = System.IO.Directory.GetCurrentDirectory();
                     
                     
-                    String imagen = rutaLocal.Replace("bin\\Debug", "\\Recursos\\revistaIcono.png");
+                    String imagen = rutaLocal.Replace("bin\\Debug", "Recursos\\revistaIcono.png");
                     if (a.Imagen != "") imagen = a.Imagen;
                     revista += "<a href=\"" + a.Pdf + "\">";
                     revista += "<div class=\"card\"><div class=\"card-info\"><img class=\"huecoImagen\" src =\"" + imagen + "\"></img>";
@@ -83,7 +83,7 @@ namespace ProyectoRevistaDINT.Servicios
                     string rutaLocal = System.IO.Directory.GetCurrentDirectory();
 
 
-                    String imagen = rutaLocal.Replace("bin\\Debug", "\\Recursos\\revistaIcono.png");
+                    String imagen = rutaLocal.Replace("bin\\Debug", "Recursos\\revistaIcono.png");
                     if (a.Imagen != "") imagen = a.Imagen;
                     revista += "<a href=\"" + a.Pdf + "\">";
                     revista += "<div class=\"card\"><div class=\"card-info\"><img class=\"huecoImagen\" src =\"" + imagen + "\"></img>";
@@ -107,7 +107,7 @@ namespace ProyectoRevistaDINT.Servicios
                     string rutaLocal = System.IO.Directory.GetCurrentDirectory();
 
 
-                    String imagen = rutaLocal.Replace("bin\\Debug", "\\Recursos\\revistaIcono.png");
+                    String imagen = rutaLocal.Replace("bin\\Debug", "Recursos\\revistaIcono.png");
                     if (a.Imagen != "") imagen = a.Imagen;
                     revista += "<a href=\"" + a.Pdf + "\">";
                     revista += "<div class=\"card\"><div class=\"card-info\"><img class=\"huecoImagen\" src =\"" + imagen + "\"></img>";
@@ -130,7 +130,7 @@ namespace ProyectoRevistaDINT.Servicios
                     string rutaLocal = System.IO.Directory.GetCurrentDirectory();
 
 
-                    String imagen = rutaLocal.Replace("bin\\Debug", "\\Recursos\\revistaIcono.png");
+                    String imagen = rutaLocal.Replace("bin\\Debug", "Recursos\\revistaIcono.png");
                     if (a.Imagen != "") imagen = a.Imagen;
                     revista += "<a href=\"" + a.Pdf + "\">";
                     revista += "<div class=\"card\"><div class=\"card-info\"><img class=\"huecoImagen\" src =\"" + imagen + "\"></img>";
@@ -153,7 +153,7 @@ namespace ProyectoRevistaDINT.Servicios
                     string rutaLocal = System.IO.Directory.GetCurrentDirectory();
 
 
-                    String imagen = rutaLocal.Replace("bin\\Debug", "\\Recursos\\revistaIcono.png");
+                    String imagen = rutaLocal.Replace("bin\\Debug", "Recursos\\revistaIcono.png");
                     if (a.Imagen != "") imagen = a.Imagen;
                     revista += "<a href=\"" + a.Pdf + "\">";
                     revista += "<div class=\"card\"><div class=\"card-info\"><img class=\"huecoImagen\" src =\"" + imagen + "\"></img>";
