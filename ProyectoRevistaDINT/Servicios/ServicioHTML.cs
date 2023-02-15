@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace ProyectoRevistaDINT.Servicios
 {
+    /// <summary>
+    /// Esta clase sirve para ofrecer la generación de la página web de la revista en formato HTML.
+    /// </summary>
     class ServicioHTML
     {
+        /// <summary>
+        /// Este método sirve para generar la página web de la revista en un fichero en formato HTML.
+        /// </summary>
         public void GenerarRevista()
         {
             String path = @"./Borrar/web.html";
