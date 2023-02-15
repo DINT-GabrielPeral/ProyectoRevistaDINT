@@ -17,7 +17,6 @@ namespace ProyectoRevistaDINT.Servicios
         /// Este método sirve para filtrar las palabras prohibidas que tenga un artículo en específico.
         /// </summary>
         /// <param name="textoArticulo">En este parámetro se recibe el texto del artículo a moderar para filtrar las palabras prohibidas que tenga.</param>
-        /// <param name="listaSeleccionada"></param>
         /// <returns>Este método devuelve las palabras encontradas separadas por un espacio en blanco.</returns>
         public String devolverPalabrasFeas(String textoArticulo, String listaSeleccionada) 
         {
@@ -61,6 +60,9 @@ namespace ProyectoRevistaDINT.Servicios
         }
     }
 
+    /// <summary>
+    /// Esta clase sirve para recibir los datos provenientes del API Rest en JSON para deserializarlo a este objeto.
+    /// </summary>
     public class Root
     {
         public string OriginalText { get; set; }
@@ -72,6 +74,9 @@ namespace ProyectoRevistaDINT.Servicios
         public string TrackingId { get; set; }
     }
 
+    /// <summary>
+    /// Esta clase sirve para recibir el estado que devuelve el API Rest después de realizar la petición.
+    /// </summary>
     public class Status
     {
         public int Code { get; set; }
@@ -79,6 +84,9 @@ namespace ProyectoRevistaDINT.Servicios
         public object Exception { get; set; }
     }
 
+    /// <summary>
+    /// Esta clase sirve para recibir el término que devuelve el API Rest después de realizar la petición de moderación.
+    /// </summary>
     public class Termino
     {
         public int Index { get; set; }
