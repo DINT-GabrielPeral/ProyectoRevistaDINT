@@ -93,6 +93,41 @@ namespace ProyectoRevistaDINT.Servicios
         }
 
         /// <summary>
+        /// Este método sirve para obtener un autor a partir su id
+        /// </summary>
+        /// <param name="idAutor">En este parámetro se recibe el id del autor que se quiere obtener</param>
+        public Autor GetAutor(int idAutor) 
+        {
+            Autor autorResultado = new Autor();
+
+            SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
+            conexion.Open();
+
+            SqliteCommand comando = conexion.CreateCommand();
+            comando.CommandText = "SELECT * FROM autor WHERE id = @id";
+            comando.Parameters.Add("@id", SqliteType.Integer);
+            comando.Parameters["@id"].Value = idAutor;
+            SqliteDataReader lector = comando.ExecuteReader();
+            int id;
+            string nombre, imagen, redSocial, nickRedSocial;
+
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    //Distintas formas de acceder a los campos de la fila actual
+                    id = int.Parse(lector["id"].ToString());
+                    nombre = (string)lector["nombre"];
+                    imagen = (string)lector["imagen"];
+                    redSocial = (string)lector["redSocial"];
+                    nickRedSocial = (string)lector["nickRedSocial"];
+                    autorResultado = new Autor(id, nombre, imagen, redSocial, nickRedSocial);
+                }
+            }
+            return autorResultado;
+        }
+
+        /// <summary>
         /// Este método sirve para crear un autor nuevo y meterlo en la base de datos.
         /// </summary>
         /// <param name="autor">En este parámetro se recibe el autor nuevo ya creado para luego introducirlo en la base de datos.</param>
