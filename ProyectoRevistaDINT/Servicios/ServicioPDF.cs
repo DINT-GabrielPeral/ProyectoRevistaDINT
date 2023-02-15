@@ -13,9 +13,17 @@ using System.Threading.Tasks;
 
 namespace ProyectoRevistaDINT.Servicios
 {
+    /// <summary>
+    /// Esta clase sirve para ofrecer la generación de los artículos creados a formato PDF.
+    /// </summary>
     class ServicioPDF
     {
         private ServicioAccesoBD sbd = new ServicioAccesoBD();
+
+        /// <summary>
+        /// Este método sirve para generar todos los artículos que hayan creados en la revista a formato PDF.
+        /// </summary>
+        /// <param name="listaArticulos">En este parámetro se recibe la lista de todos los artículos creados en la revista.</param>
         public void generarTodosPDF(ObservableCollection<Articulo> listaArticulos)
         {
             
@@ -89,6 +97,10 @@ namespace ProyectoRevistaDINT.Servicios
 
         }
 
+        /// <summary>
+        /// Este método sirve para generar un artículo de los existentes de la revista a formato PDF.
+        /// </summary>
+        /// <param name="a">En este parámetro se recibe el artículo que se desea generar a formato PDF.</param>
         public void generarPDF(Articulo a)
         {
                 if (a.Pdf == "")
