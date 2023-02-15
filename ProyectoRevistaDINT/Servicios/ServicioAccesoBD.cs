@@ -231,11 +231,13 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "UPDATE articulo SET titulo = @titulo, texto = @texto WHERE titulo = @titulo";
+            comando.CommandText = "UPDATE articulo SET titulo = @titulo, texto = @texto, pdf = @pdf WHERE titulo = @titulo";
             comando.Parameters.Add("@titulo", SqliteType.Text);
             comando.Parameters.Add("@texto", SqliteType.Text);
+            comando.Parameters.Add("@pdf", SqliteType.Text);
             comando.Parameters["@titulo"].Value = articulo.Titulo;
             comando.Parameters["@texto"].Value = articulo.Texto;
+            comando.Parameters["@pdf"].Value = articulo.Pdf;
 
             comando.ExecuteNonQuery();
 
