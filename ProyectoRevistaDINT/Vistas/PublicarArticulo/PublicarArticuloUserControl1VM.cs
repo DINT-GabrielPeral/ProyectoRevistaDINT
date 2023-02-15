@@ -16,6 +16,7 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
     class PublicarArticuloUserControl1VM : ObservableObject
     {
         private ServicioPDF spdf = new ServicioPDF();
+        private AzureService azure = new AzureService();
         private DialogosService sd = new DialogosService();
         private ServicioAccesoBD sbd = new ServicioAccesoBD();
         private ServicioNavegacion sn = new ServicioNavegacion();
@@ -64,8 +65,13 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
 
         public void PublicarUno()
         {
-            spdf.generarPDF(ArticuloSeleccionado);
+            string ruta = spdf.generarPDF(ArticuloSeleccionado);
+            string link = azure.SubirImagen(ruta);
+            ArticuloSeleccionado.Pdf = link;
+            sbd.modificarArticulo(ArticuloSeleccionado);
             sd.MostrarDialogo("Se ha generado el pdf", "Generacion correcta", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+            
+            
 
         }
 

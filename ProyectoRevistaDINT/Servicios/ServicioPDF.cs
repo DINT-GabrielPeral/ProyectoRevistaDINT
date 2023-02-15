@@ -101,7 +101,7 @@ namespace ProyectoRevistaDINT.Servicios
         /// Este método sirve para generar un artículo de los existentes de la revista a formato PDF.
         /// </summary>
         /// <param name="a">En este parámetro se recibe el artículo que se desea generar a formato PDF.</param>
-        public void generarPDF(Articulo a)
+        public string generarPDF(Articulo a)
         {
                 if (a.Pdf == "")
                 {
@@ -174,7 +174,7 @@ namespace ProyectoRevistaDINT.Servicios
                             });
                         }).GeneratePdf("./Borrar/" + a.Titulo + ".pdf");
                 }
-
+            return System.IO.Directory.GetCurrentDirectory() + "\\Borrar\\" + a.Titulo + ".pdf";
         }
     }
 }
