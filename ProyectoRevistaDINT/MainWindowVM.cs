@@ -19,20 +19,24 @@ namespace ProyectoRevistaDINT
             set { SetProperty(ref contenidoMostrar, value); }
         }
         private ServicioNavegacion sn;
+        private ServicioHTML shtml;
         public RelayCommand comandoGestionAutores { get; }
         public RelayCommand comandoGestionArticulos { get; }
         public RelayCommand comandoCrearArticulo { get; }
         public RelayCommand comandoPublicarArticulo { get; }
+        public RelayCommand comandoGenerarRevista { get; }
         public RelayCommand comandoInicio { get; }
         public RelayCommand comandoAyuda { get; }
         public MainWindowVM()
         {
             sn = new ServicioNavegacion();
+            shtml = new ServicioHTML();
             comandoGestionAutores = new RelayCommand(MuestraGestionAutores);
             comandoGestionArticulos = new RelayCommand(MuestraGestionArticulos);
             comandoCrearArticulo = new RelayCommand(MuestraCrearArticulo);
             comandoInicio = new RelayCommand(MuestraInicio);
             comandoPublicarArticulo = new RelayCommand(MuestraPublicarArticulo);
+            comandoGenerarRevista = new RelayCommand(GeneraRevista);
             comandoAyuda = new RelayCommand(MuestraAyuda);
             MuestraInicio();
         }
@@ -60,6 +64,11 @@ namespace ProyectoRevistaDINT
         public void MuestraAyuda() 
         {
             
+        }
+
+        public void GeneraRevista()
+        {
+            shtml.GenerarRevista();
         }
     }
 }

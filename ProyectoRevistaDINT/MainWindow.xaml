@@ -27,7 +27,7 @@
             </syncfusion:MenuItemAdv>
             <syncfusion:MenuItemAdv Header="Publicación">
                 <syncfusion:MenuItemAdv Header="Publicar Artículos" Command="{Binding Path=comandoPublicarArticulo}"/>
-                <syncfusion:MenuItemAdv Header="Generar Revista" />
+                <syncfusion:MenuItemAdv Header="Generar Revista" Command="{Binding Path=comandoGenerarRevista}" />
             </syncfusion:MenuItemAdv>
             <syncfusion:MenuItemAdv Header="Gestión de palabras prohibidas"/>
             <syncfusion:MenuItemAdv Header="Ayuda" Command="{Binding Path=comandoAyuda}"/>

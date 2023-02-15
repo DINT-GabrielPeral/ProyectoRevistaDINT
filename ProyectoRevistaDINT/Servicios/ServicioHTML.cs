@@ -32,6 +32,7 @@ namespace ProyectoRevistaDINT.Servicios
             {
                 byte[] info = new UTF8Encoding(true).GetBytes(revista);
                 fs.Write(info, 0, info.Length);
+
             }
 
 
