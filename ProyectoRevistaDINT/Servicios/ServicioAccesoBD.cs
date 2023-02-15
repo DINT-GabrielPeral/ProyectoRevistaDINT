@@ -242,6 +242,10 @@ namespace ProyectoRevistaDINT.Servicios
             conexion.Close();
         }
 
+        /// <summary>
+        /// Este método sirve para modificar los datos de un autor existente en la base de datos.
+        /// </summary>
+        /// <param name="autor">En este parámetro se recibe el autor existente ya modificado para luego actualizarlo en la base de datos.</param>
         public void editarAutor(Autor autor)
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=DatosRevista.db");
