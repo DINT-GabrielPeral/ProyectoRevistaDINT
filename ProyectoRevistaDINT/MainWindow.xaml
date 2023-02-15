@@ -30,7 +30,7 @@
                 <syncfusion:MenuItemAdv Header="Generar Revista" />
             </syncfusion:MenuItemAdv>
             <syncfusion:MenuItemAdv Header="Gestión de palabras prohibidas"/>
-
+            <syncfusion:MenuItemAdv Header="Ayuda" Command="{Binding Path=comandoAyuda}"/>
             <syncfusion:MenuItemAdv/>
         </syncfusion:MenuAdv>
         <UserControl Content="{Binding ContenidoMostrar}" Margin="3">
