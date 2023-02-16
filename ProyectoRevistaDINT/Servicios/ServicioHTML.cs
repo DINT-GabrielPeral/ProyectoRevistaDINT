@@ -40,7 +40,8 @@ namespace ProyectoRevistaDINT.Servicios
             ObservableCollection<Articulo> articulosOtros = new ObservableCollection<Articulo>();
             foreach (Articulo a in articulos)
             {
-                if(a.Pdf != "")
+                //if(a.Pdf != "" && a.Moderado == 1)
+                if (a.Pdf != "")
                 {
                     if (a.Seccion.Equals("Fútbol")) articulosFutbol.Add(a);
                     else if (a.Seccion.Equals("Baloncesto")) articulosBasket.Add(a);

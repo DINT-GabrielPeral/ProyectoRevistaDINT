@@ -33,14 +33,12 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
             set { SetProperty(ref articuloSeleccionado, value); }
         }
 
-        public RelayCommand ComandoPublicarTodos { get; }
         public RelayCommand ComandoPublicarUno{ get; }
         public RelayCommand ComandoEliminarArticulo { get; }
 
         public PublicarArticuloUserControl1VM()
         {
             sn = new ServicioNavegacion();
-            ComandoPublicarTodos = new RelayCommand(PublicarTodos);
             ComandoEliminarArticulo = new RelayCommand(AbrirEliminarArticulo);
             ComandoPublicarUno = new RelayCommand(PublicarUno);
             ArticuloSeleccionado = new Articulo();
@@ -56,12 +54,7 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
             });
         }
 
-        public void PublicarTodos()
-        {
-            spdf.generarTodosPDF(Articulos);
-            sd.MostrarDialogo("Se han generado los pdf", "Generacion correcta", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
-            
-        }
+        
 
         public void PublicarUno()
         {
@@ -74,7 +67,6 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
             
 
         }
-
         public void AbrirEliminarArticulo()
         {
             bool? eliminar = sn.AbrirEliminarArticulo();
