@@ -52,13 +52,6 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             set => SetProperty(ref secciones, value);
         }
 
-        private string seccionSeleccionado;
-        public string SeccionSeleccionado
-        {
-            get => seccionSeleccionado;
-            set => SetProperty(ref seccionSeleccionado, value);
-        }
-
         private Articulo articuloNuevo;
         public Articulo ArticuloNuevo
         {
@@ -125,6 +118,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             Firma = null;
             HayFirma = false;
         }
+
         public void LimpiarArticulo()
         {
             HayFirma = false;
@@ -133,6 +127,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
             ArticuloNuevo.Texto = "";
             ArticuloNuevo.Imagen = "";
             ArticuloNuevo.Titulo = "";
+            ArticuloNuevo.Seccion = null;
         }
 
         public void AñadirArticulo()
