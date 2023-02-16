@@ -69,7 +69,7 @@
     <DockPanel LastChildFill="True">
 
         <ScrollViewer VerticalScrollBarVisibility="Disabled" DockPanel.Dock="Top" Margin="50,5,50,5" Height="25" >
-            <TextBox x:Name="TituloTextBox" Text="{Binding Path=ArticuloNuevo.Titulo}" Style="{StaticResource TextBoxTitle}" ToolTip="Insertar Título"
+            <TextBox IsEnabled="False" x:Name="TituloTextBox" Text="{Binding Path=ArticuloNuevo.Titulo}" Style="{StaticResource TextBoxTitle}" ToolTip="Insertar Título"
                      TextWrapping="Wrap" MaxWidth="1400" Padding="10,0,10,0" FontSize="18" FontWeight="DemiBold" VerticalAlignment="Center"></TextBox>
         </ScrollViewer>
 
