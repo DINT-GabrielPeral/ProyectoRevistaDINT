@@ -67,7 +67,7 @@ namespace ProyectoRevistaDINT.Vistas.GestionArticulos
 
         public void EliminarArticulo()
         {
-            if (ArticuloSeleccionado.Pdf == "")
+            if (ArticuloSeleccionado.Pdf == "" || ArticuloSeleccionado.Publicado == 0)
             {
                 MessageBoxResult resultado = servicioDialogos.MostrarDialogoPregunta(
                     "¿Estás seguro de que quieres eliminar este artículo?",

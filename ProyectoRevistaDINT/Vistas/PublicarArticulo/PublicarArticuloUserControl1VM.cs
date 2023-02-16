@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
 {
@@ -61,6 +62,7 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
             string ruta = spdf.generarPDF(ArticuloSeleccionado);
             string link = azure.SubirImagen(ruta);
             ArticuloSeleccionado.Pdf = link;
+            ArticuloSeleccionado.Publicado = 1;
             sbd.modificarArticulo(ArticuloSeleccionado);
             sd.MostrarDialogo("Se ha generado el pdf", "Generacion correcta", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
             
@@ -69,9 +71,20 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
         }
         public void AbrirEliminarArticulo()
         {
-            bool? eliminar = sn.AbrirEliminarArticulo();
-            if (eliminar == true)
-                sbd.eliminarArticulo(ArticuloSeleccionado);
+            if (ArticuloSeleccionado.Pdf == "" || ArticuloSeleccionado.Publicado == 0)
+            {
+                bool? eliminar = sn.AbrirEliminarArticulo();
+                if (eliminar == true)
+                    sbd.eliminarArticulo(ArticuloSeleccionado);
+            }else
+            {
+                sd.MostrarDialogo(
+                    "No se ha podido eliminar el artículo porque ya está publicado",
+                    "ERROR AL ELIMINAR EL ARTÍCULO",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
+            }
             Articulos = sbd.recibirArticulos();
         }
         
