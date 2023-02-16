@@ -69,14 +69,28 @@ namespace ProyectoRevistaDINT.Vistas.ModerarArticulo
 
                 if (ArticuloNuevo.Titulo != auxiliar.Titulo)
                 {
-                    servicioBD.modificarArticulo(ArticuloNuevo);
-                    servicioDialogos.MostrarDialogo(
-                        "Artículo modificado correctamente",
-                        "GESTIÓN ARTÍCULOS",
+                    PalabrasEncontradas = servicioModeracion.devolverPalabrasFeas(ArticuloNuevo.Texto, "");
+                    if (PalabrasEncontradas == "0")
+                    {
+                        ArticuloNuevo.Moderado = 1;
+                        servicioBD.modificarArticulo(ArticuloNuevo);
+                        servicioDialogos.MostrarDialogo(
+                            "Artículo modificado correctamente",
+                            "GESTIÓN ARTÍCULOS",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information
+                        );
+                        resultado = true;
+                    }
+                    else 
+                    {
+                        servicioDialogos.MostrarDialogo(
+                        "Por favor, elimina las palabras malsonantes",
+                        "AVISO",
                         MessageBoxButton.OK,
-                        MessageBoxImage.Information
+                        MessageBoxImage.Warning
                     );
-                    resultado = true;
+                    }
                 }
                 else
                 {
