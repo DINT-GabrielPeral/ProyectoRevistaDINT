@@ -150,7 +150,45 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
                     }
                 }
 
-                if (ArticuloNuevo.Titulo != auxiliar.Titulo)
+                if (ArticuloNuevo.Titulo == "")
+                {
+                    servicioDialogos.MostrarDialogo(
+                        "No se ha podido crear el artículo porque no tiene título",
+                        "ERROR AL CREAR EL ARTÍCULO",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error
+                    );
+                }
+                else
+                {
+                    if (ArticuloNuevo.Titulo != auxiliar.Titulo)
+                    {
+                        servicioBD.crearArticulo(ArticuloNuevo);
+                        servicioDialogos.MostrarDialogo(
+                            "Artículo creado correctamente",
+                            "GESTIÓN ARTÍCULOS",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information
+                        );
+                        WeakReferenceMessenger.Default.Send(new NuevoArticuloValueChangedMessage(ArticuloNuevo));
+                        LimpiarArticulo();
+                    }
+                    else
+                    {
+                        servicioDialogos.MostrarDialogo(
+                            "No se ha podido crear el artículo porque ya existe un artículo con ese título",
+                            "ERROR AL CREAR EL ARTÍCULO",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error
+                        );
+                    }
+                }
+
+                
+            }
+            catch (InvalidOperationException)
+            {
+                if (ArticuloNuevo.Titulo != "")
                 {
                     servicioBD.crearArticulo(ArticuloNuevo);
                     servicioDialogos.MostrarDialogo(
@@ -165,24 +203,13 @@ namespace ProyectoRevistaDINT.Vistas.CrearArticulo
                 else
                 {
                     servicioDialogos.MostrarDialogo(
-                        "No se ha podido crear el artículo porque ya existe un artículo con ese título",
+                        "No se ha podido crear el artículo porque no tiene título",
                         "ERROR AL CREAR EL ARTÍCULO",
                         MessageBoxButton.OK,
                         MessageBoxImage.Error
                     );
                 }
-            }
-            catch (InvalidOperationException)
-            {
-                servicioBD.crearArticulo(ArticuloNuevo);
-                servicioDialogos.MostrarDialogo(
-                    "Artículo creado correctamente",
-                    "GESTIÓN ARTÍCULOS",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information
-                );
-                WeakReferenceMessenger.Default.Send(new NuevoArticuloValueChangedMessage(ArticuloNuevo));
-                LimpiarArticulo();
+                
             }
         }
     }
