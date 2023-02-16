@@ -54,7 +54,7 @@ namespace ProyectoRevistaDINT.Servicios
             revista += "<div id=\"futbol\" class=\"huecoCategoria\" style=\"margin - top: 5vh; \"> <h2 class=\"nombreCategoria\">FÚTBOL</h2>";
             if(articulosFutbol.Count != 0)
             {
-                revista += "< div class=\"articulos\">";
+                revista += "<div class=\"articulos\">";
                 foreach (Articulo a in articulosFutbol)
                 {
                     string rutaLocal = System.IO.Directory.GetCurrentDirectory();
@@ -77,7 +77,7 @@ namespace ProyectoRevistaDINT.Servicios
             revista += "<div id=\"basket\" class=\"huecoCategoria\" style=\"margin - top: 5vh; \"> <h2 class=\"nombreCategoria\">BASKET</h2>";
             if (articulosBasket.Count != 0)
             {
-                revista += "< div class=\"articulos\">";
+                revista += "<div class=\"articulos\">";
                 foreach (Articulo a in articulosBasket)
                 {
                     string rutaLocal = System.IO.Directory.GetCurrentDirectory();
@@ -101,7 +101,7 @@ namespace ProyectoRevistaDINT.Servicios
             revista += "<div id=\"tenis\" class=\"huecoCategoria\" style=\"margin - top: 5vh; \"> <h2 class=\"nombreCategoria\">TENIS</h2>";
             if (articulosTenis.Count != 0)
             {
-                revista += "< div class=\"articulos\">";
+                revista += "<div class=\"articulos\">";
                 foreach (Articulo a in articulosTenis)
                 {
                     string rutaLocal = System.IO.Directory.GetCurrentDirectory();
@@ -124,7 +124,7 @@ namespace ProyectoRevistaDINT.Servicios
             revista += "<div id=\"boxeo\" class=\"huecoCategoria\" style=\"margin - top: 5vh; \"> <h2 class=\"nombreCategoria\">BOXEO</h2>";
             if (articulosBoxeo.Count != 0)
             {
-                revista += "< div class=\"articulos\">";
+                revista += "<div class=\"articulos\">";
                 foreach (Articulo a in articulosBoxeo)
                 {
                     string rutaLocal = System.IO.Directory.GetCurrentDirectory();

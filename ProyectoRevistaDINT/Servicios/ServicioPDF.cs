@@ -103,11 +103,11 @@ namespace ProyectoRevistaDINT.Servicios
         /// <param name="a">En este parámetro se recibe el artículo que se desea generar a formato PDF.</param>
         public string generarPDF(Articulo a)
         {
-                if (a.Pdf == "")
-                {
+                
                     String path = "./Borrar";
                     if (!File.Exists(path)) Directory.CreateDirectory(path);
-                    path += "/" + a.Titulo + ".jpg";
+                String id = generateID();
+                    path += "/" + id + ".jpg";
                     Document
                         .Create(documento =>
                         {
@@ -172,9 +172,23 @@ namespace ProyectoRevistaDINT.Servicios
                                     });
 
                             });
-                        }).GeneratePdf("./Borrar/" + a.Titulo + ".pdf");
-                }
-            return System.IO.Directory.GetCurrentDirectory() + "\\Borrar\\" + a.Titulo + ".pdf";
+                        }).GeneratePdf("./Borrar/" + id + ".pdf");
+                
+            return System.IO.Directory.GetCurrentDirectory() + "\\Borrar\\" + id + ".pdf";
+        }
+
+        public string generateID()
+        {
+            long i = 1;
+
+            foreach (byte b in Guid.NewGuid().ToByteArray())
+            {
+                i *= ((int)b + 1);
+            }
+
+            string number = String.Format("{0:d9}", (DateTime.Now.Ticks / 10) % 1000000000);
+
+            return number;
         }
     }
 }
