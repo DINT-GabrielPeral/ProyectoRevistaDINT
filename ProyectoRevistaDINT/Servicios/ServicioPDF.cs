@@ -100,6 +100,10 @@ namespace ProyectoRevistaDINT.Servicios
             return System.IO.Directory.GetCurrentDirectory() + "\\Borrar\\" + id + ".pdf";
         }
 
+        /// <summary>
+        /// Este método sirve para generar un ID aleatorio para el PDF a generar.
+        /// </summary>
+        /// <returns>Este método devuelve el ID aleatorio generado para asignárselo al PDF a generar.</returns>
         public string generateID()
         {
             long i = 1;
