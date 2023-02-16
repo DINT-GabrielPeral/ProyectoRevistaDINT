@@ -60,10 +60,11 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
         }
         public void AbrirEditarAutor()
         {
-            
-            sn.AbrirEditarAutor(autorSeleccionado);
-            Autores = sbd.recibirAutores();
-            
+            if (AutorSeleccionado != null && AutorSeleccionado.Id != 0)
+            {
+                sn.AbrirEditarAutor(autorSeleccionado);
+                Autores = sbd.recibirAutores();
+            }
         }
         public void AbrirEliminarAutor()
         {
