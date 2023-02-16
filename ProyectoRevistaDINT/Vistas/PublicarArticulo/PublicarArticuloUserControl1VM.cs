@@ -64,7 +64,7 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
             ArticuloSeleccionado.Pdf = link;
             ArticuloSeleccionado.Publicado = 1;
             sbd.modificarArticulo(ArticuloSeleccionado);
-            sd.MostrarDialogo("Se ha generado el pdf", "Generacion correcta", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+            sd.MostrarDialogo("Se ha publicado el artículo", "Publicación correcta", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
             
             
 
