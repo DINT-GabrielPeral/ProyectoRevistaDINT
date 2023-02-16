@@ -53,6 +53,13 @@ namespace ProyectoRevistaDINT.Clases
             set => SetProperty(ref moderado, value);
         }
 
+        private int publicado;
+        public int Publicado
+        {
+            get => publicado;
+            set => SetProperty(ref publicado, value);
+        }
+
         public Articulo(string titulo = "", string imagen = "", string texto = "", string seccion="", int autorArticulo=0)
         {
             Titulo = titulo;
@@ -62,8 +69,9 @@ namespace ProyectoRevistaDINT.Clases
             AutorArticulo = autorArticulo;
             Pdf = "";
             Moderado = 0;
+            Publicado = 0;
         }
-        public Articulo(string pdf, int moderado, string titulo = "", string imagen = "", string texto = "", string seccion = "", int autorArticulo = 0)
+        public Articulo(string pdf, int moderado, int publicado, string titulo = "", string imagen = "", string texto = "", string seccion = "", int autorArticulo = 0)
         {
             Titulo = titulo;
             Imagen = imagen;
@@ -72,6 +80,7 @@ namespace ProyectoRevistaDINT.Clases
             AutorArticulo = autorArticulo;
             Pdf = pdf;
             Moderado = moderado;
+            Publicado = publicado;
         }
     }
 }

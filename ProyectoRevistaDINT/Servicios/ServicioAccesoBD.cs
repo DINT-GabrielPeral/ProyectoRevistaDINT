@@ -45,6 +45,7 @@ namespace ProyectoRevistaDINT.Servicios
                                     autorArticulo integer,
                                     pdf varchar(500),
                                     moderado integer,
+                                    publicado integer,
                                     CONSTRAINT fk_autor FOREIGN KEY (autorArticulo) REFERENCES autor(id))";
             comando2.ExecuteNonQuery();
             
@@ -169,7 +170,7 @@ namespace ProyectoRevistaDINT.Servicios
             SqliteCommand comando = conexion.CreateCommand();
             comando.CommandText = "SELECT * FROM articulo";
             SqliteDataReader lector = comando.ExecuteReader();
-            int autorArticulo, moderado;
+            int autorArticulo, moderado, publicado;
             string titulo, imagen, texto, seccion, pdf;
 
             if (lector.HasRows)
@@ -184,7 +185,8 @@ namespace ProyectoRevistaDINT.Servicios
                     autorArticulo = int.Parse(lector["autorArticulo"].ToString());
                     pdf = (string)lector["pdf"];
                     moderado = int.Parse(lector["moderado"].ToString());
-                    listaArticulos.Add(new Articulo(pdf, moderado, titulo, imagen, texto, seccion, autorArticulo));
+                    publicado = int.Parse(lector["publicado"].ToString());
+                    listaArticulos.Add(new Articulo(pdf, moderado, publicado, titulo, imagen, texto, seccion, autorArticulo));
                 }
             }
 
@@ -204,14 +206,15 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "INSERT INTO articulo VALUES (@titulo,@imagen,@texto,@seccion,@autorArticulo,@pdf,@moderado)";
+            comando.CommandText = "INSERT INTO articulo VALUES (@titulo,@imagen,@texto,@seccion,@autorArticulo,@pdf,@moderado,@publicado)";
             comando.Parameters.Add("@titulo", SqliteType.Text);
             comando.Parameters.Add("@imagen", SqliteType.Text);
             comando.Parameters.Add("@texto", SqliteType.Text);
             comando.Parameters.Add("@seccion", SqliteType.Text); 
             comando.Parameters.Add("@autorArticulo", SqliteType.Integer);
             comando.Parameters.Add("@pdf", SqliteType.Text);
-            comando.Parameters.Add("@moderado", SqliteType.Integer);
+            comando.Parameters.Add("@moderado", SqliteType.Integer); 
+            comando.Parameters.Add("@publicado", SqliteType.Integer);
             comando.Parameters["@titulo"].Value = articulo.Titulo;
             comando.Parameters["@imagen"].Value = articulo.Imagen;
             comando.Parameters["@texto"].Value = articulo.Texto;
@@ -219,6 +222,7 @@ namespace ProyectoRevistaDINT.Servicios
             comando.Parameters["@autorArticulo"].Value = articulo.AutorArticulo;
             comando.Parameters["@pdf"].Value = articulo.Pdf;
             comando.Parameters["@moderado"].Value = articulo.Moderado;
+            comando.Parameters["@publicado"].Value = articulo.Publicado;
             comando.ExecuteNonQuery();
 
             conexion.Close();
@@ -235,15 +239,17 @@ namespace ProyectoRevistaDINT.Servicios
 
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "UPDATE articulo SET titulo = @titulo, texto = @texto, pdf = @pdf , moderado = @moderado WHERE titulo = @titulo";
+            comando.CommandText = "UPDATE articulo SET titulo = @titulo, texto = @texto, pdf = @pdf , moderado = @moderado, publicado = @publicado WHERE titulo = @titulo";
             comando.Parameters.Add("@titulo", SqliteType.Text);
             comando.Parameters.Add("@texto", SqliteType.Text);
             comando.Parameters.Add("@pdf", SqliteType.Text);
             comando.Parameters.Add("@moderado", SqliteType.Integer);
+            comando.Parameters.Add("@publicado", SqliteType.Integer);
             comando.Parameters["@titulo"].Value = articulo.Titulo;
             comando.Parameters["@texto"].Value = articulo.Texto;
             comando.Parameters["@pdf"].Value = articulo.Pdf;
             comando.Parameters["@moderado"].Value = articulo.Moderado;
+            comando.Parameters["@publicado"].Value = articulo.Publicado;
 
             comando.ExecuteNonQuery();
 
