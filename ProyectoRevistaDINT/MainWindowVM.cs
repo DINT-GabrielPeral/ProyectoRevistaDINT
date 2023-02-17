@@ -63,7 +63,8 @@ namespace ProyectoRevistaDINT
         }
         public void MuestraAyuda() 
         {
-            
+            string rutaAyuda = System.IO.Directory.GetCurrentDirectory() + "\\Ayuda\\ProyectoRevistaDINT help.chm";
+            System.Diagnostics.Process.Start(rutaAyuda);
         }
 
         public void GeneraRevista()
