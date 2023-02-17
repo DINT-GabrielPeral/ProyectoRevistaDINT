@@ -43,10 +43,10 @@
         </StackPanel>
         <DockPanel Grid.Row="1" Grid.Column="1" LastChildFill="True">
             <ComboBox x:Name="ComboBoxAutor_TextBox" Margin="5" Width="100" DockPanel.Dock="Left" ItemsSource="{Binding Path=RedesSociales}" SelectedItem="{Binding Path=AutorNuevo.RedSocial}"></ComboBox>
-            <TextBox x:Name="RedSocialAutor_TextBox" Margin="5" Text="{Binding Path=AutorNuevo.NickRedSocial}"></TextBox>
+            <TextBox x:Name="RedSocialAutor_TextBox" Margin="5" Text="{Binding Path=AutorNuevo.NickRedSocial}" ToolTip="Nick Red Social"></TextBox>
         </DockPanel>
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-             <Button x:Name="Examinar_Button" Margin="5" Content="Examinar..." HorizontalAlignment="Left" Command="{Binding Path=ExaminarCommand}"></Button>
+             <Button x:Name="Examinar_Button" Margin="5" Content="Examinar..." HorizontalAlignment="Left" Command="{Binding Path=ExaminarCommand}" ToolTip="Abrir explorador archivos..."></Button>
              <TextBlock Text="{Binding Path=AutorNuevo.Imagen}"></TextBlock>
         </StackPanel>
     </Grid>

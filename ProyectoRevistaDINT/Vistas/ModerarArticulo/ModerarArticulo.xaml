@@ -74,7 +74,7 @@
         </ScrollViewer>
 
         <DockPanel DockPanel.Dock="Bottom" Margin="50,10" MinWidth="700" MaxWidth="1400" >
-            <Button Style="{StaticResource BotonFinalizar}" DockPanel.Dock="Right" Click="Button_Click">Finalizar</Button>
+            <Button Style="{StaticResource BotonFinalizar}" DockPanel.Dock="Right" Click="Button_Click" ToolTip="Moderar">Finalizar</Button>
             <TextBlock Text="Palabras prohibidas encontradas : " Foreground="#FFE03737"/>
             <TextBlock Text="{Binding Path=PalabrasEncontradas}"/>
         </DockPanel>

@@ -26,7 +26,7 @@
     </UserControl.Resources>
     <DockPanel>
         <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Margin="10">
-            <Button DockPanel.Dock="Left" Style="{StaticResource ButtonEditarEliminar_Style}" Command="{Binding Path=ComandoPublicarUno}">Publicar</Button>
+            <Button DockPanel.Dock="Left" Style="{StaticResource ButtonEditarEliminar_Style}" Command="{Binding Path=ComandoPublicarUno}" ToolTip="Generar Pdf">Publicar</Button>
             <Button DockPanel.Dock="Left" Style="{StaticResource ButtonEditarEliminar_Style}" Command="{Binding Path=ComandoEliminarArticulo}">Eliminar</Button>
         </DockPanel>
         <syncfusion:SfDataGrid ItemsSource="{Binding Articulos, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding ArticuloSeleccionado}" AllowFiltering="True" ColumnSizer="Star"/>
