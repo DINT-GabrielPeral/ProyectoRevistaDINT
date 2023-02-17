@@ -14,10 +14,10 @@
         <Style TargetType="Button" x:Key="ButtonEditarEliminar_Style" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="IsEnabled" Value="True"></Setter>
             <Style.Triggers>
-                <DataTrigger Binding="{Binding Path=ArticuloSeleccionado.Autor}" Value="">
+                <DataTrigger Binding="{Binding Path=ArticuloSeleccionado.Titulo}" Value="">
                     <Setter Property="IsEnabled" Value="False"></Setter>
                 </DataTrigger>
-                <DataTrigger Binding="{Binding Path=ArticuloSeleccionado.Autor}" Value="{x:Null}">
+                <DataTrigger Binding="{Binding Path=ArticuloSeleccionado.Titulo}" Value="{x:Null}">
                     <Setter Property="IsEnabled" Value="False"/>
                 </DataTrigger>
 
@@ -25,10 +25,10 @@
         </Style>
     </UserControl.Resources>
     <DockPanel>
-        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
-            <Button Command="{Binding Path=ComandoPublicar}">Publicar Todo</Button>
-            <Button Style="{StaticResource ButtonEditarEliminar_Style}" Command="{Binding Path=ComandoEliminarArticulo}">Eliminar</Button>
-        </StackPanel>
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Margin="10">
+            <Button DockPanel.Dock="Left" Style="{StaticResource ButtonEditarEliminar_Style}" Command="{Binding Path=ComandoPublicarUno}" ToolTip="Generar Pdf">Publicar</Button>
+            <Button DockPanel.Dock="Left" Style="{StaticResource ButtonEditarEliminar_Style}" Command="{Binding Path=ComandoEliminarArticulo}">Eliminar</Button>
+        </DockPanel>
         <syncfusion:SfDataGrid ItemsSource="{Binding Articulos, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding ArticuloSeleccionado}" AllowFiltering="True" ColumnSizer="Star"/>
     </DockPanel>
 </UserControl>

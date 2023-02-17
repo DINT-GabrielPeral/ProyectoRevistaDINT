@@ -16,6 +16,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
     class AutorCrearVentanaVM: ObservableObject
     {
         private ServicioAccesoBD sb;
+        private AzureService sa;
         public RelayCommand AñadirAutorCommand { get; }
         public RelayCommand ExaminarCommand { get; }
 
@@ -46,6 +47,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
         public AutorCrearVentanaVM()
         {
             sb = new ServicioAccesoBD();
+            sa = new AzureService();
             Autores = sb.recibirAutores();
             AutorNuevo = new Autor();
             redesSociales = new ObservableCollection<string> { "Instagram", "Twitter", "Facebook" };
@@ -60,6 +62,8 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
                 sb.crearAutor(AutorNuevo);
             }
             Autores = sb.recibirAutores();
+
+
 
             WeakReferenceMessenger.Default.Send(new AutoresChangedMessage(Autores));
 
@@ -86,7 +90,7 @@ namespace ProyectoRevistaDINT.Vistas.CrearAutor
             {
                 // Open document 
                 string filename = dlg.FileName;
-                AutorNuevo.Imagen = filename;
+                AutorNuevo.Imagen = sa.SubirImagen(filename);
             }
         }
         

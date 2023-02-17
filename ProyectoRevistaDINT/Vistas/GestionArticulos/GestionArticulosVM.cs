@@ -1,49 +1,94 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using ProyectoRevistaDINT.Clases;
+using ProyectoRevistaDINT.Mensajeria;
 using ProyectoRevistaDINT.Servicios;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 
 namespace ProyectoRevistaDINT.Vistas.GestionArticulos
 {
-    class GestionArticulosVM : ObservableObject
+    public class GestionArticulosVM : ObservableObject
     {
-        private ServicioAccesoBD sbd = new ServicioAccesoBD();
-        private ServicioNavegacion sn = new ServicioNavegacion();
+        private readonly ServicioAccesoBD servicioBD;
+        private readonly DialogosService servicioDialogos;
+        private readonly ServicioNavegacion servicioNavegacion;
+
         private ObservableCollection<Articulo> articulos;
         public ObservableCollection<Articulo> Articulos
         {
-            get { return articulos; }
-            set { SetProperty(ref articulos, value); }
+            get => articulos;
+            set => SetProperty(ref articulos, value);
         }
 
-       
-        public RelayCommand ComandoModerarArticulo { get; }
-        public RelayCommand ComandoEliminarArticulo { get; }
+        private Articulo articuloSeleccionado;
+        public Articulo ArticuloSeleccionado
+        {
+            get => articuloSeleccionado;
+            set => SetProperty(ref articuloSeleccionado, value);
+        }
+
+        public RelayCommand ModerarArticuloCommand { get; }
+        public RelayCommand EliminarArticuloCommand { get; }
 
         public GestionArticulosVM()
         {
-            sn = new ServicioNavegacion();
-            
-            ComandoModerarArticulo = new RelayCommand(AbrirModerarArticulo);
-            ComandoEliminarArticulo = new RelayCommand(AbrirEliminarArticulo);
+            servicioBD = new ServicioAccesoBD();
+            servicioDialogos = new DialogosService();
+            servicioNavegacion = new ServicioNavegacion();
+
+            ModerarArticuloCommand = new RelayCommand(ModerarArticulo);
+            EliminarArticuloCommand = new RelayCommand(EliminarArticulo);
             Articulos = new ObservableCollection<Articulo>();
 
-            Articulos = sbd.recibirArticulos();
+            Articulos = servicioBD.recibirArticulos();
+
+            WeakReferenceMessenger.Default.Register<GestionArticulosVM, ArticulosCreadosRequestMessage>(
+                this, (r, m) =>
+                {
+                    if (!m.HasReceivedResponse)
+                    {
+                        m.Reply(Articulos);
+                    }
+                }
+            );
+            WeakReferenceMessenger.Default.Register<NuevoArticuloValueChangedMessage>(this, (r, m) =>
+            {
+                ArticuloSeleccionado = m.Value;
+            });
         }
 
-        public void AbrirModerarArticulo()
+        public void ModerarArticulo()
         {
-
+            servicioNavegacion.AbrirModerarArticulo(ArticuloSeleccionado);
+            Articulos = servicioBD.recibirArticulos();
         }
-        public void AbrirEliminarArticulo()
-        {
 
+        public void EliminarArticulo()
+        {
+            if (ArticuloSeleccionado.Pdf == "" || ArticuloSeleccionado.Publicado == 0)
+            {
+                MessageBoxResult resultado = servicioDialogos.MostrarDialogoPregunta(
+                    "¿Estás seguro de que quieres eliminar este artículo?",
+                    "AVISO"
+                );
+                if (resultado == MessageBoxResult.Yes)
+                {
+                    servicioBD.eliminarArticulo(ArticuloSeleccionado);
+                }
+
+                Articulos = servicioBD.recibirArticulos();
+            }
+            else
+            {
+                servicioDialogos.MostrarDialogo(
+                    "No se ha podido eliminar el artículo porque ya está publicado",
+                    "ERROR AL ELIMINAR EL ARTÍCULO",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
+            }
         }
     }
 }

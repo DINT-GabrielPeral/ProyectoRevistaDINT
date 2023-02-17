@@ -10,11 +10,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
 {
     class PublicarArticuloUserControl1VM : ObservableObject
     {
+        private ServicioPDF spdf = new ServicioPDF();
+        private AzureService azure = new AzureService();
+        private DialogosService sd = new DialogosService();
         private ServicioAccesoBD sbd = new ServicioAccesoBD();
         private ServicioNavegacion sn = new ServicioNavegacion();
         private ObservableCollection<Articulo> articulos;
@@ -30,18 +34,18 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
             set { SetProperty(ref articuloSeleccionado, value); }
         }
 
-        public RelayCommand ComandoPublicarArticulo { get; }
+        public RelayCommand ComandoPublicarUno{ get; }
         public RelayCommand ComandoEliminarArticulo { get; }
 
         public PublicarArticuloUserControl1VM()
         {
             sn = new ServicioNavegacion();
-            ComandoPublicarArticulo = new RelayCommand(AbrirPublicarArticulos);
             ComandoEliminarArticulo = new RelayCommand(AbrirEliminarArticulo);
+            ComandoPublicarUno = new RelayCommand(PublicarUno);
             ArticuloSeleccionado = new Articulo();
             Articulos = new ObservableCollection<Articulo>();
 
-            sbd.crearArticulo(new Articulo("prueba", "prueba", "prueba", "prueba", 3));
+            //sbd.crearArticulo(new Articulo("prueba", "prueba", "prueba", "prueba", 1));
             Articulos = sbd.recibirArticulos();
 
             
@@ -51,16 +55,36 @@ namespace ProyectoRevistaDINT.Vistas.PublicarArticulo
             });
         }
 
-        public void AbrirPublicarArticulos()
-        {
-            
-        }
         
+
+        public void PublicarUno()
+        {
+            string ruta = spdf.generarPDF(ArticuloSeleccionado);
+            string link = azure.SubirImagen(ruta);
+            ArticuloSeleccionado.Pdf = link;
+            ArticuloSeleccionado.Publicado = 1;
+            sbd.modificarArticulo(ArticuloSeleccionado);
+            sd.MostrarDialogo("Se ha publicado el artículo", "Publicación correcta", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+            
+            
+
+        }
         public void AbrirEliminarArticulo()
         {
-            bool? eliminar = sn.AbrirEliminarArticulo();
-            if (eliminar == true)
-                sbd.eliminarArticulo(ArticuloSeleccionado);
+            if (ArticuloSeleccionado.Pdf == "" || ArticuloSeleccionado.Publicado == 0)
+            {
+                bool? eliminar = sn.AbrirEliminarArticulo();
+                if (eliminar == true)
+                    sbd.eliminarArticulo(ArticuloSeleccionado);
+            }else
+            {
+                sd.MostrarDialogo(
+                    "No se ha podido eliminar el artículo porque ya está publicado",
+                    "ERROR AL ELIMINAR EL ARTÍCULO",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
+            }
             Articulos = sbd.recibirArticulos();
         }
         

@@ -23,6 +23,13 @@ namespace ProyectoRevistaDINT.Vistas.EditarAutor
             get => autorActual;
             set => SetProperty(ref autorActual, value);
         }
+        private ObservableCollection<Autor> autores;
+
+        public ObservableCollection<Autor> Autores
+        {
+            get { return autores; }
+            set { SetProperty(ref autores, value); }
+        }
 
         private ObservableCollection<string> redesSociales;
         public ObservableCollection<string> RedesSociales
@@ -54,5 +61,7 @@ namespace ProyectoRevistaDINT.Vistas.EditarAutor
         {
             sb.editarAutor(AutorActual);
         }
+
+
     }
 }

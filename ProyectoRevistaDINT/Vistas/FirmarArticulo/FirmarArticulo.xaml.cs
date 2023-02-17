@@ -26,5 +26,16 @@ namespace ProyectoRevistaDINT.Vistas.FirmarArticulo
             InitializeComponent();
             this.DataContext = vm;
         }
+
+        private void Aceptar_Click(object sender, RoutedEventArgs e)
+        {
+            vm.FirmarArticulo();
+            DialogResult = true;
+        }
+
+        private void Nuevo_Click(object sender, RoutedEventArgs e)
+        {
+            vm.AbreNuevoAutor();
+        }
     }
 }

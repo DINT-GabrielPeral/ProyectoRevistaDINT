@@ -39,15 +39,48 @@ namespace ProyectoRevistaDINT.Clases
             set => SetProperty(ref autorArticulo, value);
         }
 
-        public Articulo() { }
+        private string pdf;
+        public string Pdf
+        {
+            get => pdf;
+            set => SetProperty(ref pdf, value);
+        }
 
-        public Articulo(string titulo, string imagen, string texto, string seccion, int autorArticulo)
+        private int moderado;
+        public int Moderado
+        {
+            get => moderado;
+            set => SetProperty(ref moderado, value);
+        }
+
+        private int publicado;
+        public int Publicado
+        {
+            get => publicado;
+            set => SetProperty(ref publicado, value);
+        }
+
+        public Articulo(string titulo = "", string imagen = "", string texto = "", string seccion="", int autorArticulo=0)
         {
             Titulo = titulo;
             Imagen = imagen;
             Texto = texto;
             Seccion = seccion;
             AutorArticulo = autorArticulo;
+            Pdf = "";
+            Moderado = 0;
+            Publicado = 0;
+        }
+        public Articulo(string pdf, int moderado, int publicado, string titulo = "", string imagen = "", string texto = "", string seccion = "", int autorArticulo = 0)
+        {
+            Titulo = titulo;
+            Imagen = imagen;
+            Texto = texto;
+            Seccion = seccion;
+            AutorArticulo = autorArticulo;
+            Pdf = pdf;
+            Moderado = moderado;
+            Publicado = publicado;
         }
     }
 }

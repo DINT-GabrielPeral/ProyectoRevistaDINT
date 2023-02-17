@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ProyectoRevistaDINT.Vistas.GestionAutores
 {
@@ -59,15 +60,22 @@ namespace ProyectoRevistaDINT.Vistas.GestionAutores
         }
         public void AbrirEditarAutor()
         {
-            
-            sn.AbrirEditarAutor(autorSeleccionado); 
-            
+            if (AutorSeleccionado != null && AutorSeleccionado.Id != 0)
+            {
+                sn.AbrirEditarAutor(autorSeleccionado);
+                Autores = sbd.recibirAutores();
+            }
         }
         public void AbrirEliminarAutor()
         {
             bool? eliminar = sn.AbrirEliminarAutor();
             if (eliminar == true)
-                sbd.eliminarAutor(AutorSeleccionado);
+            {
+                if (!sbd.tieneArticulos(AutorSeleccionado))
+                    sbd.eliminarAutor(AutorSeleccionado);
+                else MessageBox.Show("No se puede eliminar un autor que tenga articulos escritos.","AVISO",MessageBoxButton.OK,MessageBoxImage.Warning);
+            }
+                
             Autores = sbd.recibirAutores();
         }
     }

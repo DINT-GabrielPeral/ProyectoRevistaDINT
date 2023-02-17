@@ -17,20 +17,19 @@
     <DockPanel LastChildFill="True">
 
         <syncfusion:MenuAdv DockPanel.Dock="Top">
-            <syncfusion:MenuItemAdv Header="Gestion Autores" Command="{Binding Path=comandoGestionAutores}">
+            <syncfusion:MenuItemAdv Header="Gestion Autores" Command="{Binding Path=comandoGestionAutores}" ToolTip="Crear,Editar y Eliminar Autores">
             </syncfusion:MenuItemAdv>
-            <syncfusion:MenuItemAdv Header="Gestión Artículos">
+            <syncfusion:MenuItemAdv Header="Gestión Artículos" ToolTip="Crear,Moderar y Eliminar Artículos">
                 <syncfusion:MenuItemAdv Header="Crear Articulo" Command="{Binding Path=comandoCrearArticulo}">
                 </syncfusion:MenuItemAdv>
                 <syncfusion:MenuItemAdv Header="Lista Articulos" Command="{Binding Path=comandoGestionArticulos}">
                 </syncfusion:MenuItemAdv>
             </syncfusion:MenuItemAdv>
-            <syncfusion:MenuItemAdv Header="Publicación">
+            <syncfusion:MenuItemAdv Header="Publicación" ToolTip="Publicar Artículos y Generar Pagina Web">
                 <syncfusion:MenuItemAdv Header="Publicar Artículos" Command="{Binding Path=comandoPublicarArticulo}"/>
-                <syncfusion:MenuItemAdv Header="Generar Revista" />
+                <syncfusion:MenuItemAdv Header="Generar Revista" Command="{Binding Path=comandoGenerarRevista}" ToolTip="Generar página web / Abrir pagina web"/>
             </syncfusion:MenuItemAdv>
-            <syncfusion:MenuItemAdv Header="Gestión de palabras prohibidas"/>
-
+            <syncfusion:MenuItemAdv Header="Ayuda" Command="{Binding Path=comandoAyuda}" ToolTip="Abrir fichero ayuda"/>
             <syncfusion:MenuItemAdv/>
         </syncfusion:MenuAdv>
         <UserControl Content="{Binding ContenidoMostrar}" Margin="3">
